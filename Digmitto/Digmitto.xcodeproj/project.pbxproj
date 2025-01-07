@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		07E54E252D2DD1EB00139D4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07E54E0C2D2DD1E700139D4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07E54E132D2DD1E700139D4C;
+			remoteInfo = Digmitto;
+		};
+		07E54E2F2D2DD1EB00139D4C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07E54E0C2D2DD1E700139D4C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07E54E132D2DD1E700139D4C;
+			remoteInfo = Digmitto;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		07E54E142D2DD1E700139D4C /* Digmitto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Digmitto.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		07E54E242D2DD1EB00139D4C /* DigmittoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigmittoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		07E54E2E2D2DD1EB00139D4C /* DigmittoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DigmittoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		07E54E162D2DD1E700139D4C /* Digmitto */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Digmitto;
+			sourceTree = "<group>";
+		};
+		07E54E272D2DD1EB00139D4C /* DigmittoTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DigmittoTests;
+			sourceTree = "<group>";
+		};
+		07E54E312D2DD1EB00139D4C /* DigmittoUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DigmittoUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07E54E112D2DD1E700139D4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07E54E212D2DD1EB00139D4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07E54E2B2D2DD1EB00139D4C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		07E54E0B2D2DD1E700139D4C = {
+			isa = PBXGroup;
+			children = (
+				07E54E162D2DD1E700139D4C /* Digmitto */,
+				07E54E272D2DD1EB00139D4C /* DigmittoTests */,
+				07E54E312D2DD1EB00139D4C /* DigmittoUITests */,
+				07E54E152D2DD1E700139D4C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		07E54E152D2DD1E700139D4C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07E54E142D2DD1E700139D4C /* Digmitto.app */,
+				07E54E242D2DD1EB00139D4C /* DigmittoTests.xctest */,
+				07E54E2E2D2DD1EB00139D4C /* DigmittoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07E54E132D2DD1E700139D4C /* Digmitto */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07E54E382D2DD1EB00139D4C /* Build configuration list for PBXNativeTarget "Digmitto" */;
+			buildPhases = (
+				07E54E102D2DD1E700139D4C /* Sources */,
+				07E54E112D2DD1E700139D4C /* Frameworks */,
+				07E54E122D2DD1E700139D4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				07E54E162D2DD1E700139D4C /* Digmitto */,
+			);
+			name = Digmitto;
+			packageProductDependencies = (
+			);
+			productName = Digmitto;
+			productReference = 07E54E142D2DD1E700139D4C /* Digmitto.app */;
+			productType = "com.apple.product-type.application";
+		};
+		07E54E232D2DD1EB00139D4C /* DigmittoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07E54E3B2D2DD1EB00139D4C /* Build configuration list for PBXNativeTarget "DigmittoTests" */;
+			buildPhases = (
+				07E54E202D2DD1EB00139D4C /* Sources */,
+				07E54E212D2DD1EB00139D4C /* Frameworks */,
+				07E54E222D2DD1EB00139D4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07E54E262D2DD1EB00139D4C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				07E54E272D2DD1EB00139D4C /* DigmittoTests */,
+			);
+			name = DigmittoTests;
+			packageProductDependencies = (
+			);
+			productName = DigmittoTests;
+			productReference = 07E54E242D2DD1EB00139D4C /* DigmittoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		07E54E2D2D2DD1EB00139D4C /* DigmittoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07E54E3E2D2DD1EB00139D4C /* Build configuration list for PBXNativeTarget "DigmittoUITests" */;
+			buildPhases = (
+				07E54E2A2D2DD1EB00139D4C /* Sources */,
+				07E54E2B2D2DD1EB00139D4C /* Frameworks */,
+				07E54E2C2D2DD1EB00139D4C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07E54E302D2DD1EB00139D4C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				07E54E312D2DD1EB00139D4C /* DigmittoUITests */,
+			);
+			name = DigmittoUITests;
+			packageProductDependencies = (
+			);
+			productName = DigmittoUITests;
+			productReference = 07E54E2E2D2DD1EB00139D4C /* DigmittoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		07E54E0C2D2DD1E700139D4C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					07E54E132D2DD1E700139D4C = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					07E54E232D2DD1EB00139D4C = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 07E54E132D2DD1E700139D4C;
+					};
+					07E54E2D2D2DD1EB00139D4C = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 07E54E132D2DD1E700139D4C;
+					};
+				};
+			};
+			buildConfigurationList = 07E54E0F2D2DD1E700139D4C /* Build configuration list for PBXProject "Digmitto" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 07E54E0B2D2DD1E700139D4C;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 07E54E152D2DD1E700139D4C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07E54E132D2DD1E700139D4C /* Digmitto */,
+				07E54E232D2DD1EB00139D4C /* DigmittoTests */,
+				07E54E2D2D2DD1EB00139D4C /* DigmittoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		07E54E122D2DD1E700139D4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07E54E222D2DD1EB00139D4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07E54E2C2D2DD1EB00139D4C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07E54E102D2DD1E700139D4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07E54E202D2DD1EB00139D4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07E54E2A2D2DD1EB00139D4C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		07E54E262D2DD1EB00139D4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07E54E132D2DD1E700139D4C /* Digmitto */;
+			targetProxy = 07E54E252D2DD1EB00139D4C /* PBXContainerItemProxy */;
+		};
+		07E54E302D2DD1EB00139D4C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07E54E132D2DD1E700139D4C /* Digmitto */;
+			targetProxy = 07E54E2F2D2DD1EB00139D4C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		07E54E362D2DD1EB00139D4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		07E54E372D2DD1EB00139D4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		07E54E392D2DD1EB00139D4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Digmitto/Preview Content\"";
+				DEVELOPMENT_TEAM = 8TC5J5KMXE;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gregkaps.Digmitto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		07E54E3A2D2DD1EB00139D4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Digmitto/Preview Content\"";
+				DEVELOPMENT_TEAM = 8TC5J5KMXE;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gregkaps.Digmitto;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		07E54E3C2D2DD1EB00139D4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8TC5J5KMXE;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gregkaps.DigmittoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Digmitto.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Digmitto";
+			};
+			name = Debug;
+		};
+		07E54E3D2D2DD1EB00139D4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8TC5J5KMXE;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gregkaps.DigmittoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Digmitto.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Digmitto";
+			};
+			name = Release;
+		};
+		07E54E3F2D2DD1EB00139D4C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8TC5J5KMXE;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gregkaps.DigmittoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Digmitto;
+			};
+			name = Debug;
+		};
+		07E54E402D2DD1EB00139D4C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 8TC5J5KMXE;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gregkaps.DigmittoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Digmitto;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		07E54E0F2D2DD1E700139D4C /* Build configuration list for PBXProject "Digmitto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07E54E362D2DD1EB00139D4C /* Debug */,
+				07E54E372D2DD1EB00139D4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07E54E382D2DD1EB00139D4C /* Build configuration list for PBXNativeTarget "Digmitto" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07E54E392D2DD1EB00139D4C /* Debug */,
+				07E54E3A2D2DD1EB00139D4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07E54E3B2D2DD1EB00139D4C /* Build configuration list for PBXNativeTarget "DigmittoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07E54E3C2D2DD1EB00139D4C /* Debug */,
+				07E54E3D2D2DD1EB00139D4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07E54E3E2D2DD1EB00139D4C /* Build configuration list for PBXNativeTarget "DigmittoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07E54E3F2D2DD1EB00139D4C /* Debug */,
+				07E54E402D2DD1EB00139D4C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 07E54E0C2D2DD1E700139D4C /* Project object */;
+}
