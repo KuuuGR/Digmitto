@@ -1,29 +1,50 @@
 import SwiftUI
 
 struct HomeScreenView: View {
+    @State private var words = ["motor", "table", "lamp"]
+    @State private var currentWord = "motor"
+
     var body: some View {
-        VStack {
-            Text("Digmitto")
-                .font(.largeTitle)
-                .padding()
-            Image(systemName: "star.fill")
-                .resizable()
-                .frame(width: 100, height: 100)
-                .padding()
-            Button(action: {
-                // Navigate to Task Screen
-            }) {
-                Text("Start")
-                    .font(.title)
+        NavigationView {
+            VStack {
+                Text(LocalizedStringKey("welcome_message"))
+                    .font(.largeTitle)
                     .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
-            }
-            Spacer()
-            Text("ver. 0.0.1")
-                .font(.footnote)
+
+                Spacer()
+
+                NavigationLink(destination: TaskView(currentWord: currentWord)) {
+                    Text(LocalizedStringKey("start_button"))
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
                 .padding()
+
+                NavigationLink(destination: SettingsView()) {
+                    Text(LocalizedStringKey("settings_title"))
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.gray)
+                        .cornerRadius(10)
+                }
+                .padding()
+
+                Spacer()
+            }
+            .onAppear {
+                currentWord = words.randomElement() ?? "motor"
+            }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+}
+
+struct HomeScreenView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeScreenView()
     }
 } 

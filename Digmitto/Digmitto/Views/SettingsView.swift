@@ -1,31 +1,32 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @State private var assignments: [Int: String] = [
-        0: "s, z", 1: "t, d", 2: "n", 3: "m", 4: "r",
-        5: "l", 6: "j, sz, cz", 7: "k, g", 8: "f, w", 9: "p, b"
-    ]
-    
+    @State private var isColoringEnabled = true
+    @State private var isCheatSheetVisible = true
+    @State private var selectedLanguage = "English"
+
     var body: some View {
         Form {
-            Section(header: Text("Letter-to-Digit Assignments")) {
-                ForEach(assignments.keys.sorted(), id: \.self) { key in
-                    HStack {
-                        Text("Digit \(key)")
-                        TextField("Letters", text: Binding(
-                            get: { self.assignments[key] ?? "" },
-                            set: { self.assignments[key] = $0 }
-                        ))
-                    }
-                }
+            Section(header: Text("Display Options")) {
+                Toggle("Enable Letter Coloring", isOn: $isColoringEnabled)
+                Toggle("Show Cheat Sheet", isOn: $isCheatSheetVisible)
             }
-            Button("Reset to Default") {
-                // Reset logic
-                assignments = [
-                    0: "s, z", 1: "t, d", 2: "n", 3: "m", 4: "r",
-                    5: "l", 6: "j, sz, cz", 7: "k, g", 8: "f, w", 9: "p, b"
-                ]
+
+            Section(header: Text("Language")) {
+                Picker("Select Language", selection: $selectedLanguage) {
+                    Text("Polish").tag("Polish")
+                    Text("English").tag("English")
+                    Text("Spanish").tag("Spanish")
+                }
+                .pickerStyle(SegmentedPickerStyle())
             }
         }
+        .navigationTitle("Settings")
+    }
+}
+
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingsView()
     }
 } 
