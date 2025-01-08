@@ -11,7 +11,7 @@ import SwiftUI
 struct DigmittoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashScreenView()
         }
     }
 }
