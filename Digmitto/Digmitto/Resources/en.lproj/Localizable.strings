@@ -1,3 +1,4 @@
 "app_name" = "Digmitto";
 "start_button" = "Start";
-// Add other translations 
+"welcome_message" = "Welcome to Digmitto";
+"settings_title" = "Settings";
