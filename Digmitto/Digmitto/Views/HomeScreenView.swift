@@ -12,9 +12,10 @@ struct HomeScreenView: View {
     }
     
     private let buttonColors = [
-        Color(red: 150/255, green: 240/255, blue: 255/255),
+        Color(red: 100/255, green: 155/255, blue: 100/255),
         Color(red: 255/255, green: 159/255, blue: 200/255),
-        Color(red: 200/255, green: 200/255, blue: 187/255)
+        Color(red: 200/255, green: 200/255, blue: 187/255),
+        Color(red: 200/255, green: 200/255, blue: 200/255)
     ]
 
     var body: some View {
@@ -41,13 +42,18 @@ struct HomeScreenView: View {
                             ZStack {
                                 Circle()
                                     .fill(buttonColors[0])
+                                    .frame(width: 170, height: 170)
+                                    .opacity(0.7)
+                                    .shadow(color: .blue.opacity(0.7), radius: 20, x: 0, y: 0)
+                                Circle()
+                                    .fill(buttonColors[0])
                                     .frame(width: 160, height: 160)
-                                    .opacity(0.4)
+                                    .opacity(0.9)
                                     .shadow(color: .blue.opacity(0.3), radius: 10, x: 0, y: 5)
-                                
                                 VStack(spacing: 5) {
                                     Text("⭐️")
                                         .font(.system(size: 50))
+                                        .opacity(0.7)
                                     Text(LocalizedStringKey("start_button"))
                                         .font(.system(size: 20))
                                         .font(.headline)
@@ -68,7 +74,7 @@ struct HomeScreenView: View {
                             NavigationButton(title: "Developer", color: buttonColors[2], destination: DeveloperView())
                         }
                         .padding(.horizontal)
-                        .opacity(0.4)
+                        .opacity(0.3)
                         .padding(.bottom, 30) // Increased bottom padding
                     }
                     .background(
