@@ -16,12 +16,11 @@ struct HomeScreenView: View {
         NavigationView {
             ZStack {
                 VStack {
-                    Image("iconDigit1")
+                    Image("logo")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 200, height: 200)
                         .padding(.top, 40)
-                        .opacity(0.25)
                     
                     Text(LocalizedStringKey("welcome_message"))
                         .font(.largeTitle)
@@ -29,7 +28,7 @@ struct HomeScreenView: View {
 
                     Spacer()
 
-                    Text("⇩") //👇⭐️⬇️↓
+                    Text("⭐️")
                         .font(.system(size: 100))
                         .padding()
 
@@ -43,15 +42,39 @@ struct HomeScreenView: View {
                     }
                     .padding()
 
-                    NavigationLink(destination: SettingsView(isCheatSheetVisible: $isCheatSheetVisible)) {
-                        Text(LocalizedStringKey("settings_title"))
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.gray)
-                            .cornerRadius(10)
+                    // Three buttons in a row
+                    HStack(spacing: 20) {
+                        NavigationLink(destination: AboutView()) {
+                            Text("About")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(width: 100)
+                                .background(Color.green)
+                                .cornerRadius(10)
+                        }
+                        
+                        NavigationLink(destination: SettingsView(isCheatSheetVisible: $isCheatSheetVisible)) {
+                            Text(LocalizedStringKey("settings_title"))
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(width: 100)
+                                .background(Color.gray)
+                                .cornerRadius(10)
+                        }
+                        
+                        NavigationLink(destination: DeveloperView()) {
+                            Text("Developer")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding()
+                                .frame(width: 100)
+                                .background(Color.purple)
+                                .cornerRadius(10)
+                        }
                     }
-                    .padding()
+                    .padding(.bottom)
 
                     Spacer()
                 }
