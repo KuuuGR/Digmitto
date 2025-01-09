@@ -3,29 +3,43 @@ import SwiftUI
 struct TaskView: View {
     var currentWord: String
     var isCheatSheetEnabled: Bool
-    @State private var userInput = ""
+    @State private var selectedNumbers: [Int]
     @State private var feedback = ""
     @State private var isCheatSheetVisible = false
+    
+    // Initialize selectedNumbers in init
+    init(currentWord: String, isCheatSheetEnabled: Bool) {
+        self.currentWord = currentWord
+        self.isCheatSheetEnabled = isCheatSheetEnabled
+        // Initialize the array with the correct size
+        let length = max(1, currentWord.count)
+        _selectedNumbers = State(initialValue: Array(repeating: 0, count: length))
+    }
 
     var body: some View {
         ZStack {
             VStack {
-                // Main content
                 Text("Word: \(currentWord)")
                     .font(.title)
                     .padding(.top, 20)
                 
-                TextField("Enter number", text: $userInput)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+                NumberWheelView(
+                    wordLength: max(1, currentWord.count),
+                    selectedNumbers: $selectedNumbers
+                )
+                .padding()
                 
-                Button("Code") {
-                    if validateInput(userInput) {
+                Button("Check") {
+                    if validateInput(selectedNumbers) {
                         feedback = "Correct! 🌟"
                     } else {
                         feedback = "Try again! ❌"
                     }
                 }
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.blue)
+                .cornerRadius(10)
                 
                 Text(feedback)
                     .padding()
@@ -33,7 +47,6 @@ struct TaskView: View {
                 Spacer()
             }
             
-            // Cheat Sheet Button in top-right corner
             if isCheatSheetEnabled {
                 VStack {
                     HStack {
@@ -55,13 +68,13 @@ struct TaskView: View {
         }
         .popover(isPresented: $isCheatSheetVisible) {
             CheatSheetView()
-                .frame(width: 200, height: 300) // Control the size of the popover
+                .frame(width: 200, height: 300)
         }
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    func validateInput(_ input: String) -> Bool {
-        // Implement validation logic
+    func validateInput(_ numbers: [Int]) -> Bool {
+        // Implement validation logic for the array of numbers
         return true
     }
 }

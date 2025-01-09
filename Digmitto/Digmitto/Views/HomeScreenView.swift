@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct HomeScreenView: View {
-    @State private var words = ["motor", "table", "lamp"]
-    @State private var currentWord = "motor"
+    @EnvironmentObject var wordStore: WordStore
+    @State private var currentWord = ""
     @State private var isCheatSheetVisible = true
 
     var body: some View {
@@ -41,7 +41,7 @@ struct HomeScreenView: View {
                 Spacer()
             }
             .onAppear {
-                currentWord = words.randomElement() ?? "motor"
+                currentWord = wordStore.getRandomWord()
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

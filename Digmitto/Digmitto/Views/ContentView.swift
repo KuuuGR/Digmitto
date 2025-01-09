@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var words = ["motor", "table", "lamp"]
-    @State private var currentWord = "motor"
-    @State private var isCheatSheetVisible = false // Control sheet visibility
+    @EnvironmentObject var wordStore: WordStore
+    @State private var currentWord = ""
+    @State private var isCheatSheetVisible = false
 
     var body: some View {
         NavigationView {
@@ -43,23 +43,10 @@ struct ContentView: View {
                 }
                 .padding()
 
-                NavigationLink(destination: SettingsView(isCheatSheetVisible: $isCheatSheetVisible)) {
-                    Text(LocalizedStringKey("settings_title"))
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.gray)
-                        .cornerRadius(10)
-                }
-                .padding()
-
                 Spacer()
             }
             .onAppear {
-                currentWord = words.randomElement() ?? "motor"
-            }
-            .sheet(isPresented: $isCheatSheetVisible) {
-                CheatSheetView()
+                currentWord = wordStore.getRandomWord()
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
@@ -69,5 +56,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(WordStore())
     }
 }

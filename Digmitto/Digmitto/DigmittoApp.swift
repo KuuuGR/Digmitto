@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct DigmittoApp: App {
+    @StateObject private var wordStore = WordStore()
+    
     var body: some Scene {
         WindowGroup {
-            SplashScreenView()
+            HomeScreenView()
+                .environmentObject(wordStore)
         }
     }
 }
