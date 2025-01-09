@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @Binding var isCheatSheetVisible: Bool
     @State private var isColoringEnabled = true
-    @State private var isCheatSheetVisible = true
     @State private var selectedLanguage = "English"
 
     var body: some View {
@@ -27,6 +27,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
+        SettingsView(isCheatSheetVisible: .constant(true))
     }
 } 

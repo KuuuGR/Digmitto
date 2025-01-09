@@ -8,52 +8,61 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var words = ["motor", "table", "lamp"] // Example words
-    @State private var currentWord = "motor" // Initialize currentWord
+    @State private var words = ["motor", "table", "lamp"]
+    @State private var currentWord = "motor"
+    @State private var isCheatSheetVisible = false // Control sheet visibility
 
     var body: some View {
         NavigationView {
-            ZStack {
-                VStack {
-                    Spacer() // Pushes content to center
-                    Image(systemName: "star.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 100, height: 100)
-                        .padding(.bottom, 50) // Adds space between the image and the button
-
-                    NavigationLink(destination: TaskView(currentWord: currentWord)) {
-                        Text("Start")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(10)
-                    }
-                    .onTapGesture {
-                        print("Start button tapped")
-                    }
+            VStack {
+                Text(LocalizedStringKey("welcome_message"))
+                    .font(.largeTitle)
                     .padding()
-                    Spacer() // Ensures the button is centered vertically
-                }
-                .navigationTitle("")
 
-                VStack {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        Text("ver. 0.0.1")
-                            .font(.footnote)
-                            .padding()
-                    }
+                Spacer()
+
+                NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: isCheatSheetVisible)) {
+                    Text(LocalizedStringKey("start_button"))
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
                 }
+                .padding()
+
+                Button(action: {
+                    isCheatSheetVisible.toggle()
+                }) {
+                    Text("Show Cheat Sheet")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.green)
+                        .cornerRadius(10)
+                }
+                .padding()
+
+                NavigationLink(destination: SettingsView(isCheatSheetVisible: $isCheatSheetVisible)) {
+                    Text(LocalizedStringKey("settings_title"))
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.gray)
+                        .cornerRadius(10)
+                }
+                .padding()
+
+                Spacer()
+            }
+            .onAppear {
+                currentWord = words.randomElement() ?? "motor"
+            }
+            .sheet(isPresented: $isCheatSheetVisible) {
+                CheatSheetView()
             }
         }
-        .onAppear {
-            currentWord = words.randomElement() ?? "motor"
-            print("Navigated to TaskView with word: \(currentWord)")
-        }
-        .navigationViewStyle(StackNavigationViewStyle()) // Ensure correct navigation style
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

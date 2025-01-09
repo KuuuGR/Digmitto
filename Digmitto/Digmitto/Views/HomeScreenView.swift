@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeScreenView: View {
     @State private var words = ["motor", "table", "lamp"]
     @State private var currentWord = "motor"
+    @State private var isCheatSheetVisible = true
 
     var body: some View {
         NavigationView {
@@ -13,7 +14,11 @@ struct HomeScreenView: View {
 
                 Spacer()
 
-                NavigationLink(destination: TaskView(currentWord: currentWord)) {
+                Text("⭐️")
+                    .font(.system(size: 100))
+                    .padding()
+
+                NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: isCheatSheetVisible)) {
                     Text(LocalizedStringKey("start_button"))
                         .font(.headline)
                         .foregroundColor(.white)
@@ -23,7 +28,7 @@ struct HomeScreenView: View {
                 }
                 .padding()
 
-                NavigationLink(destination: SettingsView()) {
+                NavigationLink(destination: SettingsView(isCheatSheetVisible: $isCheatSheetVisible)) {
                     Text(LocalizedStringKey("settings_title"))
                         .font(.headline)
                         .foregroundColor(.white)
