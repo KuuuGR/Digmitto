@@ -8,46 +8,56 @@ struct TaskView: View {
     @State private var isCheatSheetVisible = false
 
     var body: some View {
-        VStack {
-            Button("Back") {
-                // Navigate back
-            }
-            Text("Word: \(currentWord)")
-                .font(.title)
-            
-            TextField("Enter number", text: $userInput)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
-            
-            Button("Code") {
-                // Validate input
-                if validateInput(userInput) {
-                    feedback = "Correct! 🌟"
-                } else {
-                    feedback = "Try again! ❌"
+        ZStack {
+            VStack {
+                // Main content
+                Text("Word: \(currentWord)")
+                    .font(.title)
+                    .padding(.top, 20)
+                
+                TextField("Enter number", text: $userInput)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
+                
+                Button("Code") {
+                    if validateInput(userInput) {
+                        feedback = "Correct! 🌟"
+                    } else {
+                        feedback = "Try again! ❌"
+                    }
                 }
+                
+                Text(feedback)
+                    .padding()
+                
+                Spacer()
             }
             
-            Text(feedback)
-                .padding()
-            
+            // Cheat Sheet Button in top-right corner
             if isCheatSheetEnabled {
-                Button(action: {
-                    isCheatSheetVisible.toggle()
-                }) {
-                    Text("Show Cheat Sheet")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.green)
-                        .cornerRadius(10)
+                VStack {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            isCheatSheetVisible.toggle()
+                        }) {
+                            Text("📝")
+                                .font(.system(size: 24))
+                                .padding(8)
+                                .background(Color(UIColor.systemGray5))
+                                .cornerRadius(8)
+                        }
+                        .padding(.trailing, 20)
+                    }
+                    Spacer()
                 }
-                .padding()
             }
         }
-        .sheet(isPresented: $isCheatSheetVisible) {
+        .popover(isPresented: $isCheatSheetVisible) {
             CheatSheetView()
+                .frame(width: 200, height: 300) // Control the size of the popover
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
 
     func validateInput(_ input: String) -> Bool {
