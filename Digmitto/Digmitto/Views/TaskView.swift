@@ -7,11 +7,20 @@ struct TaskView: View {
     @State private var feedback = ""
     @State private var isCheatSheetVisible = false
     
-    // Add wheel colors
+    // Updated wheel colors with repeating pattern for words longer than 9 characters
     private var wheelColors: [Color] {
-        // You can customize this array based on your needs
-        let colors: [Color] = [.blue, .red, .green, .orange, .purple, .pink]
-        return Array(colors.prefix(currentWord.count))
+        let baseColors: [Color] = [.blue, .red, .green, .orange, .purple, .pink]
+        let wordLength = currentWord.count
+        var resultColors: [Color] = []
+        
+        // Fill colors from right to left, every three digits get the same color
+        for i in (0..<wordLength).reversed() {
+            let groupIndex = (wordLength - 1 - i) / 3 // Which group of three (0-based)
+            let colorIndex = groupIndex % baseColors.count // Cycle through colors
+            resultColors.insert(baseColors[colorIndex], at: 0)
+        }
+        
+        return resultColors
     }
     
     init(currentWord: String, isCheatSheetEnabled: Bool) {
