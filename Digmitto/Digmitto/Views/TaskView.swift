@@ -7,11 +7,16 @@ struct TaskView: View {
     @State private var feedback = ""
     @State private var isCheatSheetVisible = false
     
-    // Initialize selectedNumbers in init
+    // Add wheel colors
+    private var wheelColors: [Color] {
+        // You can customize this array based on your needs
+        let colors: [Color] = [.blue, .red, .green, .orange, .purple, .pink]
+        return Array(colors.prefix(currentWord.count))
+    }
+    
     init(currentWord: String, isCheatSheetEnabled: Bool) {
         self.currentWord = currentWord
         self.isCheatSheetEnabled = isCheatSheetEnabled
-        // Initialize the array with the correct size
         let length = max(1, currentWord.count)
         _selectedNumbers = State(initialValue: Array(repeating: 0, count: length))
     }
@@ -25,7 +30,8 @@ struct TaskView: View {
                 
                 NumberWheelView(
                     wordLength: max(1, currentWord.count),
-                    selectedNumbers: $selectedNumbers
+                    selectedNumbers: $selectedNumbers,
+                    wheelColors: wheelColors
                 )
                 .padding()
                 
