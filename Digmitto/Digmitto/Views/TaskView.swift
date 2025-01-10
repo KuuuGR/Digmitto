@@ -117,10 +117,11 @@ struct TaskView: View {
         if !wordStore.enableColorization {
             return wordStore.defaultColor
         }
-        if wordStore.majorSystemLetters.contains(char) {
+        let lowerChar = char.lowercased()
+        if wordStore.majorSystemLetters.contains(lowerChar) {
             return wordStore.primaryColor
         } else {
-            return wordStore.defaultColor
+            return wordStore.secondaryColor
         }
     }
 }
