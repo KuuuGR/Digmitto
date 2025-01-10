@@ -15,6 +15,16 @@ struct SettingsView: View {
                     Text(language).tag(language)
                 }
             }
+            
+            Toggle("Enable Colorization", isOn: $wordStore.enableColorization)
+            
+            ColorPicker("Primary Color", selection: $wordStore.primaryColor)
+            ColorPicker("Secondary Color", selection: $wordStore.secondaryColor)
+            ColorPicker("Default Color", selection: $wordStore.defaultColor)
+            
+            TextField("Major System Letters", text: $wordStore.majorSystemLetters)
+                .autocapitalization(.allCharacters)
+                .disableAutocorrection(true)
         }
         .navigationBarTitle("Settings")
     }

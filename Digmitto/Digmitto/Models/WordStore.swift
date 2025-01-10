@@ -1,9 +1,14 @@
-import Foundation
+import SwiftUI
 
 // Example of loading words from a JSON file
 class WordStore: ObservableObject {
     @Published var words: [String: [String]] = [:]
     @Published var selectedLanguage: String = "English"
+    @Published var enableColorization: Bool = false
+    @Published var primaryColor: Color = .blue
+    @Published var secondaryColor: Color = .gray
+    @Published var defaultColor: Color = .white
+    @Published var majorSystemLetters: String = "sztdnmrljkgfwpbSZTDNMRLJKGFWPB"
     
     init() {
         loadWords()

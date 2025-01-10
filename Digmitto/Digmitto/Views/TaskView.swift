@@ -6,7 +6,8 @@ struct TaskView: View {
     @State private var selectedNumbers: [Int]
     @State private var feedback = ""
     @State private var isCheatSheetVisible = false
-    
+    @EnvironmentObject var wordStore: WordStore  // Access the WordStore
+
     private var wheelColors: [Color] {
         let baseColors: [Color] = [.blue, .red, .green, .orange, .purple, .pink]
         let wordLength = currentWord.count
@@ -61,6 +62,16 @@ struct TaskView: View {
                         Text(feedback)
                             .padding()
                         
+                        // Display the word with colorized letters
+                        HStack(spacing: 0) {
+                            ForEach(Array(currentWord.enumerated()), id: \.offset) { index, char in
+                                Text(String(char))
+                                    .foregroundColor(colorForCharacter(char))
+                            }
+                        }
+                        .font(.title)
+                        .padding(.top, 20)
+                        
                         // Add extra padding at the bottom to ensure space for the button
                         Spacer()
                             .frame(height: 60)
@@ -101,10 +112,22 @@ struct TaskView: View {
         // Implement validation logic for the array of numbers
         return true
     }
+
+    private func colorForCharacter(_ char: Character) -> Color {
+        if !wordStore.enableColorization {
+            return wordStore.defaultColor
+        }
+        if wordStore.majorSystemLetters.contains(char) {
+            return wordStore.primaryColor
+        } else {
+            return wordStore.defaultColor
+        }
+    }
 }
 
 struct TaskView_Previews: PreviewProvider {
     static var previews: some View {
         TaskView(currentWord: "example", isCheatSheetEnabled: true)
+            .environmentObject(WordStore())
     }
 } 
