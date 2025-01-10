@@ -21,7 +21,7 @@ struct SettingsView: View {
                 .onChange(of: wordStore.enableColorization) { isEnabled in
                     if isEnabled {
                         // Ensure secondary color is not overwritten by default color
-                        wordStore.secondaryColor = wordStore.defaultColor
+                        //wordStore.secondaryColor = wordStore.defaultColor
                     }
                 }
             
