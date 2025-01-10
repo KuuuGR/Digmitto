@@ -38,10 +38,16 @@ struct TaskView: View {
             ZStack {
                 ScrollView {
                     VStack(spacing: 10) {
-                        Text("Word: \(currentWord)")
-                            .font(.title)
-                            .padding(.top, 20)
-                        
+                        HStack(spacing: 0) {  // Display the colorized word at the top, centered
+                            ForEach(Array(currentWord.enumerated()), id: \.offset) { index, char in
+                                Text(String(char))
+                                    .foregroundColor(colorForCharacter(char))
+                                    .font(.largeTitle)
+                            }
+                        }
+                        .padding(.top, 20)
+                        .frame(maxWidth: .infinity, alignment: .center)
+
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 Spacer() // Flexible space before wheels
@@ -70,16 +76,6 @@ struct TaskView: View {
                         
                         Text(feedback)
                             .padding()
-                        
-                        // Display the word with colorized letters
-                        HStack(spacing: 0) {
-                            ForEach(Array(currentWord.enumerated()), id: \.offset) { index, char in
-                                Text(String(char))
-                                    .foregroundColor(colorForCharacter(char))
-                            }
-                        }
-                        .font(.title)
-                        .padding(.top, 20)
                         
                         Spacer()
                             .frame(height: 60)
