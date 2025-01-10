@@ -7,28 +7,34 @@ struct SettingsView: View {
     
     var body: some View {
         Form {
-            Toggle(isOn: $isCheatSheetVisible) {
-                Text("Enable Cheat Sheet")
-            }
-            
-            Picker("Language", selection: $wordStore.selectedLanguage) {
-                ForEach(["English", "Polish", "Spanish"], id: \.self) { language in
-                    Text(language).tag(language)
+            Section(header: Text("General Settings")) {
+                Toggle(isOn: $isCheatSheetVisible) {
+                    Text("Enable Cheat Sheet")
                 }
-            }
-            
-            Toggle("Enable Colorization", isOn: $wordStore.enableColorization)
-                .onChange(of: wordStore.enableColorization) { isEnabled in
-                    if isEnabled {
-                        // Ensure secondary color is not overwritten by default color
-                        //wordStore.secondaryColor = wordStore.defaultColor
+                
+                Picker("Language", selection: $wordStore.selectedLanguage) {
+                    ForEach(["English", "Polish", "Spanish"], id: \.self) { language in
+                        Text(language).tag(language)
                     }
                 }
+            }
             
-            if wordStore.enableColorization {
-                ColorPicker("Primary Color", selection: $wordStore.primaryColor)
-                ColorPicker("Secondary Color", selection: $wordStore.secondaryColor)
+            Section(header: Text("Colorization Settings")) {
+                Toggle("Enable Colorization", isOn: $wordStore.enableColorization)
                 
+                if wordStore.enableColorization {
+                    ColorPicker("Primary Color", selection: $wordStore.primaryColor)
+                    ColorPicker("Secondary Color", selection: $wordStore.secondaryColor)
+                }
+            }
+            
+            Section(header: Text("Default Color Setting")) {
+                if !wordStore.enableColorization {
+                    ColorPicker("Default Color", selection: $wordStore.defaultColor)
+                }
+            }
+            
+            Section(header: Text("Major System Letters")) {
                 Text("Major Letters")
                     .font(.headline)
                 TextField("Enter letters", text: $temporaryMajorLetters, onCommit: {
@@ -39,8 +45,6 @@ struct SettingsView: View {
                 }
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
-            } else {
-                ColorPicker("Default Color", selection: $wordStore.defaultColor)
             }
         }
         .navigationBarTitle("Settings")
@@ -57,4 +61,4 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView(isCheatSheetVisible: .constant(true))
             .environmentObject(WordStore())
     }
-} 
+}
