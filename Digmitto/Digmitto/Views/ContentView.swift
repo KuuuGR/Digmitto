@@ -21,7 +21,7 @@ struct ContentView: View {
 
                 Spacer()
 
-                NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: isCheatSheetVisible)) {
+                NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: isCheatSheetVisible, wordStore: wordStore)) {
                     Text(LocalizedStringKey("start_button"))
                         .font(.headline)
                         .foregroundColor(.white)

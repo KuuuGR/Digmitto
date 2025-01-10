@@ -38,7 +38,7 @@ struct HomeScreenView: View {
                         Spacer()
 
                         // Fancy start button
-                        NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: isCheatSheetVisible)) {
+                        NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: isCheatSheetVisible, wordStore: wordStore)) {
                             ZStack {
                                 Circle()
                                     .fill(buttonColors[0])

@@ -10,23 +10,27 @@ struct TaskView: View {
 
     private var wheelColors: [Color] {
         let baseColors: [Color] = [.blue, .red, .green, .orange, .purple, .pink]
-        let wordLength = currentWord.count
-        var resultColors: [Color] = []
+        let importantLettersCount = importantLetters.count
+        var colors: [Color] = []
         
-        for i in (0..<wordLength).reversed() {
-            let groupIndex = (wordLength - 1 - i) / 3
-            let colorIndex = groupIndex % baseColors.count
-            resultColors.insert(baseColors[colorIndex], at: 0)
+        // Assign colors from right to left, every three wheels the same color
+        for i in stride(from: importantLettersCount - 1, through: 0, by: -1) {
+            let colorIndex = (importantLettersCount - 1 - i) / 3 % baseColors.count
+            colors.append(baseColors[colorIndex])
         }
         
-        return resultColors
+        return colors.reversed()  // Reverse to match the left-to-right order in the UI
     }
     
-    init(currentWord: String, isCheatSheetEnabled: Bool) {
+    private var importantLetters: [Character] {
+        currentWord.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }
+    }
+
+    init(currentWord: String, isCheatSheetEnabled: Bool, wordStore: WordStore) {
         self.currentWord = currentWord
         self.isCheatSheetEnabled = isCheatSheetEnabled
-        let length = max(1, currentWord.count)
-        _selectedNumbers = State(initialValue: Array(repeating: 0, count: length))
+        let importantLettersCount = currentWord.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }.count
+        _selectedNumbers = State(initialValue: Array(repeating: 0, count: importantLettersCount))
     }
 
     var body: some View {
@@ -40,7 +44,7 @@ struct TaskView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             NumberWheelView(
-                                wordLength: max(1, currentWord.count),
+                                wordLength: selectedNumbers.count, // Use the count of important letters
                                 selectedNumbers: $selectedNumbers,
                                 wheelColors: wheelColors
                             )
@@ -128,7 +132,7 @@ struct TaskView: View {
 
 struct TaskView_Previews: PreviewProvider {
     static var previews: some View {
-        TaskView(currentWord: "example", isCheatSheetEnabled: true)
+        TaskView(currentWord: "example", isCheatSheetEnabled: true, wordStore: WordStore())
             .environmentObject(WordStore())
     }
 } 
