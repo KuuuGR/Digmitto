@@ -43,12 +43,17 @@ struct TaskView: View {
                             .padding(.top, 20)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
-                            NumberWheelView(
-                                wordLength: selectedNumbers.count, // Use the count of important letters
-                                selectedNumbers: $selectedNumbers,
-                                wheelColors: wheelColors
-                            )
-                            .padding()
+                            HStack {
+                                Spacer() // Flexible space before wheels
+                                NumberWheelView(
+                                    wordLength: selectedNumbers.count, // Use the count of important letters
+                                    selectedNumbers: $selectedNumbers,
+                                    wheelColors: wheelColors
+                                )
+                                .padding()
+                                Spacer() // Flexible space after wheels
+                            }
+                            .frame(width: geometry.size.width)
                         }
                         
                         Button("Check") {
@@ -76,13 +81,11 @@ struct TaskView: View {
                         .font(.title)
                         .padding(.top, 20)
                         
-                        // Add extra padding at the bottom to ensure space for the button
                         Spacer()
                             .frame(height: 60)
                     }
                 }
                 
-                // CheatSheet button with fixed positioning
                 if isCheatSheetEnabled {
                     VStack {
                         Spacer()
@@ -98,7 +101,6 @@ struct TaskView: View {
                                     .cornerRadius(8)
                             }
                             .padding([.trailing, .bottom], 20)
-                            // Add shadow to make button stand out
                             .shadow(radius: 3)
                         }
                     }
