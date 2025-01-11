@@ -6,20 +6,19 @@ struct TaskView: View {
     @State private var selectedNumbers: [Int]
     @State private var feedback = ""
     @State private var isCheatSheetVisible = false
-    @EnvironmentObject var wordStore: WordStore  // Access the WordStore
+    @EnvironmentObject var wordStore: WordStore  // Properly injected EnvironmentObject
 
     private var wheelColors: [Color] {
         let baseColors: [Color] = [.blue, .red, .green, .orange, .purple, .pink]
         let importantLettersCount = importantLetters.count
         var colors: [Color] = []
         
-        // Assign colors from right to left, every three wheels the same color
         for i in stride(from: importantLettersCount - 1, through: 0, by: -1) {
             let colorIndex = (importantLettersCount - 1 - i) / 3 % baseColors.count
             colors.append(baseColors[colorIndex])
         }
         
-        return colors.reversed()  // Reverse to match the left-to-right order in the UI
+        return colors.reversed()
     }
     
     private var importantLetters: [Character] {
@@ -38,7 +37,7 @@ struct TaskView: View {
             ZStack {
                 ScrollView {
                     VStack(spacing: 10) {
-                        HStack(spacing: 0) {  // Display the colorized word at the top, centered
+                        HStack(spacing: 0) {
                             ForEach(Array(currentWord.enumerated()), id: \.offset) { index, char in
                                 Text(String(char))
                                     .foregroundColor(colorForCharacter(char))
@@ -50,23 +49,25 @@ struct TaskView: View {
 
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
-                                Spacer() // Flexible space before wheels
+                                Spacer()
                                 NumberWheelView(
-                                    wordLength: selectedNumbers.count, // Use the count of important letters
+                                    wordLength: selectedNumbers.count,
                                     selectedNumbers: $selectedNumbers,
                                     wheelColors: wheelColors
                                 )
                                 .padding()
-                                Spacer() // Flexible space after wheels
+                                Spacer()
                             }
                             .frame(width: geometry.size.width)
                         }
                         
                         Button("Check") {
-                            if validateInput(selectedNumbers) {
+                            let letterString = convertLettersToNumbers()
+                            let wheelString = readWheelsRightToLeft()
+                            if letterString == wheelString {
                                 feedback = "Correct! 🌟"
                             } else {
-                                feedback = "Try again! ❌"
+                                feedback = "Try again! ❌ Letters: \(letterString), Wheels: \(wheelString)"
                             }
                         }
                         .padding()
@@ -110,9 +111,14 @@ struct TaskView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
 
-    func validateInput(_ numbers: [Int]) -> Bool {
-        // Implement validation logic for the array of numbers
-        return true
+    private func convertLettersToNumbers() -> String {
+        importantLetters.map { char in
+            wordStore.numberForLetter(String(char.lowercased()))
+        }.joined()
+    }
+
+    private func readWheelsRightToLeft() -> String {
+        selectedNumbers.reversed().map(String.init).joined()
     }
 
     private func colorForCharacter(_ char: Character) -> Color {

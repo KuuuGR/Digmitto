@@ -1,6 +1,5 @@
 import SwiftUI
 
-// Example of loading words from a JSON file
 class WordStore: ObservableObject {
     @Published var words: [String: [String]] = [:]
     @Published var selectedLanguage: String = "English"
@@ -9,6 +8,20 @@ class WordStore: ObservableObject {
     @Published var secondaryColor: Color = .gray
     @Published var defaultColor: Color = .white
     @Published var majorSystemLetters: String = "sztdnmrljkgfwpbSZTDNMRLJKGFWPB"
+    
+    // Corrected mapping with double quotes for character literals
+    private let letterToNumberMap: [Character: String] = [
+        "s": "0", "z": "0", "S": "0", "Z": "0",
+        "t": "1", "d": "1", "T": "1", "D": "1",
+        "n": "2", "N": "2",
+        "m": "3", "M": "3",
+        "r": "4", "R": "4",
+        "l": "5", "L": "5",
+        "j": "6", "k": "6", "g": "6", "J": "6", "K": "6", "G": "6",
+        "f": "7", "v": "7", "F": "7", "V": "7",
+        "p": "8", "b": "8", "P": "8", "B": "8",
+        "w": "9", "W": "9"
+    ]
     
     init() {
         loadWords()
@@ -33,5 +46,12 @@ class WordStore: ObservableObject {
             return "No word"
         }
         return languageWords.randomElement() ?? "No word"
+    }
+    
+    func numberForLetter(_ letter: String) -> String {
+        guard let number = letterToNumberMap[Character(letter)] else {
+            return "0"  // Default or error value
+        }
+        return number
     }
 }
