@@ -1,12 +1,15 @@
 import SwiftUI
 
 struct TaskView: View {
-    var currentWord: String
+    @State private var currentWord: String
     var isCheatSheetEnabled: Bool
     @State private var selectedNumbers: [Int]
     @State private var feedback = ""
     @State private var isCheatSheetVisible = false
-    @EnvironmentObject var wordStore: WordStore  // Properly injected EnvironmentObject
+    @State private var points = 0
+    @State private var fruitEmojis: [String] = []
+    @State private var attempts = 0
+    @EnvironmentObject var wordStore: WordStore
 
     private var wheelColors: [Color] {
         let baseColors: [Color] = [.blue, .red, .green, .orange, .purple, .pink]
@@ -26,9 +29,9 @@ struct TaskView: View {
     }
 
     init(currentWord: String, isCheatSheetEnabled: Bool, wordStore: WordStore) {
-        self.currentWord = currentWord
         self.isCheatSheetEnabled = isCheatSheetEnabled
         let importantLettersCount = currentWord.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }.count
+        _currentWord = State(initialValue: currentWord)
         _selectedNumbers = State(initialValue: Array(repeating: 0, count: importantLettersCount))
     }
 
@@ -37,6 +40,7 @@ struct TaskView: View {
             ZStack {
                 ScrollView {
                     VStack(spacing: 10) {
+                        // Current Word Display
                         HStack(spacing: 0) {
                             ForEach(Array(currentWord.enumerated()), id: \.offset) { index, char in
                                 Text(String(char))
@@ -47,6 +51,7 @@ struct TaskView: View {
                         .padding(.top, 20)
                         .frame(maxWidth: .infinity, alignment: .center)
 
+                        // Number Wheel View
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
                                 Spacer()
@@ -61,13 +66,27 @@ struct TaskView: View {
                             .frame(width: geometry.size.width)
                         }
                         
+                        // Check Button
                         Button("Check") {
                             let letterString = convertLettersToNumbers()
                             let wheelString = readWheelsRightToLeft()
+                            
                             if letterString == wheelString {
                                 feedback = "Correct! 🌟"
+                                if attempts == 0 {
+                                    points += 1
+                                    addRandomFruitEmoji()
+                                }
+                                loadNewWord()
                             } else {
-                                feedback = "Try again! ❌ Letters: \(letterString), Wheels: \(wheelString)"
+                                feedback =
+                                """
+                                Try again! ❌ 
+                                
+                                Letters: \(letterString), 
+                                Wheels: \(wheelString)
+                                """
+                                attempts += 1
                             }
                         }
                         .padding()
@@ -75,14 +94,32 @@ struct TaskView: View {
                         .background(Color.blue)
                         .cornerRadius(10)
                         
+                        // Feedback Section
                         Text(feedback)
                             .padding()
-                        
+
+                        // Points Section
+                        HStack {
+                            Text("Points: \(points)")
+                                .font(.title2)
+                                .padding()
+                            Spacer()
+                        }
+
+                        // Fruits Emoji Section
+                        HStack {
+                            Text("Fruits: \(fruitEmojis.joined(separator: " "))")
+                                .font(.title2)
+                                .padding()
+                            Spacer()
+                        }
+
                         Spacer()
                             .frame(height: 60)
                     }
                 }
                 
+                // Cheat Sheet Toggle
                 if isCheatSheetEnabled {
                     VStack {
                         Spacer()
@@ -132,6 +169,21 @@ struct TaskView: View {
             return wordStore.secondaryColor
         }
     }
+    
+    private func loadNewWord() {
+        currentWord = wordStore.getRandomWord()
+        let importantLettersCount = currentWord.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }.count
+        selectedNumbers = Array(repeating: 0, count: importantLettersCount)
+        attempts = 0
+    }
+    
+    private func addRandomFruitEmoji() {
+        let fruits = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]
+        //fruitsPlusVegetables = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅", "🥒", "🥕", "🌽", "🥔", "🍆", "🥑", "🥬", "🥦", "🧄", "🧅", "🌶️", "🫛", "🫘", "🥗"]
+        if let randomFruit = fruits.randomElement() {
+            fruitEmojis.append(randomFruit)
+        }
+    }
 }
 
 struct TaskView_Previews: PreviewProvider {
@@ -139,4 +191,4 @@ struct TaskView_Previews: PreviewProvider {
         TaskView(currentWord: "example", isCheatSheetEnabled: true, wordStore: WordStore())
             .environmentObject(WordStore())
     }
-} 
+}
