@@ -118,7 +118,7 @@ struct TaskView: View {
     }
 
     private func readWheelsRightToLeft() -> String {
-        selectedNumbers.reversed().map(String.init).joined()
+        selectedNumbers.map(String.init).joined()
     }
 
     private func colorForCharacter(_ char: Character) -> Color {
