@@ -12,51 +12,55 @@ struct HomeScreenView: View {
     }
     
     private let buttonColors = [
-        Color(red: 100/255, green: 155/255, blue: 100/255),
-        Color(red: 255/255, green: 159/255, blue: 200/255),
-        Color(red: 200/255, green: 200/255, blue: 187/255),
-        Color(red: 200/255, green: 200/255, blue: 200/255)
+        Color.green.opacity(0.8),
+        Color.pink.opacity(0.8),
+        Color.gray.opacity(0.7),
+        Color.blue.opacity(0.8)
     ]
 
     var body: some View {
         NavigationView {
             ZStack {
+                // Background effect
+                Color(UIColor.systemBackground)
+                    .edgesIgnoringSafeArea(.all)
+                    .overlay(Material.regular)
+
                 VStack(spacing: 0) {
                     // Top content
                     VStack {
                         Image("iconDigit1")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 200, height: 200)
+                            .frame(width: 180, height: 180)
                             .padding(.top, 40)
-                            .opacity(0.2)
+                            .opacity(0.25)
                         
                         Text(LocalizedStringKey("welcome_message"))
                             .font(.largeTitle)
+                            .fontWeight(.semibold)
+                            .multilineTextAlignment(.center)
                             .padding()
+                            .foregroundColor(.primary)
 
                         Spacer()
 
-                        // Fancy start button
+                        // Enhanced start button
                         NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: isCheatSheetVisible, wordStore: wordStore)) {
                             ZStack {
                                 Circle()
                                     .fill(buttonColors[0])
                                     .frame(width: 170, height: 170)
-                                    .opacity(0.7)
-                                    .shadow(color: .blue.opacity(0.7), radius: 20, x: 0, y: 0)
+                                    .shadow(color: .green.opacity(0.5), radius: 20, x: 0, y: 10)
                                 Circle()
                                     .fill(buttonColors[0])
                                     .frame(width: 160, height: 160)
-                                    .opacity(0.9)
-                                    .shadow(color: .blue.opacity(0.3), radius: 10, x: 0, y: 5)
-                                VStack(spacing: 5) {
+                                VStack(spacing: 8) {
                                     Text("⭐️")
                                         .font(.system(size: 50))
-                                        .opacity(0.7)
                                     Text(LocalizedStringKey("start_button"))
-                                        .font(.system(size: 20))
-                                        .font(.headline)
+                                        .font(.title3)
+                                        .fontWeight(.bold)
                                         .foregroundColor(.white)
                                 }
                             }
@@ -67,20 +71,21 @@ struct HomeScreenView: View {
                     }
                     
                     // Bottom navigation buttons
-                    VStack {
+                    VStack(spacing: 20) {
                         HStack(spacing: 15) {
                             NavigationButton(title: "About", color: buttonColors[2], destination: AboutView())
                             NavigationButton(title: LocalizedStringKey("settings_title"), color: buttonColors[1], destination: SettingsView(isCheatSheetVisible: $isCheatSheetVisible))
-                            NavigationButton(title: "Developer", color: buttonColors[2], destination: DeveloperView())
                         }
-                        .padding(.horizontal)
-                        .opacity(0.3)
-                        .padding(.bottom, 30) // Increased bottom padding
+                        
+                        HStack(spacing: 15) {
+                            NavigationButton(title: "Developer", color: buttonColors[2], destination: DeveloperView())
+                            NavigationButton(title: "Tutorial", color: buttonColors[3], destination: TutorialView())
+                        }
                     }
+                    .padding()
                     .background(
                         Color(UIColor.systemBackground)
-                            .edgesIgnoringSafeArea(.bottom)
-                            .shadow(color: .gray.opacity(0.1), radius: 8, y: -4)
+                            .shadow(color: .gray.opacity(0.2), radius: 8, y: -4)
                     )
                 }
                 
@@ -115,17 +120,25 @@ struct NavigationButton<Destination: View>: View {
                 .font(.headline)
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity)
-                .frame(height: 44)
+                .frame(height: 50)
                 .background(color)
-                .cornerRadius(10)
-                .shadow(color: .gray.opacity(0.2), radius: 5, x: 0, y: 2)
+                .cornerRadius(12)
+                .shadow(color: .gray.opacity(0.3), radius: 5, x: 0, y: 3)
         }
     }
 }
 
-struct HomeScreenView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeScreenView()
-            .environmentObject(WordStore())
+struct TutorialView: View {
+    var body: some View {
+        Text("Tutorial content goes here!")
+            .font(.title)
+            .padding()
     }
-} 
+}
+
+//struct HomeScreenView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeScreenView()
+//            .environmentObject(WordStore())
+//    }
+//}

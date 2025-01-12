@@ -186,9 +186,9 @@ struct TaskView: View {
     }
 }
 
-struct TaskView_Previews: PreviewProvider {
-    static var previews: some View {
-        TaskView(currentWord: "example", isCheatSheetEnabled: true, wordStore: WordStore())
-            .environmentObject(WordStore())
-    }
-}
+//struct TaskView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TaskView(currentWord: "example", isCheatSheetEnabled: true, wordStore: WordStore())
+//            .environmentObject(WordStore())
+//    }
+//}
