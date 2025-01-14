@@ -67,7 +67,7 @@ struct TaskView: View {
                         }
                         
                         // Check Button
-                        Button("Check") {
+                        Button("Check it") {
                             let letterString = convertLettersToNumbers()
                             let wheelString = readWheelsRightToLeft()
                             
@@ -78,7 +78,7 @@ struct TaskView: View {
                                     points += 1
                                     addRandomFruitEmoji()
                                 }
-                                loadNewWord()
+                                loadNewWord() // Load a new word instead of navigating back
                             } else {
                                 feedback =
                                 """
@@ -94,57 +94,49 @@ struct TaskView: View {
                         .foregroundColor(.white)
                         .background(Color.blue)
                         .cornerRadius(10)
+
                         
                         // Feedback Section
                         Text(feedback)
                             .padding()
-
-                        // Points Section
-                        HStack {
-                            Text("Points: \(points)")
-                                .font(.title2)
-                                .padding()
-                            Spacer()
-                        }
-
-                        // Fruits Emoji Section
-                        HStack {
-                            Text("Fruits: \(fruitEmojis.joined(separator: " "))")
-                                .font(.title2)
-                                .padding()
-                            Spacer()
-                        }
 
                         Spacer()
                             .frame(height: 60)
                     }
                 }
                 
-                // Cheat Sheet Toggle
+                // Cheat Sheet View and Side Labels
                 if isCheatSheetEnabled {
                     VStack {
                         Spacer()
-                        HStack {
-                            Spacer()
-                            Button(action: {
-                                isCheatSheetVisible.toggle()
-                            }) {
-                                Text("📝")
-                                    .font(.system(size: 24))
-                                    .padding(8)
-                                    .background(Color(UIColor.systemGray5))
-                                    .cornerRadius(8)
+                        HStack(alignment: .top, spacing: 10) {
+                            // Fruits and Points Labels
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("Points: \(points)")
+                                    .font(.title2)
+                                    .padding(.bottom, 4)
+                                Text("Fruits: \(fruitEmojis.joined(separator: " "))")
+                                    .font(.title2)
                             }
-                            .padding([.trailing, .bottom], 20)
-                            .shadow(radius: 3)
+                            .frame(width: geometry.size.width * 0.6, alignment: .leading)
+                            .padding(.leading, 20)
+
+                            // Cheat Sheet View
+                            CheatSheetView()
+                                .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.2) // Now takes 20% of the screen height
+                                .background(
+                                    Image("parchmentBackground")
+                                        .resizable()
+                                        .scaledToFill()
+                                )
+                                .cornerRadius(20)
+                                .shadow(color: .gray.opacity(0.6), radius: 10, x: -5, y: 5)
+                                .padding([.trailing, .bottom], 20)
                         }
                     }
                 }
+
             }
-        }
-        .popover(isPresented: $isCheatSheetVisible) {
-            CheatSheetView()
-                .frame(width: 200, height: 300)
         }
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -180,16 +172,8 @@ struct TaskView: View {
     
     private func addRandomFruitEmoji() {
         let fruits = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]
-        //fruitsPlusVegetables = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅", "🥒", "🥕", "🌽", "🥔", "🍆", "🥑", "🥬", "🥦", "🧄", "🧅", "🌶️", "🫛", "🫘", "🥗"]
         if let randomFruit = fruits.randomElement() {
             fruitEmojis.append(randomFruit)
         }
     }
 }
-
-//struct TaskView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TaskView(currentWord: "example", isCheatSheetEnabled: true, wordStore: WordStore())
-//            .environmentObject(WordStore())
-//    }
-//}
