@@ -2,12 +2,36 @@ import SwiftUI
 
 class WordStore: ObservableObject {
     @Published var words: [String: [String]] = [:]
-    @Published var selectedLanguage: String = "English"
-    @Published var enableColorization: Bool = false
-    @Published var primaryColor: Color = .blue
-    @Published var secondaryColor: Color = .gray
-    @Published var defaultColor: Color = .white
-    @Published var majorSystemLetters: String = "sztdnmrljkgfwpbSZTDNMRLJKGFWPB"
+    @Published var selectedLanguage: String = "English" {
+        didSet {
+            UserDefaults.standard.set(selectedLanguage, forKey: "selectedLanguage")
+        }
+    }
+    @Published var enableColorization: Bool = false {
+        didSet {
+            UserDefaults.standard.set(enableColorization, forKey: "enableColorization")
+        }
+    }
+    @Published var primaryColor: Color = .blue {
+        didSet {
+            UserDefaults.standard.setColor(primaryColor, forKey: "primaryColor")
+        }
+    }
+    @Published var secondaryColor: Color = .gray {
+        didSet {
+            UserDefaults.standard.setColor(secondaryColor, forKey: "secondaryColor")
+        }
+    }
+    @Published var defaultColor: Color = .white {
+        didSet {
+            UserDefaults.standard.setColor(defaultColor, forKey: "defaultColor")
+        }
+    }
+    @Published var majorSystemLetters: String = "sztdnmrljkgfwpbSZTDNMRLJKGFWPB" {
+        didSet {
+            UserDefaults.standard.set(majorSystemLetters, forKey: "majorSystemLetters")
+        }
+    }
     
     // Corrected mapping with double quotes for character literals
     private let letterToNumberMap: [Character: String] = [
@@ -25,6 +49,7 @@ class WordStore: ObservableObject {
     
     init() {
         loadWords()
+        loadSettings()
     }
     
     func loadWords() {
@@ -53,5 +78,30 @@ class WordStore: ObservableObject {
             return "0"  // Default or error value
         }
         return number
+    }
+    
+    func loadSettings() {
+        selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "English"
+        enableColorization = UserDefaults.standard.bool(forKey: "enableColorization")
+        primaryColor = UserDefaults.standard.color(forKey: "primaryColor") ?? .blue
+        secondaryColor = UserDefaults.standard.color(forKey: "secondaryColor") ?? .gray
+        defaultColor = UserDefaults.standard.color(forKey: "defaultColor") ?? .white
+        majorSystemLetters = UserDefaults.standard.string(forKey: "majorSystemLetters") ?? "sztdnmrljkgfwpbSZTDNMRLJKGFWPB"
+    }
+}
+
+// Extension to handle Color storage in UserDefaults
+extension UserDefaults {
+    func setColor(_ color: Color, forKey key: String) {
+        let uiColor = UIColor(color)
+        set(NSKeyedArchiver.archivedData(withRootObject: uiColor), forKey: key)
+    }
+    
+    func color(forKey key: String) -> Color? {
+        guard let data = data(forKey: key),
+              let uiColor = NSKeyedUnarchiver.unarchiveObject(with: data) as? UIColor else {
+            return nil
+        }
+        return Color(uiColor)
     }
 }
