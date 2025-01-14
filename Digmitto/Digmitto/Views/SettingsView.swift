@@ -2,13 +2,12 @@ import SwiftUI
 
 struct SettingsView: View {
     @EnvironmentObject var wordStore: WordStore
-    @Binding var isCheatSheetVisible: Bool
     @State private var temporaryMajorLetters: String = ""
     
     var body: some View {
         Form {
             Section(header: Text("General Settings")) {
-                Toggle(isOn: $isCheatSheetVisible) {
+                Toggle(isOn: $wordStore.isCheatSheetEnabled) {
                     Text("Enable Cheat Sheet")
                 }
                 
@@ -28,8 +27,8 @@ struct SettingsView: View {
                 }
             }
             
-            Section(header: Text("Default Color Setting")) {
-                if !wordStore.enableColorization {
+            if !wordStore.enableColorization {
+                Section(header: Text("Default Color Setting")) {
                     ColorPicker("Default Color", selection: $wordStore.defaultColor)
                 }
             }
@@ -58,7 +57,7 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(isCheatSheetVisible: .constant(true))
+        SettingsView()
             .environmentObject(WordStore())
     }
 }

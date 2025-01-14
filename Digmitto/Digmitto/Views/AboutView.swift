@@ -34,10 +34,29 @@ struct AboutView: View {
                 }
                 .padding(.horizontal)
                 
+                // Developer Button
+                NavigationLink(destination: DeveloperView()) {
+                    Text("Developer Info")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                        .shadow(radius: 5)
+                }
+                .padding(.horizontal)
+                
                 Spacer()
             }
             .padding()
         }
         .navigationTitle("About")
+    }
+}
+
+struct AboutView_Previews: PreviewProvider {
+    static var previews: some View {
+        AboutView()
     }
 } 

@@ -32,6 +32,16 @@ class WordStore: ObservableObject {
             UserDefaults.standard.set(majorSystemLetters, forKey: "majorSystemLetters")
         }
     }
+    @Published var isCheatSheetEnabled: Bool = false {
+        didSet {
+            UserDefaults.standard.set(isCheatSheetEnabled, forKey: "isCheatSheetEnabled")
+        }
+    }
+    @Published var totalPoints: Int = 0 {
+        didSet {
+            UserDefaults.standard.set(totalPoints, forKey: "totalPoints")
+        }
+    }
     
     // Corrected mapping with double quotes for character literals
     private let letterToNumberMap: [Character: String] = [
@@ -50,6 +60,7 @@ class WordStore: ObservableObject {
     init() {
         loadWords()
         loadSettings()
+        totalPoints = UserDefaults.standard.integer(forKey: "totalPoints")
     }
     
     func loadWords() {
@@ -87,6 +98,7 @@ class WordStore: ObservableObject {
         secondaryColor = UserDefaults.standard.color(forKey: "secondaryColor") ?? .gray
         defaultColor = UserDefaults.standard.color(forKey: "defaultColor") ?? .white
         majorSystemLetters = UserDefaults.standard.string(forKey: "majorSystemLetters") ?? "sztdnmrljkgfwpbSZTDNMRLJKGFWPB"
+        isCheatSheetEnabled = UserDefaults.standard.bool(forKey: "isCheatSheetEnabled")
     }
 }
 
