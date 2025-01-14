@@ -15,15 +15,15 @@ struct HomeScreenView: View {
                 
                 VStack(spacing: 15) {
                     NavigationLink(destination: StartView()) {
-                        HomeButton(title: "Start")
+                        HomeButton(title: "Start", gradient: LinearGradient(gradient: Gradient(colors: [.blue, .purple]), startPoint: .leading, endPoint: .trailing))
                     }
                     
                     NavigationLink(destination: SettingsView()) {
-                        HomeButton(title: "Settings")
+                        HomeButton(title: "Settings", gradient: LinearGradient(gradient: Gradient(colors: [.gray, .black.opacity(0.8)]), startPoint: .leading, endPoint: .trailing))
                     }
                     
                     NavigationLink(destination: AboutView()) {
-                        HomeButton(title: "About")
+                        HomeButton(title: "About", gradient: LinearGradient(gradient: Gradient(colors: [.gray.opacity(0.6), .gray]), startPoint: .leading, endPoint: .trailing))
                     }
                 }
                 
@@ -42,6 +42,7 @@ struct HomeScreenView: View {
 
 struct HomeButton: View {
     let title: String
+    let gradient: LinearGradient
     
     var body: some View {
         Text(title)
@@ -49,7 +50,7 @@ struct HomeButton: View {
             .foregroundColor(.white)
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.blue)
+            .background(gradient)
             .cornerRadius(10)
             .shadow(radius: 5)
     }
