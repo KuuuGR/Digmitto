@@ -73,6 +73,7 @@ struct TaskView: View {
                             
                             if letterString == wheelString {
                                 feedback = "Correct! 🌟"
+                                wordStore.totalPoints += 1
                                 if attempts == 0 {
                                     points += 1
                                     addRandomFruitEmoji()
