@@ -106,14 +106,23 @@ class WordStore: ObservableObject {
 extension UserDefaults {
     func setColor(_ color: Color, forKey key: String) {
         let uiColor = UIColor(color)
-        set(NSKeyedArchiver.archivedData(withRootObject: uiColor), forKey: key)
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: uiColor, requiringSecureCoding: true)
+            set(data, forKey: key)
+        } catch {
+            print("Failed to save color to UserDefaults: \(error)")
+        }
     }
     
     func color(forKey key: String) -> Color? {
-        guard let data = data(forKey: key),
-              let uiColor = NSKeyedUnarchiver.unarchiveObject(with: data) as? UIColor else {
-            return nil
+        guard let data = data(forKey: key) else { return nil }
+        do {
+            if let uiColor = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: data) {
+                return Color(uiColor)
+            }
+        } catch {
+            print("Failed to load color from UserDefaults: \(error)")
         }
-        return Color(uiColor)
+        return nil
     }
 }

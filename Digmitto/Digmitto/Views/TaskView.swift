@@ -68,6 +68,9 @@ struct TaskView: View {
                         
                         // Check Button
                         Button("Check it") {
+                            // Debugging Step: Log button press
+                            print("Check button pressed")
+                            
                             let letterString = convertLettersToNumbers()
                             let wheelString = readWheelsRightToLeft()
                             
@@ -78,7 +81,10 @@ struct TaskView: View {
                                     points += 1
                                     addRandomFruitEmoji()
                                 }
-                                loadNewWord() // Load a new word instead of navigating back
+                                // Safely update the state
+                                withAnimation {
+                                    loadNewWord() // Load a new word
+                                }
                             } else {
                                 feedback =
                                 """
@@ -94,6 +100,7 @@ struct TaskView: View {
                         .foregroundColor(.white)
                         .background(Color.blue)
                         .cornerRadius(10)
+
 
                         
                         // Feedback Section
