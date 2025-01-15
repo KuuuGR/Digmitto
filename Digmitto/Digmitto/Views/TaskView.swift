@@ -101,10 +101,28 @@ struct TaskView: View {
                             .padding()
 
                         Spacer()
-                            .frame(height: 60)
+                            .frame(height: isCheatSheetEnabled ? 60 : 10)
                     }
-                }
-                
+                    
+                    //  Side Labels -> points and fruits
+                    if !isCheatSheetEnabled {
+                        VStack {
+                            Spacer()
+                            HStack(alignment: .top, spacing: 10) {
+                                // Fruits and Points Labels
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text("Points: \(points)")
+                                        .font(.title2)
+                                        .padding(.bottom, 4)
+                                    Text("Fruits: \(fruitEmojis.joined(separator: " "))")
+                                        .font(.title2)
+                                }
+                                .frame(width: geometry.size.width * 0.9, alignment: .leading)
+                                .padding(.leading, 20)
+                            }
+                        }
+                    }
+                        
                 // Cheat Sheet View and Side Labels
                 if isCheatSheetEnabled {
                     VStack {
@@ -120,6 +138,7 @@ struct TaskView: View {
                             }
                             .frame(width: geometry.size.width * 0.6, alignment: .leading)
                             .padding(.leading, 20)
+                
 
                             // Cheat Sheet View
                             CheatSheetView()
@@ -132,6 +151,7 @@ struct TaskView: View {
                                 .cornerRadius(20)
                                 .shadow(color: .gray.opacity(0.6), radius: 10, x: -5, y: 5)
                                 .padding([.trailing, .bottom], 20)
+                        }
                         }
                     }
                 }
