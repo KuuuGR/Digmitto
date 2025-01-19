@@ -1,9 +1,99 @@
-"app_name" = "Digmitto";
-"start_button" = "START";
-"welcome_message" = "Witamy w Digmitto";
-"settings_title" = "Ustawienia";
-"guide_title" = "Przewodnik";
+//MARK: TaskView
+"tv_check_button" = "Sprawdź";
+"tv_feedback_correct" = "Poprawne! 🌟";
+"tv_feedback_incorrect" = "Spróbuj ponownie! ❌\n\nLitery: %@\nKoła: %@";
+"tv_points" = "Punkty: %d";
+"tv_fruits" = "Owoce: %@";
 
+//MARK: TaskScreenView
+"ts_screen_title" = "Ekran zadania";
+"ts_back_button" = "Wróć";
+"ts_user_input_placeholder" = "Wprowadź swoją odpowiedź tutaj";
+"ts_code_button" = "Kod";
+
+//MARK: StartView
+"st_general" = "Wybierz swoją akcję";
+"st_start_task" = "Rozpocznij zadanie";
+"st_view_points" = "Zobacz punkty";
+"st_manual" = "Instrukcja";
+
+//MARK: SettingsView
+"sv_general_settings" = "Ustawienia ogólne";
+"sv_enable_cheat_sheet" = "Włącz ściągawkę";
+"sv_language" = "Język";
+"sv_language_english" = "Angielski";
+"sv_language_polish" = "Polski";
+"sv_language_spanish" = "Hiszpański";
+
+"sv_colorization_settings" = "Ustawienia kolorów";
+"sv_enable_colorization" = "Włącz kolorowanie";
+"sv_primary_color" = "Kolor podstawowy";
+"sv_secondary_color" = "Kolor pomocniczy";
+
+"sv_default_color_settings" = "Domyślne ustawienia kolorów";
+"sv_default_color" = "Kolor domyślny";
+
+"sv_major_system_letters" = "Litery systemu Major";
+"sv_major_letters" = "Litery Major";
+"sv_enter_letters" = "Wprowadź litery";
+
+"sv_settings_title" = "Ustawienia";
+
+//MARK: PointsView
+"pw_title" = "Punkty";
+"pw_total" = "Łączna liczba punktów";
+
+//MARK: HomeScreenView
+"hs_welcome" = "Witamy w systemie pamięci Major";
+"hs_start_button" = "Start";
+"hs_settings_button" = "Ustawienia";
+"hs_about_button" = "O aplikacji";
+"hs_total_points_format" = "Łączna liczba punktów: %d";
+
+//MARK: DeveloperView
+"dv_developer_info" = "Informacje o twórcy";
+"dv_navigation_title" = "Twórca";
+"dv_about_developer" = "O twórcy";
+"dv_created_by" = "Stworzone przez Grzegorza Kuleszę";
+"dv_contact_info" = "Kontakt: your_email@example.com";
+
+"dv_future_updates" = "Przyszłe aktualizacje";
+"dv_planned_features" = "Planowane funkcje:";
+"dv_feature_multilanguage" = "• Obsługa wielu języków";
+"dv_feature_wordlists" = "• Własne listy słów";
+"dv_feature_progress_tracking" = "• Śledzenie postępów";
+"dv_feature_practice_modes" = "• Zaawansowane tryby ćwiczeń";
+"dv_feature_cloud_sync" = "• Synchronizacja w chmurze";
+
+//MARK: ContentView
+"cv_welcome_message" = "Witamy w Digmitto";
+"cv_start_button" = "START";
+"cv_show_cheat_sheet" = "Pokaż ściągawkę";
+
+//MARK: CheeatSheetView
+"cs_title" = "📜 Ściągawka systemu Major 📜";
+
+//MARK: AboutView
+"ab_title" = "O systemie Major";
+"ab_what_is" = "Czym jest system Major?";
+"ab_what_is_description" = "System Major to technika mnemotechniczna, która pomaga zapamiętać liczby, konwertując je na dźwięki spółgłoskowe, które można następnie zamienić na słowa.";
+"ab_how_it_works" = "Jak to działa:";
+"ab_how_it_works_bullet1" = "• Każda cyfra jest przypisana do określonych dźwięków spółgłoskowych";
+"ab_how_it_works_bullet2" = "• Samogłoski i nieużywane spółgłoski można dodawać dowolnie";
+"ab_how_it_works_bullet3" = "• Twórz słowa używając tych dźwięków, aby zapamiętać liczby";
+"ab_examples" = "Przykłady:";
+"ab_example1" = "123 → \"TuNeMo\"";
+"ab_example2" = "507 → \"LaSeKa\"";
+"ab_example3" = "999 → \"PaPaPa\"";
+"ab_developer_info" = "Informacje o twórcy";
+
+//MARK: WelcomeScreen -> TODO: remove if not needed
+"ws_welcome" = "Witamy w systemie pamięci Major!";
+"ws_description" = "Popraw swoje umiejętności pamięciowe dzięki naszym interaktywnym i angażującym ćwiczeniom.";
+"ws_start" = "Rozpocznij";
+
+//MARK: GuideWalkthroughView
+"guide_title" = "Przewodnik";
 "tut_step_0" = "Witamy w aplikacji Digmitto! Oto jak zacząć.";
 "tut_step_1" = "Krok 1: Użyj przycisku 'Rozpocznij zadanie', aby uzyskać dostęp do głównego widoku aplikacji.";
 "tut_step_2" = "Krok 2: W tym widoku znajdziesz trzy kluczowe elementy: losowe słowo, koła do ustawiania wartości liczbowych i przycisk 'Sprawdź', aby porównać słowo z wybraną liczbą.";

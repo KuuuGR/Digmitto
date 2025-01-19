@@ -4,7 +4,7 @@ struct CheatSheetView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
-                Text("📜 Major System Cheat Sheet 📜")
+                Text(LocalizedStringKey("cs_title"))
                     .font(.headline)
                     .foregroundColor(.brown)
                     .padding(.bottom, 5)

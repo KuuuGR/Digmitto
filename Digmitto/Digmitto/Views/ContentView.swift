@@ -15,14 +15,14 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Text(LocalizedStringKey("welcome_message"))
+                Text(LocalizedStringKey("cv_welcome_message"))
                     .font(.largeTitle)
                     .padding()
 
                 Spacer()
 
                 NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: isCheatSheetVisible, wordStore: wordStore)) {
-                    Text(LocalizedStringKey("start_button"))
+                    Text(LocalizedStringKey("cv_start_button"))
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
@@ -35,7 +35,7 @@ struct ContentView: View {
                 Button(action: {
                     isCheatSheetVisible.toggle()
                 }) {
-                    Text("Show Cheat Sheet")
+                    Text(LocalizedStringKey("cv_show_cheat_sheet"))
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()

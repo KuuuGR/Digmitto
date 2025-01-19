@@ -5,7 +5,7 @@ struct PointsView: View {
 
     var body: some View {
         VStack {
-            Text("Total Points")
+            Text(LocalizedStringKey("pw_total"))
                 .font(.largeTitle)
                 .padding(.top, 40)
             
@@ -16,7 +16,7 @@ struct PointsView: View {
             Spacer()
         }
         .padding()
-        .navigationTitle("Points")
+        .navigationTitle(LocalizedStringKey("pw_title"))
     }
 }
 

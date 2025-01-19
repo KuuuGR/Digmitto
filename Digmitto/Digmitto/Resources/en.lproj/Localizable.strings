@@ -1,9 +1,82 @@
-"app_name" = "Digmitto";
-"start_button" = "START";
-"welcome_message" = "Welcome to Digmitto";
-"settings_title" = "Settings";
+//Localizable
 
-// AboutView
+//MARK: TaskView
+"tv_check_button" = "Check it";
+"tv_feedback_correct" = "Correct! 🌟";
+"tv_feedback_incorrect" = "Try again! ❌\n\nLetters: %@\nWheels: %@";
+"tv_points" = "Points: %d";
+"tv_fruits" = "Fruits: %@";
+
+//MARK: TaskScreenView
+"ts_screen_title" = "Task Screen";
+"ts_back_button" = "Back";
+"ts_user_input_placeholder" = "Enter your input here";
+"ts_code_button" = "Code";
+
+//MARK: StartView
+"st_general" = "Choose Your Action";
+"st_start_task" = "Start Task";
+"st_view_points" = "View Points";
+"st_manual" = "Manual";
+
+//MARK: SettingsView
+"sv_general_settings" = "General Settings";
+"sv_enable_cheat_sheet" = "Enable Cheat Sheet";
+"sv_language" = "Language";
+"sv_language_english" = "English";
+"sv_language_polish" = "Polish";
+"sv_language_spanish" = "Spanish";
+
+"sv_colorization_settings" = "Colorization Settings";
+"sv_enable_colorization" = "Enable Colorization";
+"sv_primary_color" = "Primary Color";
+"sv_secondary_color" = "Secondary Color";
+
+"sv_default_color_settings" = "Default Color Setting";
+"sv_default_color" = "Default Color";
+
+"sv_major_system_letters" = "Major System Letters";
+"sv_major_letters" = "Major Letters";
+"sv_enter_letters" = "Enter letters";
+
+"sv_settings_title" = "Settings";
+
+
+//MARK: PointsView
+"pw_title" = "Points";
+"pw_total" = "Total Points";
+
+//MARK: HomeScreenView
+"hs_welcome" = "Welcome to Major Memory System";
+"hs_start_button" = "Start";
+"hs_settings_button" = "Settings";
+"hs_about_button" = "About";
+"hs_total_points_format" = "Total Points: %d";
+
+//MARK: DeveloperView
+"dv_developer_info" = "Developer Info";
+"dv_navigation_title" = "Developer";
+"dv_about_developer" = "About Developer";
+"dv_created_by" = "Created by Grzegorz Kulesza";
+"dv_contact_info" = "Contact: your_email@example.com";
+
+"dv_future_updates" = "Future Updates";
+"dv_planned_features" = "Planned features:";
+"dv_feature_multilanguage" = "• Multiple language support";
+"dv_feature_wordlists" = "• Custom word lists";
+"dv_feature_progress_tracking" = "• Progress tracking";
+"dv_feature_practice_modes" = "• Advanced practice modes";
+"dv_feature_cloud_sync" = "• Cloud synchronization";
+
+//MARK: ContentView
+"cv_welcome_message" = "Welcome to Digmitto";
+"cv_start_button" = "START";
+"cv_show_cheat_sheet" = "Show Cheat Sheet";
+
+//MARK: CheeatSheetView
+"cs_title" = "📜 Major System Cheat Sheet 📜";
+
+//MARK: AboutView
 "ab_title" = "About Major System";
 "ab_what_is" = "What is the Major System?";
 "ab_what_is_description" = "The Major System is a mnemonic technique that helps you remember numbers by converting them into consonant sounds, which can then be made into words.";
@@ -17,12 +90,12 @@
 "ab_example3" = "999 → \"PaPaPa\"";
 "ab_developer_info" = "Developer Info";
 
-// WelcomeScreen -> TODO: this view propabli should be removed
+//MARK: WelcomeScreen -> TODO: remove if not needed
 "ws_welcome" = "Welcome to Major Memory System!!";
 "ws_description" = "Enhance your memory skills with our interactive and engaging exercises.";
 "ws_start" = "Get Started";
 
-// GuideWalkthroughView:
+//MARK: GuideWalkthroughView
 "guide_title" = "Guide Walkthrough";
 "tut_step_0" = "Welcome to the Digmitto app! Here's how to get started.";
 "tut_step_1" = "Step 1: Use the 'Start Task' button to access the main application view.";

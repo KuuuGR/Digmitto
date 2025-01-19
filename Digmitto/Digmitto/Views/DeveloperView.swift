@@ -4,25 +4,28 @@ struct DeveloperView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Text("Developer Info")
+                // Developer Info Title
+                Text(LocalizedStringKey("dv_developer_info"))
                     .font(.title)
                     .padding(.bottom, 10)
                 
+                // About Developer Section
                 Group {
-                    Text("About Developer")
+                    Text(LocalizedStringKey("dv_about_developer"))
                         .font(.headline)
-                    Text("Created by [Your Name]")
-                    Text("Contact: [Your Email/Contact Info]")
+                    Text(LocalizedStringKey("dv_created_by"))
+                    Text(LocalizedStringKey("dv_contact_info"))
                     
-                    Text("Future Updates")
+                    // Future Updates Section
+                    Text(LocalizedStringKey("dv_future_updates"))
                         .font(.headline)
                         .padding(.top)
-                    Text("Planned features:")
-                    Text("• Multiple language support")
-                    Text("• Custom word lists")
-                    Text("• Progress tracking")
-                    Text("• Advanced practice modes")
-                    Text("• Cloud synchronization")
+                    Text(LocalizedStringKey("dv_planned_features"))
+                    Text(LocalizedStringKey("dv_feature_multilanguage"))
+                    Text(LocalizedStringKey("dv_feature_wordlists"))
+                    Text(LocalizedStringKey("dv_feature_progress_tracking"))
+                    Text(LocalizedStringKey("dv_feature_practice_modes"))
+                    Text(LocalizedStringKey("dv_feature_cloud_sync"))
                 }
                 .padding(.horizontal)
                 
@@ -30,6 +33,6 @@ struct DeveloperView: View {
             }
             .padding()
         }
-        .navigationTitle("Developer")
+        .navigationTitle(LocalizedStringKey("dv_navigation_title"))
     }
-} 
+}

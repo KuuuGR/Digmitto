@@ -6,7 +6,8 @@ struct StartView: View {
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Choose Your Action")
+            // General Action Text
+            Text(LocalizedStringKey("st_general"))
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.top, 40)
@@ -14,21 +15,33 @@ struct StartView: View {
             
             Spacer()
             
+            // Start Task Button
             NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: wordStore.isCheatSheetEnabled, wordStore: wordStore)) {
-                PastelButton(title: "Start Task", colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)])
+                PastelButton(
+                    title: LocalizedStringKey("st_start_task"),
+                    colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
+                )
             }
             .padding(.horizontal, 40)
             .simultaneousGesture(TapGesture().onEnded {
                 currentWord = wordStore.getRandomWord()
             })
             
+            // View Points Button
             NavigationLink(destination: PointsView()) {
-                PastelButton(title: "View Points", colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)])
+                PastelButton(
+                    title: LocalizedStringKey("st_view_points"),
+                    colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)]
+                )
             }
             .padding(.horizontal, 40)
             
+            // Manual Button
             NavigationLink(destination: GuideWalkthroughView()) {
-                PastelButton(title: "Manual", colors: [Color.yellow.opacity(0.6), Color.cyan.opacity(0.6)])
+                PastelButton(
+                    title: LocalizedStringKey("st_manual"),
+                    colors: [Color.yellow.opacity(0.6), Color.cyan.opacity(0.6)]
+                )
             }
             .padding(.horizontal, 40)
             
@@ -39,7 +52,7 @@ struct StartView: View {
 }
 
 struct PastelButton: View {
-    let title: String
+    let title: LocalizedStringKey
     let colors: [Color]
     
     var body: some View {
@@ -59,4 +72,4 @@ struct StartView_Previews: PreviewProvider {
         StartView()
             .environmentObject(WordStore())
     }
-} 
+}

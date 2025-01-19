@@ -67,42 +67,37 @@ struct TaskView: View {
                         }
                         
                         // Check Button
-                        Button("Check it") {
-                            // Debugging Step: Log button press
-                            print("Check button pressed")
-                            
+                        Button(action: {
                             let letterString = convertLettersToNumbers()
                             let wheelString = readWheelsRightToLeft()
                             
                             if letterString == wheelString {
-                                feedback = "Correct! 🌟"
+                                feedback = NSLocalizedString("tv_feedback_correct", comment: "")
                                 wordStore.totalPoints += 1
                                 if attempts == 0 {
                                     points += 1
                                     addRandomFruitEmoji()
                                 }
-                                // Safely update the state
-                                withAnimation {
-                                    loadNewWord() // Load a new word
-                                }
+                                loadNewWord()
                             } else {
-                                feedback =
-                                """
-                                Try again! ❌ 
-                                
-                                Letters: \(letterString), 
-                                Wheels: \(wheelString)
-                                """
+                                feedback = String(
+                                    format: NSLocalizedString("tv_feedback_incorrect", comment: ""),
+                                    letterString,
+                                    wheelString
+                                )
                                 attempts += 1
                             }
+                        }) {
+                            Text(LocalizedStringKey("tv_check_button"))
+                                .fontWeight(.bold)
+                                .padding()
+                                .frame(maxWidth: .infinity)
+                                .background(Color.blue)
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
                         }
                         .padding()
-                        .foregroundColor(.white)
-                        .background(Color.blue)
-                        .cornerRadius(10)
 
-
-                        
                         // Feedback Section
                         Text(feedback)
                             .padding()
@@ -111,58 +106,15 @@ struct TaskView: View {
                             .frame(height: isCheatSheetEnabled ? 60 : 10)
                     }
                     
-                    //  Side Labels -> points and fruits
-                    if !isCheatSheetEnabled {
-                        VStack {
-                            Spacer()
-                            HStack(alignment: .top, spacing: 10) {
-                                // Fruits and Points Labels
-                                VStack(alignment: .leading, spacing: 10) {
-                                    Text("Points: \(points)")
-                                        .font(.title2)
-                                        .padding(.bottom, 4)
-                                    Text("Fruits: \(fruitEmojis.joined(separator: " "))")
-                                        .font(.title2)
-                                }
-                                .frame(width: geometry.size.width * 0.9, alignment: .leading)
-                                .padding(.leading, 20)
-                            }
-                        }
+                    // Fruits and Points Section
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text(String(format: NSLocalizedString("tv_points", comment: ""), points))
+                            .font(.title2)
+                        Text(String(format: NSLocalizedString("tv_fruits", comment: ""), fruitEmojis.joined(separator: " ")))
+                            .font(.title2)
                     }
-                        
-                // Cheat Sheet View and Side Labels
-                if isCheatSheetEnabled {
-                    VStack {
-                        Spacer()
-                        HStack(alignment: .top, spacing: 10) {
-                            // Fruits and Points Labels
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text("Points: \(points)")
-                                    .font(.title2)
-                                    .padding(.bottom, 4)
-                                Text("Fruits: \(fruitEmojis.joined(separator: " "))")
-                                    .font(.title2)
-                            }
-                            .frame(width: geometry.size.width * 0.6, alignment: .leading)
-                            .padding(.leading, 20)
-                
-
-                            // Cheat Sheet View
-                            CheatSheetView()
-                                .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.2) // Now takes 20% of the screen height
-                                .background(
-                                    Image("parchmentBackground")
-                                        .resizable()
-                                        .scaledToFill()
-                                )
-                                .cornerRadius(20)
-                                .shadow(color: .gray.opacity(0.6), radius: 10, x: -5, y: 5)
-                                .padding([.trailing, .bottom], 20)
-                        }
-                        }
-                    }
+                    .padding(.horizontal)
                 }
-
             }
         }
         .navigationBarTitleDisplayMode(.inline)
