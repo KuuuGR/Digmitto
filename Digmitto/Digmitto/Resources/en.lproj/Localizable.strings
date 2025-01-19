@@ -48,9 +48,6 @@
 //MARK: PointsView
 "pw_title" = "Points";
 "pw_total" = "Total Points";
-
-
-//MARK: Achievements Descriptions
 "pw_achievements" = "Achievements";
 "ach_description_0" = "Champion: Reach 500 points.";
 "ach_description_1" = "First Steps: Complete your first task.";
@@ -60,7 +57,6 @@
 "ach_description_5" = "Consistent Learner: Use the app daily for a week.";
 "ach_description_6" = "Fruit Collector: Collect all fruit icons.";
 "ach_description_7" = "Grocery Seller: Collect all fruits in a single session.";
-
 
 
 //MARK: HomeScreenView

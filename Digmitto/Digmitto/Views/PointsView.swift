@@ -27,26 +27,17 @@ struct PointsView: View {
             
             // Achievements Section Title
             Text(LocalizedStringKey("pw_achievements"))
-                .font(.title2)
+                .font(.system(.title2, design: .monospaced)) // Monospace font for terminal effect
                 .fontWeight(.semibold)
+                .foregroundColor(Color.green) // Set color to green
                 .padding(.bottom, 10)
+                .opacity(0.4)
             
             // Achievements Section
             ScrollView {
                 VStack(spacing: 20) {
                     ForEach(0..<wordStore.achievements.count, id: \.self) { index in
-                        HStack(spacing: 20) {
-                            if index % 2 == 0 {
-                                // Image on the left, text on the right
-                                achievementImage(for: index)
-                                achievementDescription(for: index)
-                            } else {
-                                // Text on the left, image on the right
-                                achievementDescription(for: index)
-                                achievementImage(for: index)
-                            }
-                        }
-                        .padding()
+                        AchievementRow(index: index)
                     }
                 }
             }
@@ -57,30 +48,51 @@ struct PointsView: View {
         .navigationTitle(LocalizedStringKey("pw_title"))
     }
     
-    // Function to get the achievement image with customizable frame and border
+    // MARK: - Achievement Row Component
+    @ViewBuilder
+    private func AchievementRow(index: Int) -> some View {
+        HStack(spacing: 20) {
+            if index % 2 == 0 {
+                // Image on the left, text on the right
+                achievementImage(for: index)
+                achievementDescription(for: index)
+            } else {
+                // Text on the left, image on the right
+                achievementDescription(for: index)
+                achievementImage(for: index)
+            }
+        }
+        .padding()
+    }
+    
+    // MARK: - Achievement Image
     private func achievementImage(for index: Int) -> some View {
         Image(wordStore.achievements[index] ? "ach_\(index)" : "ach_empty_\(index)")
             .resizable()
             .scaledToFit()
+            .opacity(0.5)
             .frame(width: frameWidth, height: frameHeight)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(borderColor, lineWidth: borderWidth)
+                    .stroke(Color.green, lineWidth: borderWidth) // Green border
+                    .opacity(0.4)
             )
     }
     
-    // Function to get the localized achievement description
+    // MARK: - Achievement Description
     private func achievementDescription(for index: Int) -> some View {
         Text(getLocalizedDescription(for: index))
-            .font(.body)
+            .font(.system(.body, design: .monospaced)) // Monospace font for retro feel
+            .foregroundColor(Color.green) // Green color for old computer effect
             .multilineTextAlignment(.leading)
             .padding(.leading, 10)
+            .opacity(0.4)
     }
     
     // Helper function to fetch the localized description
     private func getLocalizedDescription(for index: Int) -> String {
-        return NSLocalizedString("ach_description_\(index)", comment: "")
+        NSLocalizedString("ach_description_\(index)", comment: "")
     }
 }
 

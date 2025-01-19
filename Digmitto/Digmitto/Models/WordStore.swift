@@ -39,6 +39,7 @@ class WordStore: ObservableObject {
     }
     @Published var totalPoints: Int = 0 {
         didSet {
+            checkAchievements() // Check achievements when points change
             UserDefaults.standard.set(totalPoints, forKey: "totalPoints")
         }
     }
@@ -47,7 +48,15 @@ class WordStore: ObservableObject {
             saveAchievements()
         }
     }
-    
+    @Published var dailyUsageStreak: Int = 0 {
+        didSet {
+            UserDefaults.standard.set(dailyUsageStreak, forKey: "dailyUsageStreak")
+        }
+    }
+    @Published var currentSessionMistakes: Int = 0
+    @Published var tasksCompletedInSession: Int = 0
+    @Published var sessionStartTime: Date?
+
     private let letterToNumberMap: [Character: String] = [
         "s": "0", "z": "0", "S": "0", "Z": "0",
         "t": "1", "d": "1", "T": "1", "D": "1",
@@ -66,6 +75,7 @@ class WordStore: ObservableObject {
         loadSettings()
         totalPoints = UserDefaults.standard.integer(forKey: "totalPoints")
         loadAchievements()
+        dailyUsageStreak = UserDefaults.standard.integer(forKey: "dailyUsageStreak")
     }
     
     func loadWords() {
@@ -106,7 +116,7 @@ class WordStore: ObservableObject {
         isCheatSheetEnabled = UserDefaults.standard.bool(forKey: "isCheatSheetEnabled")
     }
     
-    // Achievements management
+    // MARK: - Achievements Management
     private func saveAchievements() {
         UserDefaults.standard.set(achievements, forKey: "achievements")
     }
@@ -120,6 +130,39 @@ class WordStore: ObservableObject {
     func unlockAchievement(at index: Int) {
         guard index >= 0 && index < achievements.count else { return }
         achievements[index] = true
+    }
+
+    func checkAchievements() {
+        // Champion: Reach 500 points
+        if totalPoints >= 500 { achievements[0] = true }
+        
+        // First Steps: Complete your first task
+        if totalPoints > 0 { achievements[1] = true }
+        
+        // Memory Master: Reach 100 points
+        if totalPoints >= 100 { achievements[2] = true }
+        
+        // Speed Demon: Solve 10 tasks in under a minute
+        if tasksCompletedInSession >= 10, let startTime = sessionStartTime,
+           Date().timeIntervalSince(startTime) <= 60 {
+            achievements[3] = true
+        }
+        
+        // Perfect Session: Complete a session without mistakes
+        if tasksCompletedInSession > 0, currentSessionMistakes == 0 {
+            achievements[4] = true
+        }
+        
+        // Consistent Learner: Use the app daily for a week
+        if dailyUsageStreak >= 7 { achievements[5] = true }
+    }
+    
+    func incrementDailyUsage() {
+        let lastUsageDate = UserDefaults.standard.object(forKey: "lastUsageDate") as? Date ?? Date.distantPast
+        if !Calendar.current.isDateInToday(lastUsageDate) {
+            dailyUsageStreak += 1
+            UserDefaults.standard.set(Date(), forKey: "lastUsageDate")
+        }
     }
 }
 
