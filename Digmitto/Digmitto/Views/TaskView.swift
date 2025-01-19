@@ -78,6 +78,7 @@ struct TaskView: View {
                                     points += 1
                                     addRandomFruitEmoji()
                                 }
+                                completeTask(isCorrect: true)
                                 loadNewWord()
                             } else {
                                 feedback = String(
@@ -86,6 +87,7 @@ struct TaskView: View {
                                     wheelString
                                 )
                                 attempts += 1
+                                completeTask(isCorrect: false)
                             }
                         }) {
                             Text(LocalizedStringKey("tv_check_button"))
@@ -118,6 +120,30 @@ struct TaskView: View {
             }
         }
         .navigationBarTitleDisplayMode(.inline)
+        .onAppear {
+            startSession()
+        }
+    }
+
+    private func startSession() {
+        points = 0
+        fruitEmojis = []
+        attempts = 0
+        wordStore.tasksCompletedInSession = 0
+        wordStore.currentSessionMistakes = 0
+        wordStore.sessionStartTime = Date()
+        wordStore.fruitsCollectedInSession.removeAll()
+        print("Session started at \(wordStore.sessionStartTime!)")
+    }
+
+    private func completeTask(isCorrect: Bool) {
+        if isCorrect {
+            wordStore.tasksCompletedInSession += 1
+        } else {
+            wordStore.currentSessionMistakes += 1
+        }
+        print("Task completed. Tasks: \(wordStore.tasksCompletedInSession), Mistakes: \(wordStore.currentSessionMistakes)")
+        wordStore.checkAchievements()
     }
 
     private func convertLettersToNumbers() -> String {
@@ -153,6 +179,7 @@ struct TaskView: View {
         let fruits = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]
         if let randomFruit = fruits.randomElement() {
             fruitEmojis.append(randomFruit)
+            wordStore.collectFruit(randomFruit)
         }
     }
 }

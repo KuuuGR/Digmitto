@@ -56,6 +56,12 @@ class WordStore: ObservableObject {
     @Published var currentSessionMistakes: Int = 0
     @Published var tasksCompletedInSession: Int = 0
     @Published var sessionStartTime: Date?
+    @Published var remainingFruits: Set<String> = Set(["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]) {
+        didSet {
+            saveRemainingFruits()
+        }
+    }
+    @Published var fruitsCollectedInSession: Set<String> = []
 
     private let letterToNumberMap: [Character: String] = [
         "s": "0", "z": "0", "S": "0", "Z": "0",
@@ -75,9 +81,11 @@ class WordStore: ObservableObject {
         loadSettings()
         totalPoints = UserDefaults.standard.integer(forKey: "totalPoints")
         loadAchievements()
+        loadRemainingFruits()
         dailyUsageStreak = UserDefaults.standard.integer(forKey: "dailyUsageStreak")
     }
     
+    // MARK: - Words Management
     func loadWords() {
         if let url = Bundle.main.url(forResource: "words", withExtension: "json"),
            let data = try? Data(contentsOf: url) {
@@ -105,17 +113,7 @@ class WordStore: ObservableObject {
         }
         return number
     }
-    
-    func loadSettings() {
-        selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "English"
-        enableColorization = UserDefaults.standard.bool(forKey: "enableColorization")
-        primaryColor = UserDefaults.standard.color(forKey: "primaryColor") ?? .blue
-        secondaryColor = UserDefaults.standard.color(forKey: "secondaryColor") ?? .gray
-        defaultColor = UserDefaults.standard.color(forKey: "defaultColor") ?? .white
-        majorSystemLetters = UserDefaults.standard.string(forKey: "majorSystemLetters") ?? "sztdnmrljkgfwpbSZTDNMRLJKGFWPB"
-        isCheatSheetEnabled = UserDefaults.standard.bool(forKey: "isCheatSheetEnabled")
-    }
-    
+
     // MARK: - Achievements Management
     private func saveAchievements() {
         UserDefaults.standard.set(achievements, forKey: "achievements")
@@ -123,7 +121,8 @@ class WordStore: ObservableObject {
     
     private func loadAchievements() {
         if let savedAchievements = UserDefaults.standard.array(forKey: "achievements") as? [Bool] {
-            achievements = savedAchievements
+            // Ensure the array has 8 elements
+            achievements = Array(savedAchievements.prefix(8)) + Array(repeating: false, count: max(0, 8 - savedAchievements.count))
         }
     }
     
@@ -133,30 +132,94 @@ class WordStore: ObservableObject {
     }
 
     func checkAchievements() {
+        print("Checking achievements...")
+        
         // Champion: Reach 500 points
-        if totalPoints >= 500 { achievements[0] = true }
-        
+        if totalPoints >= 500 {
+            achievements[0] = true
+            print("Champion achievement unlocked!")
+        }
+
         // First Steps: Complete your first task
-        if totalPoints > 0 { achievements[1] = true }
-        
+        if totalPoints >= 1 {
+            achievements[1] = true
+            print("First Steps achievement unlocked!")
+        }
+
         // Memory Master: Reach 100 points
-        if totalPoints >= 100 { achievements[2] = true }
-        
-        // Speed Demon: Solve 10 tasks in under a minute
-        if tasksCompletedInSession >= 10, let startTime = sessionStartTime,
-           Date().timeIntervalSince(startTime) <= 60 {
-            achievements[3] = true
+        if totalPoints >= 100 {
+            achievements[2] = true
+            print("Memory Master achievement unlocked!")
         }
         
-        // Perfect Session: Complete a session without mistakes
-        if tasksCompletedInSession > 0, currentSessionMistakes == 0 {
+        // Speed Demon
+        if tasksCompletedInSession >= 10, let startTime = sessionStartTime {
+            let elapsedTime = Date().timeIntervalSince(startTime)
+            if elapsedTime <= 60 {
+                achievements[3] = true
+            }
+        }
+        
+        // Perfect Session
+        if tasksCompletedInSession == 10, currentSessionMistakes == 0 {
             achievements[4] = true
         }
         
         // Consistent Learner: Use the app daily for a week
-        if dailyUsageStreak >= 7 { achievements[5] = true }
+        if dailyUsageStreak >= 7 {
+            achievements[5] = true
+            print("Consistent Learner achievement unlocked!")
+        }
+
+        // Fruit Collector: All fruits collected across sessions
+        if remainingFruits.isEmpty {
+            achievements[6] = true
+            print("Fruit Collector achievement unlocked!")
+        } else {
+            print("Remaining fruits for Fruit Collector: \(remainingFruits)")
+        }
+
+        // Grocery Seller: All fruits collected in a single session
+        let allFruits = Set(["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"])
+        if fruitsCollectedInSession == allFruits {
+            achievements[7] = true
+            print("Grocery Seller achievement unlocked!")
+        } else {
+            print("Fruits collected in session: \(fruitsCollectedInSession)")
+        }
     }
-    
+
+    // MARK: - Fruit Management
+    func collectFruit(_ fruit: String) {
+        print("Collecting fruit: \(fruit)")
+        fruitsCollectedInSession.insert(fruit)
+        remainingFruits.remove(fruit)
+        print("Remaining fruits: \(remainingFruits)")
+        checkAchievements()
+    }
+
+    private func saveRemainingFruits() {
+        UserDefaults.standard.set(Array(remainingFruits), forKey: "remainingFruits")
+    }
+
+    private func loadRemainingFruits() {
+        if let savedFruits = UserDefaults.standard.array(forKey: "remainingFruits") as? [String] {
+            remainingFruits = Set(savedFruits)
+        }
+    }
+
+    // MARK: - Settings Management
+    private func loadSettings() {
+        selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "English"
+        enableColorization = UserDefaults.standard.bool(forKey: "enableColorization")
+        primaryColor = UserDefaults.standard.color(forKey: "primaryColor") ?? .blue
+        secondaryColor = UserDefaults.standard.color(forKey: "secondaryColor") ?? .gray
+        defaultColor = UserDefaults.standard.color(forKey: "defaultColor") ?? .white
+        majorSystemLetters = UserDefaults.standard.string(forKey: "majorSystemLetters") ?? "sztdnmrljkgfwpbSZTDNMRLJKGFWPB"
+        isCheatSheetEnabled = UserDefaults.standard.bool(forKey: "isCheatSheetEnabled")
+    }
+
+    // MARK: - Daily Usage
     func incrementDailyUsage() {
         let lastUsageDate = UserDefaults.standard.object(forKey: "lastUsageDate") as? Date ?? Date.distantPast
         if !Calendar.current.isDateInToday(lastUsageDate) {
@@ -166,7 +229,7 @@ class WordStore: ObservableObject {
     }
 }
 
-// Extension to handle Color storage in UserDefaults
+// MARK: - UserDefaults Extension
 extension UserDefaults {
     func setColor(_ color: Color, forKey key: String) {
         let uiColor = UIColor(color)
@@ -177,7 +240,7 @@ extension UserDefaults {
             print("Failed to save color to UserDefaults: \(error)")
         }
     }
-    
+
     func color(forKey key: String) -> Color? {
         guard let data = data(forKey: key) else { return nil }
         do {
