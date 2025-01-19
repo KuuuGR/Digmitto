@@ -7,17 +7,20 @@
 "tv_points" = "Points: %d";
 "tv_fruits" = "Fruits: %@";
 
+
 //MARK: TaskScreenView
 "ts_screen_title" = "Task Screen";
 "ts_back_button" = "Back";
 "ts_user_input_placeholder" = "Enter your input here";
 "ts_code_button" = "Code";
 
+
 //MARK: StartView
 "st_general" = "Choose Your Action";
 "st_start_task" = "Start Task";
 "st_view_points" = "View Points";
 "st_manual" = "Manual";
+
 
 //MARK: SettingsView
 "sv_general_settings" = "General Settings";
@@ -46,12 +49,27 @@
 "pw_title" = "Points";
 "pw_total" = "Total Points";
 
+
+//MARK: Achievements Descriptions
+"pw_achievements" = "Achievements";
+"ach_description_0" = "Champion: Reach 500 points.";
+"ach_description_1" = "First Steps: Complete your first task.";
+"ach_description_2" = "Memory Master: Reach 100 points.";
+"ach_description_3" = "Speed Demon: Solve 10 tasks in under a minute.";
+"ach_description_4" = "Perfect Session: Complete a session without mistakes.";
+"ach_description_5" = "Consistent Learner: Use the app daily for a week.";
+"ach_description_6" = "Fruit Collector: Collect all fruit icons.";
+"ach_description_7" = "Grocery Seller: Collect all fruits in a single session.";
+
+
+
 //MARK: HomeScreenView
 "hs_welcome" = "Welcome to Major Memory System";
 "hs_start_button" = "Start";
 "hs_settings_button" = "Settings";
 "hs_about_button" = "About";
 "hs_total_points_format" = "Total Points: %d";
+
 
 //MARK: DeveloperView
 "dv_developer_info" = "Developer Info";
@@ -68,13 +86,16 @@
 "dv_feature_practice_modes" = "• Advanced practice modes";
 "dv_feature_cloud_sync" = "• Cloud synchronization";
 
+
 //MARK: ContentView
 "cv_welcome_message" = "Welcome to Digmitto";
 "cv_start_button" = "START";
 "cv_show_cheat_sheet" = "Show Cheat Sheet";
 
+
 //MARK: CheeatSheetView
 "cs_title" = "📜 Major System Cheat Sheet 📜";
+
 
 //MARK: AboutView
 "ab_title" = "About Major System";
@@ -90,10 +111,12 @@
 "ab_example3" = "999 → \"PaPaPa\"";
 "ab_developer_info" = "Developer Info";
 
+
 //MARK: WelcomeScreen -> TODO: remove if not needed
 "ws_welcome" = "Welcome to Major Memory System!!";
 "ws_description" = "Enhance your memory skills with our interactive and engaging exercises.";
 "ws_start" = "Get Started";
+
 
 //MARK: GuideWalkthroughView
 "guide_title" = "Guide Walkthrough";

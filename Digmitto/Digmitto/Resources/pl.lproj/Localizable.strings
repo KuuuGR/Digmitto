@@ -40,8 +40,22 @@
 "sv_settings_title" = "Ustawienia";
 
 //MARK: PointsView
-"pw_title" = "Punkty";
-"pw_total" = "Łączna liczba punktów";
+"pw_title" = "Points";
+"pw_total" = "Total Points";
+
+
+//MARK: Achievements Descriptions
+"pw_achievements" = "Achievements";
+"ach_description_0" = "Champion: Reach 500 points.";
+"ach_description_1" = "First Steps: Complete your first task.";
+"ach_description_2" = "Memory Master: Reach 100 points.";
+"ach_description_3" = "Speed Demon: Solve 10 tasks in under a minute.";
+"ach_description_4" = "Perfect Session: Complete a session without mistakes.";
+"ach_description_5" = "Consistent Learner: Use the app daily for a week.";
+"ach_description_6" = "Fruit Collector: Collect all fruit icons.";
+"ach_description_7" = "Grocery Seller: Collect all fruits in a single session.";
+
+
 
 //MARK: HomeScreenView
 "hs_welcome" = "Witamy w systemie pamięci Major";

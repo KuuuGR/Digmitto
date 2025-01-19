@@ -42,8 +42,12 @@ class WordStore: ObservableObject {
             UserDefaults.standard.set(totalPoints, forKey: "totalPoints")
         }
     }
+    @Published var achievements: [Bool] = Array(repeating: false, count: 8) {
+        didSet {
+            saveAchievements()
+        }
+    }
     
-    // Corrected mapping with double quotes for character literals
     private let letterToNumberMap: [Character: String] = [
         "s": "0", "z": "0", "S": "0", "Z": "0",
         "t": "1", "d": "1", "T": "1", "D": "1",
@@ -61,6 +65,7 @@ class WordStore: ObservableObject {
         loadWords()
         loadSettings()
         totalPoints = UserDefaults.standard.integer(forKey: "totalPoints")
+        loadAchievements()
     }
     
     func loadWords() {
@@ -99,6 +104,22 @@ class WordStore: ObservableObject {
         defaultColor = UserDefaults.standard.color(forKey: "defaultColor") ?? .white
         majorSystemLetters = UserDefaults.standard.string(forKey: "majorSystemLetters") ?? "sztdnmrljkgfwpbSZTDNMRLJKGFWPB"
         isCheatSheetEnabled = UserDefaults.standard.bool(forKey: "isCheatSheetEnabled")
+    }
+    
+    // Achievements management
+    private func saveAchievements() {
+        UserDefaults.standard.set(achievements, forKey: "achievements")
+    }
+    
+    private func loadAchievements() {
+        if let savedAchievements = UserDefaults.standard.array(forKey: "achievements") as? [Bool] {
+            achievements = savedAchievements
+        }
+    }
+    
+    func unlockAchievement(at index: Int) {
+        guard index >= 0 && index < achievements.count else { return }
+        achievements[index] = true
     }
 }
 
