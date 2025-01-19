@@ -4,39 +4,39 @@ struct AboutView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Text("About Major System")
+                Text(LocalizedStringKey("ab_title"))
                     .font(.title)
                     .padding(.bottom, 10)
                 
                 Group {
-                    Text("What is the Major System?")
+                    Text(LocalizedStringKey("ab_what_is"))
                         .font(.headline)
-                    Text("The Major System is a mnemonic technique that helps you remember numbers by converting them into consonant sounds, which can then be made into words.")
+                    Text(LocalizedStringKey("ab_what_is_description"))
                         .font(.body)
                     
-                    Text("How it works:")
+                    Text(LocalizedStringKey("ab_how_it_works"))
                         .font(.headline)
-                    Text("• Each digit is assigned to specific consonant sounds")
+                    Text(LocalizedStringKey("ab_how_it_works_bullet1"))
                         .font(.body)
-                    Text("• Vowels and unused consonants can be added freely")
+                    Text(LocalizedStringKey("ab_how_it_works_bullet2"))
                         .font(.body)
-                    Text("• Create words using these sounds to remember numbers")
+                    Text(LocalizedStringKey("ab_how_it_works_bullet3"))
                         .font(.body)
                     
-                    Text("Examples:")
+                    Text(LocalizedStringKey("ab_examples"))
                         .font(.headline)
-                    Text("123 → \"TuNeMo\"")
+                    Text(LocalizedStringKey("ab_example1"))
                         .font(.body)
-                    Text("507 → \"LaSeKa\"")
+                    Text(LocalizedStringKey("ab_example2"))
                         .font(.body)
-                    Text("999 → \"PaPaPa\"")
+                    Text(LocalizedStringKey("ab_example3"))
                         .font(.body)
                 }
                 .padding(.horizontal)
                 
                 // Developer Button
                 NavigationLink(destination: DeveloperView()) {
-                    Text("Developer Info")
+                    Text(LocalizedStringKey("ab_developer_info"))
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
@@ -51,12 +51,6 @@ struct AboutView: View {
             }
             .padding()
         }
-        .navigationTitle("About")
+        .navigationTitle(LocalizedStringKey("ab_title"))
     }
 }
-
-struct AboutView_Previews: PreviewProvider {
-    static var previews: some View {
-        AboutView()
-    }
-} 

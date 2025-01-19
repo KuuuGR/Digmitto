@@ -2,3 +2,43 @@
 "start_button" = "START";
 "welcome_message" = "Welcome to Digmitto";
 "settings_title" = "Settings";
+
+// AboutView
+"ab_title" = "About Major System";
+"ab_what_is" = "What is the Major System?";
+"ab_what_is_description" = "The Major System is a mnemonic technique that helps you remember numbers by converting them into consonant sounds, which can then be made into words.";
+"ab_how_it_works" = "How it works:";
+"ab_how_it_works_bullet1" = "• Each digit is assigned to specific consonant sounds";
+"ab_how_it_works_bullet2" = "• Vowels and unused consonants can be added freely";
+"ab_how_it_works_bullet3" = "• Create words using these sounds to remember numbers";
+"ab_examples" = "Examples:";
+"ab_example1" = "123 → \"TuNeMo\"";
+"ab_example2" = "507 → \"LaSeKa\"";
+"ab_example3" = "999 → \"PaPaPa\"";
+"ab_developer_info" = "Developer Info";
+
+// WelcomeScreen -> TODO: this view propabli should be removed
+"ws_welcome" = "Welcome to Major Memory System!!";
+"ws_description" = "Enhance your memory skills with our interactive and engaging exercises.";
+"ws_start" = "Get Started";
+
+// GuideWalkthroughView:
+"guide_title" = "Guide Walkthrough";
+"tut_step_0" = "Welcome to the Digmitto app! Here's how to get started.";
+"tut_step_1" = "Step 1: Use the 'Start Task' button to access the main application view.";
+"tut_step_2" = "Step 2: In this view, you will find three key elements: a random word, number wheels to set a value, and a 'Check' button to compare the word with the selected number.";
+"tut_step_3" = "Step 3: If the answer is correct, you will see the message 'Correct! 🌟'.";
+"tut_step_4" = "Step 4: For each first-attempt correct answer, you will earn +1 point and a fruit icon.";
+"tut_step_5" = "Step 5: If you press 'Check' but the answer is incorrect, the message 'Try again! ❌' will appear. In this case, correct your answer to proceed to the next word.";
+"tut_step_6" = "Step 6: To clarify mistakes, the app shows the expected code for the word and the code you entered on the wheels. Unfortunately, the score won't increase for corrected answers.";
+"tut_step_7" = "Step 7: There are two helper tools to make the learning process easier.";
+"tut_step_8" = "Step 8: Both helper tools can be enabled in the application settings.";
+"tut_step_9" = "Step 9: The first helper highlights letters that correspond to numbers. The colors for these letters and the letters to be ignored can be customized in the settings.";
+"tut_step_10" = "Step 10: The second helper is a cheat sheet showing letters and their corresponding numbers. You can refer to this sheet if you forget any values.";
+"tut_step_11" = "Step 11: Random words can be very long, sometimes exceeding the number of visible wheels on the screen.";
+"tut_step_12" = "Step 12: To resolve this, switch the screen orientation to horizontal.";
+"tut_step_13" = "Step 13: This horizontal position prevents the wheels from shrinking and ensures the entire coded number is visible.";
+"tut_step_14" = "Step 14: The wheels are grouped into sets of three, counted from the last number.";
+"tut_step_15" = "Step 15: This grouping helps you learn to read numbers in units, tens, thousands, millions, etc.";
+"tut_step_16" = "Step 16: The application tracks points for each session and maintains a total cumulative score across all sessions.";
+"tut_step_17" = "Step 17: You can view your points on the main screen or in the 'View Points' section.";

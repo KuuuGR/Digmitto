@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct WelcomeScreen: View {
+    let text: LocalizedStringKey
     var body: some View {
         ZStack {
             // Background Gradient
@@ -9,14 +10,14 @@ struct WelcomeScreen: View {
             
             VStack(spacing: 40) {
                 // Welcome Text
-                Text("Welcome to Major Memory System")
+                Text(LocalizedStringKey("ws_welcome"))
                     .font(.system(size: 34, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 20)
                 
                 // Description Text
-                Text("Enhance your memory skills with our interactive and engaging exercises.")
+                Text(LocalizedStringKey("ws_description"))
                     .font(.system(size: 18, weight: .medium, design: .rounded))
                     .foregroundColor(.white)
                     .multilineTextAlignment(.center)
@@ -24,7 +25,7 @@ struct WelcomeScreen: View {
                 
                 // Start Button
                 NavigationLink(destination: HomeScreenView()) {
-                    Text("Get Started")
+                    Text(LocalizedStringKey("ws_start"))
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding()
@@ -40,8 +41,8 @@ struct WelcomeScreen: View {
     }
 }
 
-struct WelcomeScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        WelcomeScreen()
-    }
-} 
+//struct WelcomeScreen_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WelcomeScreen()
+//    }
+//} 

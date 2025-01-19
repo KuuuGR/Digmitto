@@ -1,4 +1,24 @@
 "app_name" = "Digmitto";
-"start_button" = "Rozpocznij";
-"welcome_message" = "Witaj w Digmitto";
+"start_button" = "START";
+"welcome_message" = "Witamy w Digmitto";
 "settings_title" = "Ustawienia";
+"guide_title" = "Przewodnik";
+
+"tut_step_0" = "Witamy w aplikacji Digmitto! Oto jak zacząć.";
+"tut_step_1" = "Krok 1: Użyj przycisku 'Rozpocznij zadanie', aby uzyskać dostęp do głównego widoku aplikacji.";
+"tut_step_2" = "Krok 2: W tym widoku znajdziesz trzy kluczowe elementy: losowe słowo, koła do ustawiania wartości liczbowych i przycisk 'Sprawdź', aby porównać słowo z wybraną liczbą.";
+"tut_step_3" = "Krok 3: Jeśli odpowiedź jest poprawna, zobaczysz komunikat 'Poprawne! 🌟'.";
+"tut_step_4" = "Krok 4: Za każdą poprawną odpowiedź przy pierwszej próbie otrzymasz +1 punkt i ikonę owocu.";
+"tut_step_5" = "Krok 5: Jeśli naciśniesz 'Sprawdź', ale odpowiedź jest błędna, pojawi się komunikat 'Spróbuj ponownie! ❌'. W takim przypadku popraw swoją odpowiedź, aby przejść do następnego słowa.";
+"tut_step_6" = "Krok 6: Aby wyjaśnić błędy, aplikacja pokazuje oczekiwany kod dla słowa oraz kod, który wprowadziłeś na kołach.";
+"tut_step_7" = "Krok 7: W aplikacji znajdują się dwa narzędzia pomocnicze, które ułatwiają proces nauki.";
+"tut_step_8" = "Krok 8: Oba narzędzia pomocnicze można włączyć w ustawieniach aplikacji.";
+"tut_step_9" = "Krok 9: Pierwsze narzędzie pomocnicze podświetla litery odpowiadające liczbom. Kolory tych liter i liter, które należy pominąć, można dostosować w ustawieniach.";
+"tut_step_10" = "Krok 10: Drugie narzędzie to ściągawka pokazująca litery i odpowiadające im liczby. Możesz z niej skorzystać, jeśli zapomnisz wartości.";
+"tut_step_11" = "Krok 11: Losowe słowa mogą być bardzo długie, czasami przekraczając liczbę widocznych kół na ekranie.";
+"tut_step_12" = "Krok 12: Aby rozwiązać ten problem, zmień orientację ekranu na poziomą.";
+"tut_step_13" = "Krok 13: Pozioma orientacja zapobiega kurczeniu się kół i zapewnia widoczność całego zakodowanego numeru.";
+"tut_step_14" = "Krok 14: Koła są pogrupowane w zestawy po trzy, licząc od ostatniej liczby.";
+"tut_step_15" = "Krok 15: To grupowanie pomaga nauczyć się odczytywać liczby w jednostkach, dziesiątkach, tysiącach, milionach itd.";
+"tut_step_16" = "Krok 16: Aplikacja śledzi punkty dla każdej sesji i utrzymuje całkowitą sumę punktów we wszystkich sesjach.";
+"tut_step_17" = "Krok 17: Możesz zobaczyć swoje punkty na głównym ekranie lub w sekcji 'Wyświetl punkty'.";

@@ -1,4 +1,24 @@
 "app_name" = "Digmitto";
-"start_button" = "Inicio";
+"start_button" = "INICIAR";
 "welcome_message" = "Bienvenido a Digmitto";
-"settings_title" = "C⚙︎nfiguración";
+"settings_title" = "Configuración";
+"guide_title" = "Guía";
+
+"tut_step_0" = "¡Bienvenido a la aplicación Digmitto! Aquí tienes cómo empezar.";
+"tut_step_1" = "Paso 1: Usa el botón 'Iniciar tarea' para acceder a la vista principal de la aplicación.";
+"tut_step_2" = "Paso 2: En esta vista, encontrarás tres elementos clave: una palabra aleatoria, ruedas para establecer valores numéricos y un botón 'Comprobar' para comparar la palabra con el número seleccionado.";
+"tut_step_3" = "Paso 3: Si la respuesta es correcta, verás el mensaje '¡Correcto! 🌟'.";
+"tut_step_4" = "Paso 4: Por cada respuesta correcta en el primer intento, ganarás +1 punto y un ícono de fruta.";
+"tut_step_5" = "Paso 5: Si presionas 'Comprobar' pero la respuesta es incorrecta, aparecerá el mensaje '¡Inténtalo de nuevo! ❌'. En este caso, corrige tu respuesta para continuar con la siguiente palabra.";
+"tut_step_6" = "Paso 6: Para aclarar los errores, la aplicación muestra el código esperado para la palabra y el código que ingresaste en las ruedas.";
+"tut_step_7" = "Paso 7: Hay dos herramientas auxiliares para facilitar el proceso de aprendizaje.";
+"tut_step_8" = "Paso 8: Ambas herramientas auxiliares se pueden habilitar en la configuración de la aplicación.";
+"tut_step_9" = "Paso 9: La primera herramienta resalta las letras que corresponden a números. Los colores de estas letras y de las letras que deben ignorarse se pueden personalizar en la configuración.";
+"tut_step_10" = "Paso 10: La segunda herramienta es una hoja de trucos que muestra letras y sus números correspondientes. Puedes consultarla si olvidas algún valor.";
+"tut_step_11" = "Paso 11: Las palabras aleatorias pueden ser muy largas, a veces superando el número de ruedas visibles en la pantalla.";
+"tut_step_12" = "Paso 12: Para resolver este problema, cambia la orientación de la pantalla a horizontal.";
+"tut_step_13" = "Paso 13: Esta orientación horizontal evita que las ruedas se encojan y garantiza que el número completo codificado sea visible.";
+"tut_step_14" = "Paso 14: Las ruedas están agrupadas en conjuntos de tres, contados desde el último número.";
+"tut_step_15" = "Paso 15: Este agrupamiento te ayuda a aprender a leer números en unidades, decenas, miles, millones, etc.";
+"tut_step_16" = "Paso 16: La aplicación rastrea los puntos para cada sesión y mantiene un puntaje total acumulativo de todas las sesiones.";
+"tut_step_17" = "Paso 17: Puedes ver tus puntos en la pantalla principal o en la sección 'Ver puntos'.";
