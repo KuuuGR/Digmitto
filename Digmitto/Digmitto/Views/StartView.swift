@@ -15,7 +15,7 @@ struct StartView: View {
             Spacer()
             
             NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: wordStore.isCheatSheetEnabled, wordStore: wordStore)) {
-                PastelButton(title: "Start Task", colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)])
+                PastelButton(title: "Start Task", colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)])
             }
             .padding(.horizontal, 40)
             .simultaneousGesture(TapGesture().onEnded {
@@ -23,12 +23,12 @@ struct StartView: View {
             })
             
             NavigationLink(destination: PointsView()) {
-                PastelButton(title: "View Points", colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)])
+                PastelButton(title: "View Points", colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)])
             }
             .padding(.horizontal, 40)
             
-            NavigationLink(destination: TutorialView()) {
-                PastelButton(title: "Tutorial", colors: [Color.yellow.opacity(0.6), Color.cyan.opacity(0.6)])
+            NavigationLink(destination: GuideWalkthroughView()) {
+                PastelButton(title: "Manual", colors: [Color.yellow.opacity(0.6), Color.cyan.opacity(0.6)])
             }
             .padding(.horizontal, 40)
             
