@@ -78,7 +78,11 @@ struct TaskView: View {
                                     points += 1
                                     addRandomFruitEmoji()
                                 }
+                                // Safely update the state
                                 completeTask(isCorrect: true)
+                                withAnimation {
+                                    loadNewWord() // Load a new word
+                                }
                                 loadNewWord()
                             } else {
                                 feedback = String(
@@ -108,78 +112,118 @@ struct TaskView: View {
                             .frame(height: isCheatSheetEnabled ? 60 : 10)
                     }
                     
-                    // Fruits and Points Section
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(String(format: NSLocalizedString("tv_points", comment: ""), points))
-                            .font(.title2)
-                        Text(String(format: NSLocalizedString("tv_fruits", comment: ""), fruitEmojis.joined(separator: " ")))
-                            .font(.title2)
+                    //  Side Labels -> points and fruits
+                    if !isCheatSheetEnabled {
+                        VStack {
+                            Spacer()
+                            HStack(alignment: .top, spacing: 10) {
+                                // Fruits and Points Labels
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text(String(format: NSLocalizedString("tv_points", comment: ""), points))
+                                        .font(.title2)
+                                        .padding(.bottom, 4)
+                                    Text(String(format: NSLocalizedString("tv_fruits", comment: ""), fruitEmojis.joined(separator: " ")))
+                                        .font(.title2)
+                                }
+                                .frame(width: geometry.size.width * 0.9, alignment: .leading)
+                                .padding(.leading, 20)
+                            }
+                        }
                     }
-                    .padding(.horizontal)
+
+                    // Cheat Sheet View and Side Labels
+                    if isCheatSheetEnabled {
+                        VStack {
+                            Spacer()
+                            HStack(alignment: .top, spacing: 10) {
+                                // Fruits and Points Labels
+                                VStack(alignment: .leading, spacing: 10) {
+                                    Text(String(format: NSLocalizedString("tv_points", comment: ""), points))
+                                        .font(.title2)
+                                        .padding(.bottom, 4)
+                                    Text(String(format: NSLocalizedString("tv_fruits", comment: ""), fruitEmojis.joined(separator: " ")))
+                                        .font(.title2)
+                                }
+                                .frame(width: geometry.size.width * 0.6, alignment: .leading)
+                                .padding(.leading, 20)
+
+                                // Cheat Sheet View
+                                CheatSheetView()
+                                    .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.2) // Now takes 20% of the screen height
+                                    .background(
+                                        Image("parchmentBackground")
+                                            .resizable()
+                                            .scaledToFill()
+                                    )
+                                    .cornerRadius(20)
+                                    .shadow(color: .gray.opacity(0.6), radius: 10, x: -5, y: 5)
+                                    .padding([.trailing, .bottom], 20)
+                            }
+                        }
+                    }
                 }
             }
-        }
-        .navigationBarTitleDisplayMode(.inline)
-        .onAppear {
-            startSession()
-        }
-    }
-
-    private func startSession() {
-        points = 0
-        fruitEmojis = []
-        attempts = 0
-        wordStore.tasksCompletedInSession = 0
-        wordStore.currentSessionMistakes = 0
-        wordStore.sessionStartTime = Date()
-        wordStore.fruitsCollectedInSession.removeAll()
-        print("Session started at \(wordStore.sessionStartTime!)")
-    }
-
-    private func completeTask(isCorrect: Bool) {
-        if isCorrect {
-            wordStore.tasksCompletedInSession += 1
-        } else {
-            wordStore.currentSessionMistakes += 1
-        }
-        print("Task completed. Tasks: \(wordStore.tasksCompletedInSession), Mistakes: \(wordStore.currentSessionMistakes)")
-        wordStore.checkAchievements()
-    }
-
-    private func convertLettersToNumbers() -> String {
-        importantLetters.map { char in
-            wordStore.numberForLetter(String(char.lowercased()))
-        }.joined()
-    }
-
-    private func readWheelsRightToLeft() -> String {
-        selectedNumbers.map(String.init).joined()
-    }
-
-    private func colorForCharacter(_ char: Character) -> Color {
-        if !wordStore.enableColorization {
-            return wordStore.defaultColor
-        }
-        let lowerChar = char.lowercased()
-        if wordStore.majorSystemLetters.contains(lowerChar) {
-            return wordStore.primaryColor
-        } else {
-            return wordStore.secondaryColor
+            .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                startSession()
+            }
         }
     }
-    
-    private func loadNewWord() {
-        currentWord = wordStore.getRandomWord()
-        let importantLettersCount = currentWord.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }.count
-        selectedNumbers = Array(repeating: 0, count: importantLettersCount)
-        attempts = 0
-    }
-    
-    private func addRandomFruitEmoji() {
-        let fruits = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]
-        if let randomFruit = fruits.randomElement() {
-            fruitEmojis.append(randomFruit)
-            wordStore.collectFruit(randomFruit)
+        private func startSession() {
+            points = 0
+            fruitEmojis = []
+            attempts = 0
+            wordStore.tasksCompletedInSession = 0
+            wordStore.currentSessionMistakes = 0
+            wordStore.sessionStartTime = Date()
+            wordStore.fruitsCollectedInSession.removeAll()
+            print("Session started at \(wordStore.sessionStartTime!)")
+        }
+        
+        private func completeTask(isCorrect: Bool) {
+            if isCorrect {
+                wordStore.tasksCompletedInSession += 1
+            } else {
+                wordStore.currentSessionMistakes += 1
+            }
+            print("Task completed. Tasks: \(wordStore.tasksCompletedInSession), Mistakes: \(wordStore.currentSessionMistakes)")
+            wordStore.checkAchievements()
+        }
+        
+        private func convertLettersToNumbers() -> String {
+            importantLetters.map { char in
+                wordStore.numberForLetter(String(char.lowercased()))
+            }.joined()
+        }
+        
+        private func readWheelsRightToLeft() -> String {
+            selectedNumbers.map(String.init).joined()
+        }
+        
+        private func colorForCharacter(_ char: Character) -> Color {
+            if !wordStore.enableColorization {
+                return wordStore.defaultColor
+            }
+            let lowerChar = char.lowercased()
+            if wordStore.majorSystemLetters.contains(lowerChar) {
+                return wordStore.primaryColor
+            } else {
+                return wordStore.secondaryColor
+            }
+        }
+        
+        private func loadNewWord() {
+            currentWord = wordStore.getRandomWord()
+            let importantLettersCount = currentWord.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }.count
+            selectedNumbers = Array(repeating: 0, count: importantLettersCount)
+            attempts = 0
+        }
+        
+        private func addRandomFruitEmoji() {
+            let fruits = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]
+            if let randomFruit = fruits.randomElement() {
+                fruitEmojis.append(randomFruit)
+                wordStore.collectFruit(randomFruit)
+            }
         }
     }
-}
