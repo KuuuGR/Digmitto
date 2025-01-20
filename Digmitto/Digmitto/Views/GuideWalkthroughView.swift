@@ -29,14 +29,18 @@ struct GuideWalkthroughView: View {
         GuideStep(text: LocalizedStringKey("tut_step_17"), imageName: "tut_step_17", isImageOnLeft: false),
     ]
     
+    // Configurable border properties
+    var borderColor: Color = .white
+    var borderWidth: CGFloat = 2
+    var cornerRadius: CGFloat = 10
+    
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
                 ForEach(steps) { step in
                     HStack(spacing: 20) {
                         if step.isImageOnLeft {
-                            Image(step.imageName)
-                                .resizable()
+                            styledImage(name: step.imageName)
                                 .scaledToFit()
                                 .frame(width: 100, height: 100)
                             Text(step.text)
@@ -46,8 +50,7 @@ struct GuideWalkthroughView: View {
                             Text(step.text)
                                 .font(.body)
                                 .multilineTextAlignment(.leading)
-                            Image(step.imageName)
-                                .resizable()
+                            styledImage(name: step.imageName)
                                 .scaledToFit()
                                 .frame(width: 100, height: 100)
                         }
@@ -59,6 +62,22 @@ struct GuideWalkthroughView: View {
         }
         .navigationTitle(LocalizedStringKey("guide_title"))
     }
+    
+    // Helper function to style images
+    @ViewBuilder
+    private func styledImage(name: String) -> some View {
+        Image(name)
+            .resizable()
+            .scaledToFit()
+            .frame(width: 100, height: 100)
+            .background(Color.clear) // Add a background color if needed
+            .cornerRadius(cornerRadius)
+            .overlay(
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(borderColor, lineWidth: borderWidth)
+            )
+    }
+    
 }
 
 //struct GuideWalkthroughView_Previews: PreviewProvider {
