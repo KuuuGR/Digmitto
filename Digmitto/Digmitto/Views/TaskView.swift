@@ -86,9 +86,6 @@ struct TaskView: View {
                         }
                         
                         // Check Button
-
-                        // In your Button view
-
                         Button(action: {
                             let letterString = convertLettersToNumbers()
                             let wheelString = readWheelsRightToLeft()
@@ -100,12 +97,15 @@ struct TaskView: View {
                                     points += 1
                                     addRandomFruitEmoji()
                                 }
-                                // Safely update the state
                                 completeTask(isCorrect: true)
                                 withAnimation {
-                                    loadNewWord() // Load a new word
+                                    loadNewWord()
                                 }
-                                loadNewWord()
+                                // Update Button Gradient Index and Colors
+                                withAnimation {
+                                    buttonGradientIndex = (buttonGradientIndex + 1) % densePastelGradients.count
+                                    buttonColors = densePastelGradients[buttonGradientIndex]
+                                }
                             } else {
                                 feedback = String(
                                     format: NSLocalizedString("tv_feedback_incorrect", comment: ""),
@@ -119,7 +119,7 @@ struct TaskView: View {
                             Text(LocalizedStringKey("tv_check_button"))
                                 .fontWeight(.bold)
                                 .padding()
-                                .frame(maxWidth: .infinity)
+                                .frame(maxWidth: 200, minHeight: 50) // Fixed width and height
                                 .background(
                                     LinearGradient(
                                         gradient: Gradient(colors: buttonColors),
