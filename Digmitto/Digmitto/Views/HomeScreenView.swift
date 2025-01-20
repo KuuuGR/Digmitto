@@ -80,9 +80,9 @@ struct HomeButton: View {
     }
 }
 
-struct HomeScreenView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeScreenView()
-            .environmentObject(WordStore())
-    }
-}
+//struct HomeScreenView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HomeScreenView()
+//            .environmentObject(WordStore())
+//    }
+//}

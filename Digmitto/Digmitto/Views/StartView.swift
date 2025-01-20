@@ -67,9 +67,9 @@ struct PastelButton: View {
     }
 }
 
-struct StartView_Previews: PreviewProvider {
-    static var previews: some View {
-        StartView()
-            .environmentObject(WordStore())
-    }
-}
+//struct StartView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        StartView()
+//            .environmentObject(WordStore())
+//    }
+//}

@@ -37,14 +37,14 @@ struct NumberWheelView: View {
     }
 }
 
-struct NumberWheelView_Previews: PreviewProvider {
-    @State static var numbers = Array(repeating: 0, count: 3)
-    
-    static var previews: some View {
-        NumberWheelView(
-            wordLength: 3,
-            selectedNumbers: $numbers,
-            wheelColors: [.red, .blue, .green]
-        )
-    }
-} 
+//struct NumberWheelView_Previews: PreviewProvider {
+//    @State static var numbers = Array(repeating: 0, count: 3)
+//    
+//    static var previews: some View {
+//        NumberWheelView(
+//            wordLength: 3,
+//            selectedNumbers: $numbers,
+//            wheelColors: [.red, .blue, .green]
+//        )
+//    }
+//} 
