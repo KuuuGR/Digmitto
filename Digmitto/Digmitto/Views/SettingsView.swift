@@ -49,6 +49,14 @@ struct SettingsView: View {
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
             }
+            
+            // Additional Settings Section
+            Section(header: Text(LocalizedStringKey("sv_additional_settings"))) {
+                Toggle(isOn: $wordStore.isRandomizeDiceEnabled) {
+                    Text(LocalizedStringKey("sv_enable_randomizing_dice"))
+                }
+                
+            } // <-- Properly closing Additional Settings Section
         }
         .navigationBarTitle(LocalizedStringKey("sv_settings_title"))
     }

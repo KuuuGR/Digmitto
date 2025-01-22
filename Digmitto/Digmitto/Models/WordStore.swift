@@ -37,6 +37,11 @@ class WordStore: ObservableObject {
             UserDefaults.standard.set(isCheatSheetEnabled, forKey: "isCheatSheetEnabled")
         }
     }
+    @Published var isRandomizeDiceEnabled: Bool = false {
+        didSet {
+            UserDefaults.standard.set(isRandomizeDiceEnabled, forKey: "isRandomizeDiceEnabled")
+        }
+    }
     @Published var totalPoints: Int = 0 {
         didSet {
             checkAchievements() // Check achievements when points change
@@ -220,6 +225,7 @@ class WordStore: ObservableObject {
         defaultColor = UserDefaults.standard.color(forKey: "defaultColor") ?? .white
         majorSystemLetters = UserDefaults.standard.string(forKey: "majorSystemLetters") ?? "sztdnmrljkgfwpbSZTDNMRLJKGFWPB"
         isCheatSheetEnabled = UserDefaults.standard.bool(forKey: "isCheatSheetEnabled")
+        isRandomizeDiceEnabled = UserDefaults.standard.bool(forKey: "isRandomizeDiceEnabled")
     }
 
     // MARK: - Daily Usage

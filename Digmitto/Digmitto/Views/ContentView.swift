@@ -11,6 +11,7 @@ struct ContentView: View {
     @EnvironmentObject var wordStore: WordStore
     @State private var currentWord = ""
     @State private var isCheatSheetVisible = false
+    @State private var isRandomizeDiceVisible = false
 
     var body: some View {
         NavigationView {
@@ -21,7 +22,7 @@ struct ContentView: View {
 
                 Spacer()
 
-                NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: isCheatSheetVisible, wordStore: wordStore)) {
+                NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: isCheatSheetVisible, isRandomizeDiceEnabled: isRandomizeDiceVisible, wordStore: wordStore)) {
                     Text(LocalizedStringKey("cv_start_button"))
                         .font(.headline)
                         .foregroundColor(.white)

@@ -3,6 +3,7 @@ import SwiftUI
 struct TaskView: View {
     @State private var currentWord: String
     var isCheatSheetEnabled: Bool
+    var isRandomizeDiceEnabled: Bool
     @State private var selectedNumbers: [Int]
     @State private var feedback = ""
     @State private var isCheatSheetVisible = false
@@ -47,8 +48,9 @@ struct TaskView: View {
         currentWord.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }
     }
 
-    init(currentWord: String, isCheatSheetEnabled: Bool, wordStore: WordStore) {
+    init(currentWord: String, isCheatSheetEnabled: Bool, isRandomizeDiceEnabled: Bool, wordStore: WordStore) {
         self.isCheatSheetEnabled = isCheatSheetEnabled
+        self.isRandomizeDiceEnabled = isRandomizeDiceEnabled
         if currentWord.isEmpty || currentWord == "No word" {
             self._currentWord = State(initialValue: wordStore.getRandomWord())
         } else {
@@ -73,7 +75,7 @@ struct TaskView: View {
                         }
                         .padding(.top, 20)
                         .frame(maxWidth: .infinity, alignment: .center)
-
+                        
                         // Number Wheel View
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack {
@@ -136,11 +138,11 @@ struct TaskView: View {
                                 .shadow(radius: 5)
                         }
                         .padding()
-
+                        
                         // Feedback Section
                         Text(feedback)
                             .padding()
-
+                        
                         Spacer()
                             .frame(height: isCheatSheetEnabled ? 60 : 10)
                     }
@@ -163,7 +165,7 @@ struct TaskView: View {
                             }
                         }
                     }
-
+                    
                     // Cheat Sheet View and Side Labels
                     if isCheatSheetEnabled {
                         VStack {
@@ -179,7 +181,7 @@ struct TaskView: View {
                                 }
                                 .frame(width: geometry.size.width * 0.6, alignment: .leading)
                                 .padding(.leading, 20)
-
+                                
                                 // Cheat Sheet View
                                 CheatSheetView()
                                     .frame(width: geometry.size.width * 0.3, height: geometry.size.height * 0.2) // Now takes 20% of the screen height
@@ -194,9 +196,34 @@ struct TaskView: View {
                             }
                         }
                     }
+                    
+                    if isRandomizeDiceEnabled {
+                        // Dice Button to Generate Random Word
+                        Spacer() // Pushes the button to the bottom
+                        
+                        Button(action: {
+                            withAnimation {
+                                loadNewWord()
+                            }
+                        }) {
+                            Image(systemName: "die.face.6.fill")
+                                .resizable()
+                                .scaledToFit() // Ensures the image scales proportionally
+                                .frame(width: 40, height: 40) // Adjust this size to fit the button dimensions
+                                .padding(10) // Slight padding for a better look
+                                .background(Color.yellow.opacity(0.9))
+                                .foregroundColor(.white)
+                                .cornerRadius(10) // Matches the button's corner radius
+                                .shadow(radius: 5)
+                        }
+                        .frame(width: 60, height: 60) // The button's overall size
+                        .padding(.bottom, 5)
+                        .opacity(0.8)
+                    }
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
+            
             .onAppear {
                 DispatchQueue.main.async {
                     startSession()

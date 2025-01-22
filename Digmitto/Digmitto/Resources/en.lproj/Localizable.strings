@@ -55,6 +55,9 @@
 
 "sv_settings_title" = "Settings";
 
+"sv_additional_settings" = "Additional Settings";
+"sv_enable_randomizing_dice" = "Enable manual word randomization";
+
 
 //MARK: PointsView
 "pw_title" = "Points";

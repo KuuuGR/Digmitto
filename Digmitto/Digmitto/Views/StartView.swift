@@ -50,7 +50,11 @@ struct StartView: View {
             .padding(.bottom, 20)
 
             // Start Task Button
-            NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: wordStore.isCheatSheetEnabled, wordStore: wordStore)) {
+            NavigationLink(destination: TaskView(currentWord: currentWord,
+                                                 isCheatSheetEnabled: wordStore.isCheatSheetEnabled,
+                                                 isRandomizeDiceEnabled: wordStore.isRandomizeDiceEnabled,
+                                                 wordStore: wordStore
+                                                )) {
                 PastelButton(
                     title: LocalizedStringKey("st_start_task"),
                     colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
