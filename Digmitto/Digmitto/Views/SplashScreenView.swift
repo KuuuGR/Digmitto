@@ -2,7 +2,8 @@ import SwiftUI
 
 struct SplashScreenView: View {
     @State private var isActive = false
-    
+    @State private var logoOpacity: Double = 0.1 // starting opacity
+
     var body: some View {
         if isActive {
             HomeScreenView() // Ensure HomeScreenView is also defined
@@ -10,17 +11,29 @@ struct SplashScreenView: View {
             ZStack {
                 Color.black // Set background color to black
                     .edgesIgnoringSafeArea(.all) // Ensure it covers the entire screen
-                Image("logo") // Ensure you have a logo image in your assets
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200, height: 200)
-                    .opacity(0.7) // Set logo opacity to 70%
-            }
-            .onAppear {
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    withAnimation {
-                        self.isActive = true
-                    }
+                
+                VStack {
+                    Spacer() // Push content to the center vertically
+                    
+                    Image("logo") // Ensure you have a logo image in your assets
+                        .resizable()
+                        .scaledToFit() // Ensure the image keeps its aspect ratio
+                        .frame(maxWidth: .infinity) // Extend to the screen width
+                        .opacity(logoOpacity) // Bind opacity to state variable
+                        .cornerRadius(220) // Round corners
+                        .onAppear {
+                            // Gradually increase the opacity over 2 seconds
+                            withAnimation(.easeIn(duration: 2)) {
+                                logoOpacity = 0.9
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                withAnimation {
+                                    self.isActive = true
+                                }
+                            }
+                        }
+                    
+                    Spacer() // Push content to the center vertically
                 }
             }
         }
