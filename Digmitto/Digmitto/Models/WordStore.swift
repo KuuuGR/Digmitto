@@ -101,10 +101,13 @@ class WordStore: ObservableObject {
     }
     
     func getRandomWord() -> String {
-        guard let languageWords = words[selectedLanguage] else {
-            return "No word"
+        guard let languageWords = words[selectedLanguage], !languageWords.isEmpty else {
+            print("WordStore: No words found for the selected language. Using default.")
+            return "Placeholder"
         }
-        return languageWords.randomElement() ?? "No word"
+        let word = languageWords.randomElement() ?? "Placeholder"
+        print("WordStore: Random word selected = \(word)")
+        return word
     }
     
     func numberForLetter(_ letter: String) -> String {

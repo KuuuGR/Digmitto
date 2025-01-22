@@ -49,9 +49,13 @@ struct TaskView: View {
 
     init(currentWord: String, isCheatSheetEnabled: Bool, wordStore: WordStore) {
         self.isCheatSheetEnabled = isCheatSheetEnabled
-        let importantLettersCount = currentWord.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }.count
-        _currentWord = State(initialValue: currentWord)
-        _selectedNumbers = State(initialValue: Array(repeating: 0, count: importantLettersCount))
+        if currentWord.isEmpty || currentWord == "No word" {
+            self._currentWord = State(initialValue: wordStore.getRandomWord())
+        } else {
+            self._currentWord = State(initialValue: currentWord)
+        }
+        let importantLettersCount = self._currentWord.wrappedValue.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }.count
+        self._selectedNumbers = State(initialValue: Array(repeating: 0, count: importantLettersCount))
     }
 
     var body: some View {
@@ -194,7 +198,9 @@ struct TaskView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
-                startSession()
+                DispatchQueue.main.async {
+                    startSession()
+                }
             }
         }
     }

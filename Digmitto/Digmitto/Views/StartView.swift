@@ -24,7 +24,10 @@ struct StartView: View {
             }
             .padding(.horizontal, 40)
             .simultaneousGesture(TapGesture().onEnded {
-                currentWord = wordStore.getRandomWord()
+                if currentWord.isEmpty || currentWord == "No word" {
+                    currentWord = wordStore.getRandomWord()
+                }
+                print("StartView: currentWord before Navigation = \(currentWord)")
             })
             
             // View Points Button
