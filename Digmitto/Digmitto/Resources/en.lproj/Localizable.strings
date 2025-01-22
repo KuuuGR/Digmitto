@@ -20,6 +20,17 @@
 "st_start_task" = "Start Task";
 "st_view_points" = "View Points";
 "st_manual" = "Manual";
+// StartView Instructions
+"st_how_to_start_title" = "How to Start?";
+"st_instruction_step1" = "1. Memorize letters that correspond to digits.";
+"st_instruction_bullet1" = "• Digit 1 corresponds to 't' or 'd'.";
+"st_instruction_bullet2" = "• Digit 2 corresponds to 'n'... (see manual for more).";
+"st_instruction_step2" = "2. Convert meaningful letters of the given word into a number.";
+"st_instruction_bullet3" = "• Read the random word aloud.";
+"st_instruction_bullet4" = "• Read the resulting number.";
+"st_instruction_bullet5" = "• Check if the answer is correct.";
+"st_instruction_bullet6" = "• If not, correct it and check again.";
+
 
 
 //MARK: SettingsView
@@ -106,7 +117,21 @@
 "ab_example2" = "507 → \"LaSeKa\"";
 "ab_example3" = "999 → \"PaPaPa\"";
 "ab_developer_info" = "Developer Info";
+// AboutView new
+"ab_section_about_app" = "About the App";
+"ab_app_name" = "App: Digmitto";
+"ab_version" = "Version: 1.0.0";
+"ab_developer" = "Developer: Grzegorz Kulesza";
 
+"ab_section_purpose" = "What is the app for?";
+"ab_purpose_major_system" = "• Learn coding in the Major System.";
+"ab_purpose_large_numbers" = "• Learn reading large numbers.";
+"ab_purpose_dates" = "• Learn memorizing historical dates.";
+"ab_purpose_words" = "• Learn quick reading of words.";
+
+"ab_section_support" = "Support";
+"ab_support_developer" = "Support the Developer";
+"ab_navigation_title" = "About the App";
 
 //MARK: WelcomeScreen -> TODO: remove if not needed
 "ws_welcome" = "Welcome to Major Memory System!!";
@@ -118,7 +143,7 @@
 "guide_title" = "Guide Walkthrough";
 "tut_step_0" = "Welcome to the Digmitto app! Here's how to get started.";
 "tut_step_1" = "Step 1: Use the 'Start Task' button to access the main application view.";
-"tut_step_2" = "Step 2: In this view, you will find three key elements: a random word, number wheels to set a value, and a 'Check' button to compare the word with the selected number.";
+"tut_step_2" = "Step 2: In this view, you will find three key elements: \n• a random word, \n• number wheels to set a value, and \n• a 'Check' button to compare the word with the selected number.";
 "tut_step_3" = "Step 3: If the answer is correct, you will see the message 'Correct! 🌟'.";
 "tut_step_4" = "Step 4: For each first-attempt correct answer, you will earn +1 point and a fruit icon.";
 "tut_step_5" = "Step 5: If you press 'Check' but the answer is incorrect, the message 'Try again! ❌' will appear. In this case, correct your answer to proceed to the next word.";
@@ -134,3 +159,9 @@
 "tut_step_15" = "Step 15: This grouping helps you learn to read numbers in units, tens, thousands, millions, etc.";
 "tut_step_16" = "Step 16: The application tracks points for each session and maintains a total cumulative score across all sessions.";
 "tut_step_17" = "Step 17: You can view your points on the main screen or in the 'View Points' section.";
+
+// MARK: SupportDeveloperView
+"sd_support_title" = "Support the Developer";
+"sd_support_message" = "If you like my app and want to support me, I would greatly appreciate it! Even the smallest donation means a lot to me.";
+"sd_support_voluntary" = "Support is completely voluntary. Please only donate if you can afford to. Thank you for any help!";
+"sd_support_button" = "Support Me";

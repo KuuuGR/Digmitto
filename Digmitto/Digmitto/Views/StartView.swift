@@ -5,16 +5,50 @@ struct StartView: View {
     @State private var currentWord: String = ""
 
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 5) {
             // General Action Text
             Text(LocalizedStringKey("st_general"))
                 .font(.largeTitle)
                 .fontWeight(.bold)
-                .padding(.top, 40)
+                .padding(.top, 1)
                 .foregroundColor(.purple.opacity(0.7))
+                .padding(.bottom, 20)
             
-            Spacer()
-            
+            // Instructions Section
+            VStack(alignment: .leading, spacing: 10) {
+                Text(LocalizedStringKey(""))
+                Text(LocalizedStringKey("st_how_to_start_title"))
+                    .font(.headline)
+                    .foregroundColor(.blue)
+
+                Text(LocalizedStringKey("st_instruction_step1"))
+                    .font(.body)
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(LocalizedStringKey("st_instruction_bullet1"))
+                    Text(LocalizedStringKey("st_instruction_bullet2"))
+                }
+                .font(.callout)
+                .foregroundColor(.gray)
+
+                Text(LocalizedStringKey("st_instruction_step2"))
+                    .font(.body)
+
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(LocalizedStringKey("st_instruction_bullet3"))
+                    Text(LocalizedStringKey("st_instruction_bullet4"))
+                    Text(LocalizedStringKey("st_instruction_bullet5"))
+                    Text(LocalizedStringKey("st_instruction_bullet6"))
+                    Text(LocalizedStringKey(""))
+                }
+                .font(.callout)
+                .foregroundColor(.gray)
+            }
+            .padding(.horizontal, 20)
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(10)
+            .padding(.bottom, 20)
+
             // Start Task Button
             NavigationLink(destination: TaskView(currentWord: currentWord, isCheatSheetEnabled: wordStore.isCheatSheetEnabled, wordStore: wordStore)) {
                 PastelButton(
@@ -69,10 +103,3 @@ struct PastelButton: View {
             .shadow(radius: 5)
     }
 }
-
-//struct StartView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        StartView()
-//            .environmentObject(WordStore())
-//    }
-//}
