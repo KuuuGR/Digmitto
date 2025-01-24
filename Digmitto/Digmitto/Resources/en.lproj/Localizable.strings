@@ -19,7 +19,7 @@
 "st_general" = "Choose Your Action";
 "st_start_task" = "Start Task";
 "st_view_points" = "View Points";
-"st_manual" = "Manual";
+"st_manuals" = "Manuals";
 // StartView Instructions
 "st_how_to_start_title" = "How to Start?";
 "st_instruction_step1" = "1. Memorize letters that correspond to digits.";
@@ -32,6 +32,11 @@
 "st_instruction_bullet6" = "• If not, correct it and check again.";
 
 
+//MARK: ManualsView
+"mn_general" = "How can I help you?";
+"mn_major_numbers" = "Major numbers asociation";
+"mn_app_manual" = "Overall APP Manual";
+"mn_numbers_mnemotechnics" = "easier association remember";
 
 //MARK: SettingsView
 "sv_general_settings" = "General Settings";

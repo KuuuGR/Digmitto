@@ -8,14 +8,31 @@
 //MARK: TaskScreenView
 "ts_screen_title" = "Ekran zadania";
 "ts_back_button" = "Wróć";
-"ts_user_input_placeholder" = "Wprowadź swoją odpowiedź tutaj";
+"ts_user_input_placeholder" = "Wpisz odpowiedź tutaj";
 "ts_code_button" = "Kod";
 
 //MARK: StartView
 "st_general" = "Wybierz swoją akcję";
 "st_start_task" = "Rozpocznij zadanie";
 "st_view_points" = "Zobacz punkty";
-"st_manual" = "Instrukcja";
+"st_manuals" = "Instrukcje";
+
+// Instrukcje StartView
+"st_how_to_start_title" = "Jak zacząć?";
+"st_instruction_step1" = "1. Zapamiętaj litery odpowiadające cyfrom.";
+"st_instruction_bullet1" = "• Cyfra 1 odpowiada 't' lub 'd'.";
+"st_instruction_bullet2" = "• Cyfra 2 odpowiada 'n'... (więcej w instrukcji)";
+"st_instruction_step2" = "2. Zamień znaczące litery z podanego wyrazu na liczbę.";
+"st_instruction_bullet3" = "• Przeczytaj wylosowany wyraz na głos.";
+"st_instruction_bullet4" = "• Przeczytaj otrzymaną liczbę.";
+"st_instruction_bullet5" = "• Sprawdź, czy odpowiedź jest poprawna.";
+"st_instruction_bullet6" = "• Jeśli nie, popraw ją i sprawdź ponownie.";
+
+//MARK: ManualsView
+"mn_general" = "Jak mogę Ci pomóc?";
+"mn_major_numbers" = "System Major — przypisanie cyfr";
+"mn_app_manual" = "Podręcznik aplikacji";
+"mn_numbers_mnemotechnics" = "Łatwe zapamiętywanie liczb";
 
 //MARK: SettingsView
 "sv_general_settings" = "Ustawienia ogólne";
@@ -39,23 +56,23 @@
 
 "sv_settings_title" = "Ustawienia";
 
+"sv_additional_settings" = "Dodatkowe ustawienia";
+"sv_enable_randomizing_dice" = "Włącz ręczne losowanie słowa";
+
 //MARK: PointsView
-"pw_title" = "Points";
-"pw_total" = "Total Points";
+"pw_title" = "Punkty";
+"pw_total" = "Łączna liczba punktów";
+"pw_achievements" = "Osiągnięcia";
 
-
-//MARK: Achievements Descriptions
-"pw_achievements" = "Achievements";
-"ach_description_0" = "Champion: Reach 500 points.";
-"ach_description_1" = "First Steps: Complete your first task.";
-"ach_description_2" = "Memory Master: Reach 100 points.";
-"ach_description_3" = "Speed Demon: Solve 10 tasks in under a minute.";
-"ach_description_4" = "Perfect Session: Complete a session without mistakes.";
-"ach_description_5" = "Consistent Learner: Use the app daily for a week.";
-"ach_description_6" = "Fruit Collector: Collect all fruit icons.";
-"ach_description_7" = "Grocery Seller: Collect all fruits in a single session.";
-
-
+// Opisy Osiągnięć
+"ach_description_0" = "Mistrz: Zdobądź 500 punktów.";
+"ach_description_1" = "Pierwsze kroki: Ukończ pierwsze zadanie.";
+"ach_description_2" = "Mistrz pamięci: Zdobądź 100 punktów.";
+"ach_description_3" = "Demon prędkości: Rozwiąż 10 zadań w mniej niż minutę.";
+"ach_description_4" = "Perfekcyjna sesja: Ukończ sesję bez błędów.";
+"ach_description_5" = "Systematyczny uczeń: Używaj aplikacji codziennie przez tydzień.";
+"ach_description_6" = "Kolekcjoner owoców: Zbierz wszystkie ikony owoców.";
+"ach_description_7" = "Sprzedawca owoców: Zbierz wszystkie owoce w jednej sesji.";
 
 //MARK: HomeScreenView
 "hs_welcome" = "Witamy w systemie pamięci Major";
@@ -126,3 +143,8 @@
 "tut_step_15" = "Krok 15: To grupowanie pomaga nauczyć się odczytywać liczby w jednostkach, dziesiątkach, tysiącach, milionach itd.";
 "tut_step_16" = "Krok 16: Aplikacja śledzi punkty dla każdej sesji i utrzymuje całkowitą sumę punktów we wszystkich sesjach.";
 "tut_step_17" = "Krok 17: Możesz zobaczyć swoje punkty na głównym ekranie lub w sekcji 'Wyświetl punkty'.";
+//MARK: SupportDeveloperView
+"sd_support_title" = "Wesprzyj twórcę";
+"sd_support_message" = "Jeśli podoba Ci się moja aplikacja i chcesz mnie wesprzeć, będę bardzo wdzięczny! Nawet najmniejsza wpłata wiele dla mnie znaczy.";
+"sd_support_voluntary" = "Wsparcie jest całkowicie dobrowolne. Proszę, wpłacaj tylko wtedy, gdy możesz sobie na to pozwolić. Dziękuję za każdą pomoc!";
+"sd_support_button" = "Wesprzyj mnie";

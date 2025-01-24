@@ -1,9 +1,3 @@
-"app_name" = "Digmitto";
-"start_button" = "INICIAR";
-"welcome_message" = "Bienvenido a Digmitto";
-"settings_title" = "Configuración";
-"guide_title" = "Guía";
-
 "tut_step_0" = "¡Bienvenido a la aplicación Digmitto! Aquí tienes cómo empezar.";
 "tut_step_1" = "Paso 1: Usa el botón 'Iniciar tarea' para acceder a la vista principal de la aplicación.";
 "tut_step_2" = "Paso 2: En esta vista, encontrarás tres elementos clave: una palabra aleatoria, ruedas para establecer valores numéricos y un botón 'Comprobar' para comparar la palabra con el número seleccionado.";
@@ -22,3 +16,106 @@
 "tut_step_15" = "Paso 15: Este agrupamiento te ayuda a aprender a leer números en unidades, decenas, miles, millones, etc.";
 "tut_step_16" = "Paso 16: La aplicación rastrea los puntos para cada sesión y mantiene un puntaje total acumulativo de todas las sesiones.";
 "tut_step_17" = "Paso 17: Puedes ver tus puntos en la pantalla principal o en la sección 'Ver puntos'.";
+//MARK: TaskView
+"tv_check_button" = "Verificar";
+"tv_feedback_correct" = "¡Correcto! 🌟";
+"tv_feedback_incorrect" = "¡Inténtalo de nuevo! ❌\n\nLetras: %@\nRuedas: %@";
+"tv_points" = "Puntos: %d";
+"tv_fruits" = "Frutas: %@";
+
+//MARK: TaskScreenView
+"ts_screen_title" = "Pantalla de Tareas";
+"ts_back_button" = "Atrás";
+"ts_user_input_placeholder" = "Introduce tu respuesta aquí";
+"ts_code_button" = "Código";
+
+//MARK: StartView
+"st_general" = "Elige tu acción";
+"st_start_task" = "Iniciar tarea";
+"st_view_points" = "Ver puntos";
+"st_manuals" = "Manuales";
+
+// Instrucciones StartView
+"st_how_to_start_title" = "¿Cómo empezar?";
+"st_instruction_step1" = "1. Memoriza las letras que corresponden a los dígitos.";
+"st_instruction_bullet1" = "• El dígito 1 corresponde a 't' o 'd'.";
+"st_instruction_bullet2" = "• El dígito 2 corresponde a 'n'... (ver manual para más detalles).";
+"st_instruction_step2" = "2. Convierte las letras significativas de la palabra dada en un número.";
+"st_instruction_bullet3" = "• Lee la palabra aleatoria en voz alta.";
+"st_instruction_bullet4" = "• Lee el número resultante.";
+"st_instruction_bullet5" = "• Verifica si la respuesta es correcta.";
+"st_instruction_bullet6" = "• Si no es correcta, corrígela y verifica de nuevo.";
+
+//MARK: ManualsView
+"mn_general" = "¿En qué puedo ayudarte?";
+"mn_major_numbers" = "Sistema Mayor — Asociación de números";
+"mn_app_manual" = "Manual general de la app";
+"mn_numbers_mnemotechnics" = "Técnicas de memoria para números";
+
+//MARK: SettingsView
+"sv_general_settings" = "Configuración General";
+"sv_enable_cheat_sheet" = "Activar guía rápida";
+"sv_language" = "Idioma";
+"sv_language_english" = "Inglés";
+"sv_language_polish" = "Polaco";
+"sv_language_spanish" = "Español";
+
+"sv_colorization_settings" = "Configuración de colores";
+"sv_enable_colorization" = "Activar colores";
+"sv_primary_color" = "Color principal";
+"sv_secondary_color" = "Color secundario";
+
+"sv_default_color_settings" = "Configuración de color predeterminada";
+"sv_default_color" = "Color predeterminado";
+
+"sv_major_system_letters" = "Letras del Sistema Mayor";
+"sv_major_letters" = "Letras Mayor";
+"sv_enter_letters" = "Introduce letras";
+
+"sv_settings_title" = "Configuraciones";
+
+"sv_additional_settings" = "Configuraciones adicionales";
+"sv_enable_randomizing_dice" = "Habilitar generación manual de palabras";
+
+//MARK: PointsView
+"pw_title" = "Puntos";
+"pw_total" = "Puntos Totales";
+"pw_achievements" = "Logros";
+
+// Descripciones de logros
+"ach_description_0" = "Campeón: Alcanza 500 puntos.";
+"ach_description_1" = "Primeros pasos: Completa tu primera tarea.";
+"ach_description_2" = "Maestro de Memoria: Alcanza 100 puntos.";
+"ach_description_3" = "Demonio de la velocidad: Resuelve 10 tareas en menos de un minuto.";
+"ach_description_4" = "Sesión perfecta: Completa una sesión sin errores.";
+"ach_description_5" = "Estudiante constante: Usa la app diariamente durante una semana.";
+"ach_description_6" = "Recolector de frutas: Recoge todos los iconos de frutas.";
+"ach_description_7" = "Vendedor de frutas: Recoge todas las frutas en una sola sesión.";
+
+//MARK: HomeScreenView
+"hs_welcome" = "Bienvenido al Sistema de Memoria Mayor";
+"hs_start_button" = "Inicio";
+"hs_settings_button" = "Configuraciones";
+"hs_about_button" = "Acerca de";
+"hs_total_points_format" = "Puntos totales: %d";
+
+//MARK: DeveloperView
+"dv_developer_info" = "Información del desarrollador";
+"dv_navigation_title" = "Desarrollador";
+"dv_about_developer" = "Sobre el desarrollador";
+"dv_created_by" = "Creado por Grzegorz Kulesza";
+"dv_contact_info" = "Contacto: your_email@example.com";
+
+"dv_future_updates" = "Próximas actualizaciones";
+"dv_planned_features" = "Características planificadas:";
+"dv_feature_multilanguage" = "• Soporte para varios idiomas";
+"dv_feature_wordlists" = "• Listas de palabras personalizadas";
+"dv_feature_progress_tracking" = "• Seguimiento de progreso";
+"dv_feature_practice_modes" = "• Modos avanzados de práctica";
+"dv_feature_cloud_sync" = "• Sincronización en la nube";
+
+//MARK: SupportDeveloperView
+"sd_support_title" = "Apoya al desarrollador";
+"sd_support_message" = "Si te gusta mi aplicación y deseas apoyarme, ¡te lo agradeceré mucho! Incluso la donación más pequeña significa mucho para mí.";
+"sd_support_voluntary" = "El apoyo es completamente voluntario. Por favor, dona solo si puedes permitírtelo. ¡Gracias por cualquier ayuda!";
+"sd_support_button" = "Apóyame";

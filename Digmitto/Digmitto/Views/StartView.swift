@@ -78,9 +78,9 @@ struct StartView: View {
             .padding(.horizontal, 40)
             
             // Manual Button
-            NavigationLink(destination: GuideWalkthroughView()) {
+            NavigationLink(destination: ManualsView()) {
                 PastelButton(
-                    title: LocalizedStringKey("st_manual"),
+                    title: LocalizedStringKey("st_manuals"),
                     colors: [Color.yellow.opacity(0.6), Color.cyan.opacity(0.6)]
                 )
             }
