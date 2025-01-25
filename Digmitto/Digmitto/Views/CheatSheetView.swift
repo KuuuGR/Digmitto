@@ -38,9 +38,9 @@ struct CheatSheetView: View {
     }
 }
 
-struct CheatSheetView_Previews: PreviewProvider {
-    static var previews: some View {
-        CheatSheetView()
-            .frame(width: 300, height: 150) // Reduced frame for preview
-    }
-}
+//struct CheatSheetView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CheatSheetView()
+//            .frame(width: 300, height: 150) // Reduced frame for preview
+//    }
+//}

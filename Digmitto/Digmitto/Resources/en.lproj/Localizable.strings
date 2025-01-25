@@ -86,28 +86,6 @@
 "hs_total_points_format" = "Total Points: %d";
 
 
-//MARK: DeveloperView
-"dv_developer_info" = "Developer Info";
-"dv_navigation_title" = "Developer";
-"dv_about_developer" = "About Developer";
-"dv_created_by" = "Created by Grzegorz Kulesza";
-"dv_contact_info" = "Contact: your_email@example.com";
-
-"dv_future_updates" = "Future Updates";
-"dv_planned_features" = "Planned features:";
-"dv_feature_multilanguage" = "• Multiple language support";
-"dv_feature_wordlists" = "• Custom word lists";
-"dv_feature_progress_tracking" = "• Progress tracking";
-"dv_feature_practice_modes" = "• Advanced practice modes";
-"dv_feature_cloud_sync" = "• Cloud synchronization";
-
-
-//MARK: ContentView
-"cv_welcome_message" = "Welcome to Digmitto";
-"cv_start_button" = "START";
-"cv_show_cheat_sheet" = "Show Cheat Sheet";
-
-
 //MARK: CheeatSheetView
 "cs_title" = "📜 Major System Cheat Sheet 📜";
 
