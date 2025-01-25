@@ -168,6 +168,19 @@
 "tut_step_16" = "Step 16: The application tracks points for each session and maintains a total cumulative score across all sessions.";
 "tut_step_17" = "Step 17: You can view your points on the main screen or in the 'View Points' section.";
 
+// MARK: MajorMemoView
+"mnm_step_0" = "Easier memorization is possible with the help of mnemonic techniques. The best mnemonics are the ones you create yourself, but here are some suggestions in case you find it hard to come up with your own.";
+"mnm_step_1" = "0 - S, Z: Imagine two snakes – one shaped like the letter S, the other like the letter Z – fighting over a donut that looks like the number 0.";
+"mnm_step_2" = "1 - T, D: Picture a door in the shape of the letter D that leads to room number 1. The door handle looks like the letter T – a mysterious door indeed.";
+"mnm_step_3" = "2 - N: The letter N touches the line it’s written on in two places, as if it has two little legs.";
+"mnm_step_4" = "3 - M: The letter M touches the line in three places, which sets it apart from the previous letters.";
+"mnm_step_5" = "4 - R: The letter R can be heard clearly in the word 'four'. You can also imagine a four-leaf clover with an R in the center.";
+"mnm_step_6" = "5 - L: In Roman numerals, the letter L represents 50, but we associate it with 5, which is easier to remember.";
+"mnm_step_7" = "6 - J: To connect the number 6 with the letter J, picture a snail that looks like the number 6, with the letter J serving as the handle of an umbrella.";
+"mnm_step_8" = "7 - K, G: Seven is a big number, and it’s easy to associate it with a 7-kilogram weight. The abbreviation 'kg' contains the letters K and G.";
+"mnm_step_9" = "8 - W, F: Imagine a snowman shaped like the number 8, who has access to Wi-Fi. The letters W and F are the ones we care about.";
+"mnm_step_10" = "9 - P, B: Picture lead – the chemical element with the symbol Pb. Lead is very heavy, which makes it easy to associate with the largest single-digit number, 9.";
+
 // MARK: SupportDeveloperView
 "sd_support_title" = "Support the Developer";
 "sd_support_message" = "If you like my app and want to support me, I would greatly appreciate it! Even the smallest donation means a lot to me.";

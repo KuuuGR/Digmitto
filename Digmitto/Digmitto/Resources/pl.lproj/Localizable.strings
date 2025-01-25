@@ -143,6 +143,21 @@
 "tut_step_15" = "Krok 15: To grupowanie pomaga nauczyć się odczytywać liczby w jednostkach, dziesiątkach, tysiącach, milionach itd.";
 "tut_step_16" = "Krok 16: Aplikacja śledzi punkty dla każdej sesji i utrzymuje całkowitą sumę punktów we wszystkich sesjach.";
 "tut_step_17" = "Krok 17: Możesz zobaczyć swoje punkty na głównym ekranie lub w sekcji 'Wyświetl punkty'.";
+
+// MARK: MajorMemoView
+// MARK: MajorMemoView
+"mnm_step_0" = "Łatwiejsze zapamiętywanie jest możliwe dzięki mnemotechnikom. Najlepsze mnemotechniki to te wymyślone samodzielnie, jednak tutaj służę podpowiedziami, gdyby nie przychodziły Ci one zbyt łatwo do głowy.";
+"mnm_step_1" = "0 - S, Z: Można wyobrazić sobie dwa węże – jeden przypominający literę S, drugi literę Z – które walczą o pączka wyglądającego jak cyfra 0.";
+"mnm_step_2" = "1 - T, D: Wyobraź sobie drzwi w kształcie litery D, które prowadzą do pokoju nr 1. Klamka tych drzwi przypomina literę T – takie tajemnicze drzwi.";
+"mnm_step_3" = "2 - N: Litera N dotyka w dwóch miejscach linii, na której jest napisana, jakby miała dwie nóżki.";
+"mnm_step_4" = "3 - M: Litera M dotyka w trzech miejscach linii, co odróżnia ją od wcześniejszych liter.";
+"mnm_step_5" = "4 - R: Litera R wyraźnie słychać w słowie 'cztery'. Można też wyobrazić sobie czterolistną koniczynę z literą R na środku.";
+"mnm_step_6" = "5 - L: Litera L w systemie rzymskim oznacza liczbę 50, ale my skupiamy się na cyfrze 5, która łatwo kojarzy się z literą L.";
+"mnm_step_7" = "6 - J: Aby skojarzyć cyfrę 6 z literą J, wyobraź sobie ślimaka, który wygląda jak cyfra 6, z literą J przypominającą rączkę od parasolki.";
+"mnm_step_8" = "7 - K, G: Siedem to duża cyfra, którą można łatwo skojarzyć z 7-kilogramowym ciężarkiem. Skrót 'kg' zawiera litery K i G.";
+"mnm_step_9" = "8 - W, F: Wyobraź sobie bałwana przypominającego cyfrę 8, który korzysta z Wi-Fi – a więc interesują nas litery W i F.";
+"mnm_step_10" = "9 - P, B: Wyobraź sobie ołów – chemiczny pierwiastek o symbolu Pb. Ołów jest bardzo ciężki, dlatego kojarzymy go z największą cyfrą, czyli 9.";
+
 //MARK: SupportDeveloperView
 "sd_support_title" = "Wesprzyj twórcę";
 "sd_support_message" = "Jeśli podoba Ci się moja aplikacja i chcesz mnie wesprzeć, będę bardzo wdzięczny! Nawet najmniejsza wpłata wiele dla mnie znaczy.";

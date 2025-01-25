@@ -21,7 +21,7 @@ struct ManualsView: View {
             Spacer()
         
             // Start Task Button
-            NavigationLink(destination: GuideWalkthroughView()) {
+            NavigationLink(destination: MajorAsociationView()) {
                 PastelButton(
                     title: LocalizedStringKey("mn_major_numbers"),
                     colors: [Color.softMauve.opacity(0.6), Color.paleLavender.opacity(0.6)]
@@ -39,7 +39,7 @@ struct ManualsView: View {
             .padding(.horizontal, 40)
             
             // Manual Button
-            NavigationLink(destination: GuideWalkthroughView()) {
+            NavigationLink(destination: MajorMnemoView()) {
                 PastelButton(
                     title: LocalizedStringKey("mn_numbers_mnemotechnics"),
                     colors: [Color.lightBlue.opacity(0.6), Color.paleLavender.opacity(0.6)]
