@@ -9,24 +9,16 @@ import SwiftUI
 
 struct MajorAsociationView: View {
     let steps: [GuideStep] = [
-        GuideStep(text: LocalizedStringKey("tut_step_0"), imageName: "tut_step_0", isImageOnLeft: true),
-        GuideStep(text: LocalizedStringKey("tut_step_1"), imageName: "tut_step_1", isImageOnLeft: false),
-        GuideStep(text: LocalizedStringKey("tut_step_2"), imageName: "tut_step_2", isImageOnLeft: true),
-        GuideStep(text: LocalizedStringKey("tut_step_3"), imageName: "tut_step_3", isImageOnLeft: false),
-        GuideStep(text: LocalizedStringKey("tut_step_4"), imageName: "tut_step_4", isImageOnLeft: true),
-        GuideStep(text: LocalizedStringKey("tut_step_5"), imageName: "tut_step_5", isImageOnLeft: false),
-        GuideStep(text: LocalizedStringKey("tut_step_6"), imageName: "tut_step_6", isImageOnLeft: true),
-        GuideStep(text: LocalizedStringKey("tut_step_7"), imageName: "tut_step_7", isImageOnLeft: false),
-        GuideStep(text: LocalizedStringKey("tut_step_8"), imageName: "tut_step_8", isImageOnLeft: true),
-        GuideStep(text: LocalizedStringKey("tut_step_9"), imageName: "tut_step_9", isImageOnLeft: false),
-        GuideStep(text: LocalizedStringKey("tut_step_10"), imageName: "tut_step_10", isImageOnLeft: true),
-        GuideStep(text: LocalizedStringKey("tut_step_11"), imageName: "tut_step_11", isImageOnLeft: false),
-        GuideStep(text: LocalizedStringKey("tut_step_12"), imageName: "tut_step_12", isImageOnLeft: true),
-        GuideStep(text: LocalizedStringKey("tut_step_13"), imageName: "tut_step_13", isImageOnLeft: false),
-        GuideStep(text: LocalizedStringKey("tut_step_14"), imageName: "tut_step_14", isImageOnLeft: true),
-        GuideStep(text: LocalizedStringKey("tut_step_15"), imageName: "tut_step_15", isImageOnLeft: false),
-        GuideStep(text: LocalizedStringKey("tut_step_16"), imageName: "tut_step_16", isImageOnLeft: true),
-        GuideStep(text: LocalizedStringKey("tut_step_17"), imageName: "tut_step_17", isImageOnLeft: false),
+        GuideStep(text: LocalizedStringKey("ma_step_0"), imageName: "ma_step_0", isImageOnLeft: true),
+        GuideStep(text: LocalizedStringKey("ma_step_1"), imageName: "ma_step_1", isImageOnLeft: false),
+        GuideStep(text: LocalizedStringKey("ma_step_2"), imageName: "ma_step_2", isImageOnLeft: true),
+        GuideStep(text: LocalizedStringKey("ma_step_3"), imageName: "ma_step_3", isImageOnLeft: false),
+        GuideStep(text: LocalizedStringKey("ma_step_4"), imageName: "ma_step_4", isImageOnLeft: true),
+        GuideStep(text: LocalizedStringKey("ma_step_5"), imageName: "ma_step_5", isImageOnLeft: false),
+        GuideStep(text: LocalizedStringKey("ma_step_6"), imageName: "ma_step_6", isImageOnLeft: true),
+        GuideStep(text: LocalizedStringKey("ma_step_7"), imageName: "ma_step_7", isImageOnLeft: false),
+        GuideStep(text: LocalizedStringKey("ma_step_8"), imageName: "ma_step_8", isImageOnLeft: true),
+        GuideStep(text: LocalizedStringKey("ma_step_9"), imageName: "ma_step_9", isImageOnLeft: false),
     ]
     
     // Configurable border properties
@@ -36,13 +28,13 @@ struct MajorAsociationView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
+            VStack(spacing: 5) {
                 ForEach(steps) { step in
-                    HStack(spacing: 20) {
+                    HStack(spacing: 5) {
                         if step.isImageOnLeft {
                             styledImage(name: step.imageName)
                                 .scaledToFit()
-                                .frame(width: 100, height: 100)
+                                .frame(width: 20, height: 20)
                             Text(step.text)
                                 .font(.body)
                                 .multilineTextAlignment(.leading)
@@ -52,7 +44,7 @@ struct MajorAsociationView: View {
                                 .multilineTextAlignment(.leading)
                             styledImage(name: step.imageName)
                                 .scaledToFit()
-                                .frame(width: 100, height: 100)
+                                .frame(width: 20, height: 20)
                         }
                     }
                     .padding()
@@ -60,7 +52,7 @@ struct MajorAsociationView: View {
             }
             .padding()
         }
-        .navigationTitle(LocalizedStringKey("guide_title"))
+        .navigationTitle(LocalizedStringKey("ma_title"))
     }
     
     // Helper function to style images
@@ -69,8 +61,9 @@ struct MajorAsociationView: View {
         Image(name)
             .resizable()
             .scaledToFit()
-            .frame(width: 100, height: 100)
-            .background(Color.clear) // Add a background color if needed
+            .frame(width: 20, height: 20)
+            //.background(Color.clear) // Add a background color if needed
+            .background(Color.green)
             .cornerRadius(cornerRadius)
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius)

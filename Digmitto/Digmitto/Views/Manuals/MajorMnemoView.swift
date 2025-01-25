@@ -53,7 +53,7 @@ struct MajorMnemoView: View {
             }
             .padding()
         }
-        .navigationTitle(LocalizedStringKey("guide_title"))
+        .navigationTitle(LocalizedStringKey("mnm_title"))
     }
     
     // Helper function to style images

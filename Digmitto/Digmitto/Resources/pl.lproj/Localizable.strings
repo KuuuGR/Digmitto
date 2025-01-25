@@ -123,6 +123,20 @@
 "ws_description" = "Popraw swoje umiejętności pamięciowe dzięki naszym interaktywnym i angażującym ćwiczeniom.";
 "ws_start" = "Rozpocznij";
 
+//MARK: MajorAsociationView
+"ma_title" = "Przypisanie cyfr do liter";
+"ma_step_0" = "O - S,Z";
+"ma_step_1" = "1 - T,D";
+"ma_step_2" = "2 - N";
+"ma_step_3" = "3 - M";
+"ma_step_4" = "4 - R";
+"ma_step_5" = "5 - L";
+"ma_step_6" = "6 - J";
+"ma_step_7" = "7 - K,G";
+"ma_step_8" = "8 - W,F";
+"ma_step_9" = "9 - P,B";
+
+
 //MARK: GuideWalkthroughView
 "guide_title" = "Przewodnik";
 "tut_step_0" = "Witamy w aplikacji Digmitto! Oto jak zacząć.";
@@ -145,7 +159,7 @@
 "tut_step_17" = "Krok 17: Możesz zobaczyć swoje punkty na głównym ekranie lub w sekcji 'Wyświetl punkty'.";
 
 // MARK: MajorMemoView
-// MARK: MajorMemoView
+"mnm_title" = "Łatwiejsze zapamiętywanie";
 "mnm_step_0" = "Łatwiejsze zapamiętywanie jest możliwe dzięki mnemotechnikom. Najlepsze mnemotechniki to te wymyślone samodzielnie, jednak tutaj służę podpowiedziami, gdyby nie przychodziły Ci one zbyt łatwo do głowy.";
 "mnm_step_1" = "0 - S, Z: Można wyobrazić sobie dwa węże – jeden przypominający literę S, drugi literę Z – które walczą o pączka wyglądającego jak cyfra 0.";
 "mnm_step_2" = "1 - T, D: Wyobraź sobie drzwi w kształcie litery D, które prowadzą do pokoju nr 1. Klamka tych drzwi przypomina literę T – takie tajemnicze drzwi.";

@@ -147,6 +147,20 @@
 "ws_start" = "Get Started";
 
 
+//MARK: MajorAsociationView
+"ma_title" = "Digits-to-letters association";
+"ma_step_0" = "O - S,Z";
+"ma_step_1" = "1 - T,D";
+"ma_step_2" = "2 - N";
+"ma_step_3" = "3 - M";
+"ma_step_4" = "4 - R";
+"ma_step_5" = "5 - L";
+"ma_step_6" = "6 - J";
+"ma_step_7" = "7 - K,G";
+"ma_step_8" = "8 - W,F";
+"ma_step_9" = "9 - P,B";
+
+
 //MARK: GuideWalkthroughView
 "guide_title" = "Guide Walkthrough";
 "tut_step_0" = "Welcome to the Digmitto app! Here's how to get started.";
@@ -169,6 +183,7 @@
 "tut_step_17" = "Step 17: You can view your points on the main screen or in the 'View Points' section.";
 
 // MARK: MajorMemoView
+"mnm_title" = "Easier memorization";
 "mnm_step_0" = "Easier memorization is possible with the help of mnemonic techniques. The best mnemonics are the ones you create yourself, but here are some suggestions in case you find it hard to come up with your own.";
 "mnm_step_1" = "0 - S, Z: Imagine two snakes – one shaped like the letter S, the other like the letter Z – fighting over a donut that looks like the number 0.";
 "mnm_step_2" = "1 - T, D: Picture a door in the shape of the letter D that leads to room number 1. The door handle looks like the letter T – a mysterious door indeed.";
