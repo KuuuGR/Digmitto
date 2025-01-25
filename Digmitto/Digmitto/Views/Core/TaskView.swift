@@ -14,21 +14,6 @@ struct TaskView: View {
     @State private var buttonColors: [Color] = [Color.red.opacity(0.6), Color.orange.opacity(0.6)] // Initial gradient colors
     @EnvironmentObject var wordStore: WordStore
     
-    // Predefined dense pastel gradients with intermediate steps
-    let densePastelGradients: [[Color]] = [
-        [Color.red.opacity(0.6), Color.lightRed.opacity(0.6)],      // Red to Light Red
-        [Color.lightRed.opacity(0.6), Color.orange.opacity(0.6)],   // Light Red to Orange
-        [Color.orange.opacity(0.6), Color.lightOrange.opacity(0.6)],// Orange to Light Orange
-        [Color.lightOrange.opacity(0.6), Color.yellow.opacity(0.6)],// Light Orange to Yellow
-        [Color.yellow.opacity(0.6), Color.lightYellow.opacity(0.6)],// Yellow to Light Yellow
-        [Color.lightYellow.opacity(0.6), Color.green.opacity(0.6)], // Light Yellow to Green
-        [Color.green.opacity(0.6), Color.lightGreen.opacity(0.6)],  // Green to Light Green
-        [Color.lightGreen.opacity(0.6), Color.blue.opacity(0.6)],   // Light Green to Blue
-        [Color.blue.opacity(0.6), Color.lightBlue.opacity(0.6)],    // Blue to Light Blue
-        [Color.lightBlue.opacity(0.6), Color.purple.opacity(0.6)],  // Light Blue to Purple
-        [Color.purple.opacity(0.6), Color.lightPurple.opacity(0.6)],// Purple to Light Purple
-        [Color.lightPurple.opacity(0.6), Color.red.opacity(0.6)]    // Light Purple to Red
-    ]
 
 
     private var wheelColors: [Color] {
@@ -289,13 +274,3 @@ struct TaskView: View {
             }
         }
     }
-
-// Helper extension for lighter colors
-extension Color {
-    static var lightRed: Color { Color.red.opacity(0.8) }
-    static var lightOrange: Color { Color.orange.opacity(0.8) }
-    static var lightYellow: Color { Color.yellow.opacity(0.8) }
-    static var lightGreen: Color { Color.green.opacity(0.8) }
-    static var lightBlue: Color { Color.blue.opacity(0.8) }
-    static var lightPurple: Color { Color.purple.opacity(0.8) }
-}
