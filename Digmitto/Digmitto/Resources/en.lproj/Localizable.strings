@@ -8,13 +8,6 @@
 "tv_fruits" = "Fruits: %@";
 
 
-//MARK: TaskScreenView
-"ts_screen_title" = "Task Screen";
-"ts_back_button" = "Back";
-"ts_user_input_placeholder" = "Enter your input here";
-"ts_code_button" = "Code";
-
-
 //MARK: StartView
 "st_general" = "Choose Your Action";
 "st_start_task" = "Start Task";
@@ -118,11 +111,6 @@
 "ab_section_support" = "Support";
 "ab_support_developer" = "Support the Developer 🫶";
 "ab_navigation_title" = "About the App";
-
-//MARK: WelcomeScreen -> TODO: remove if not needed
-"ws_welcome" = "Welcome to Major Memory System!!";
-"ws_description" = "Enhance your memory skills with our interactive and engaging exercises.";
-"ws_start" = "Get Started";
 
 
 //MARK: MajorAsociationView
