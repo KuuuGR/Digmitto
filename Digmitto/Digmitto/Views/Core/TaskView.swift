@@ -10,7 +10,7 @@ struct TaskView: View {
     @State private var fruitEmojis: [String] = []
     @State private var attempts = 0
     @State private var buttonGradientIndex: Int = 0
-    @State private var buttonColors: [Color] = [Color.red.opacity(0.6), Color.orange.opacity(0.6)]
+    @State private var buttonColors: [Color] = ColorManager.buttonGradient(for: 0)
     @EnvironmentObject var wordStore: WordStore
 
     init(currentWord: String, isCheatSheetEnabled: Bool, isRandomizeDiceEnabled: Bool, wordStore: WordStore) {
@@ -35,7 +35,7 @@ struct TaskView: View {
                 NumberWheelScrollView(
                     wordLength: selectedNumbers.count,
                     selectedNumbers: $selectedNumbers,
-                    wheelColors: calculateWheelColors()
+                    wheelColors: ColorManager.generateWheelColors(for: selectedNumbers.count) // Matches the updated initializer
                 )
                 .frame(height: 150) // Ensure fixed height for the wheel area
 
@@ -53,6 +53,7 @@ struct TaskView: View {
                     loadNewWord: {
                         withAnimation {
                             loadNewWord()
+                            updateButtonColors()
                         }
                     }
                 )
@@ -62,7 +63,7 @@ struct TaskView: View {
 
                 // Cheat Sheet or Side Labels
                 if isCheatSheetEnabled {
-                    CheatSheetAndLabelsView(points: points, fruitEmojis: fruitEmojis, geometry: geometry) // Provide the geometry object here
+                    CheatSheetAndLabelsView(points: points, fruitEmojis: fruitEmojis, geometry: geometry)
                 } else {
                     PointsAndFruitsView(points: points, fruitEmojis: fruitEmojis)
                 }
@@ -75,7 +76,7 @@ struct TaskView: View {
                 }
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure the entire view is static
-            .background(Color(UIColor.systemBackground)) // Optional: Set a background color
+            .background(ColorManager.systemBackground) // Centralized background color
             .onAppear {
                 DispatchQueue.main.async {
                     startSession()
@@ -96,21 +97,9 @@ struct TaskView: View {
         print("Session started at \(wordStore.sessionStartTime!)")
     }
 
-    private func calculateWheelColors() -> [Color] {
-        let baseColors: [Color] = [.blue, .red, .green, .orange, .purple, .pink]
-        let importantLettersCount = importantLetters.count
-        var colors: [Color] = []
-        
-        for i in stride(from: importantLettersCount - 1, through: 0, by: -1) {
-            let colorIndex = (importantLettersCount - 1 - i) / 3 % baseColors.count
-            colors.append(baseColors[colorIndex])
-        }
-        
-        return colors.reversed()
-    }
-
-    private var importantLetters: [Character] {
-        currentWord.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }
+    private func updateButtonColors() {
+        buttonGradientIndex = (buttonGradientIndex + 1) % ColorManager.buttonGradients.count
+        buttonColors = ColorManager.buttonGradient(for: buttonGradientIndex)
     }
 
     private func loadNewWord() {
