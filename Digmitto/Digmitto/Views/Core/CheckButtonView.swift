@@ -24,7 +24,7 @@ struct CheckButtonView: View {
             Text(LocalizedStringKey("tv_check_button"))
                 .fontWeight(.bold)
                 .padding()
-                .frame(maxWidth: 200, minHeight: 50)
+                .frame(maxWidth: 250, minHeight: 60)
                 .background(
                     LinearGradient(
                         gradient: Gradient(colors: buttonColors),
