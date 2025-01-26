@@ -15,17 +15,18 @@ struct NumberWheelScrollView: View {
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 10) { // Adjust spacing for better appearance
-                Spacer() // Adds space on the left
-                NumberWheelView(
-                    wordLength: wordLength,
-                    selectedNumbers: $selectedNumbers,
-                    wheelColors: wheelColors
-                )
-                Spacer() // Adds space on the right
+                ForEach(0..<wordLength, id: \.self) { index in
+                    NumberWheel(
+                        selectedNumber: $selectedNumbers[index],
+                        color: wheelColors[index % wheelColors.count]
+                    )
+                }
             }
-            .frame(maxWidth: .infinity) // Ensures the entire HStack takes available space
-            .frame(height: 100) // Adjust height if needed
+            .frame(maxWidth: .infinity) // Ensure the HStack takes available space
         }
-        .frame(maxWidth: .infinity) // Ensures the scroll view takes available space
+        .frame(maxWidth: .infinity) // Ensure the ScrollView takes available space
+        .frame(height: 150) // Adjust height for the wheels
+        .background(Color.gray.opacity(0.1)) // Optional: Add a subtle background
+        .padding(.horizontal, 20) // Optional: Add horizontal padding
     }
 }

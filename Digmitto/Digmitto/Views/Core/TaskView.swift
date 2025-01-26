@@ -27,66 +27,55 @@ struct TaskView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                ScrollView {
-                    VStack(spacing: 10) {
-                        // Word Display
-                        WordDisplayView(currentWord: $currentWord, wordStore: wordStore)
-                        
-                        // Number Wheel View
-                        NumberWheelScrollView(
-                            wordLength: selectedNumbers.count,
-                            selectedNumbers: $selectedNumbers,
-                            wheelColors: calculateWheelColors()
-                        )
-                        
-                        // Check Button
-                        CheckButtonView(
-                            buttonGradientIndex: $buttonGradientIndex,
-                            buttonColors: $buttonColors,
-                            feedback: $feedback,
-                            attempts: $attempts,
-                            points: $points,
-                            fruitEmojis: $fruitEmojis,
-                            selectedNumbers: $selectedNumbers,
-                            currentWord: $currentWord,
-                            wordStore: wordStore,
-                            loadNewWord: {
-                                withAnimation {
-                                    loadNewWord()
-                                }
-                            }
-                        )
+            VStack(spacing: 10) { // Main static container
+                // Word Display
+                WordDisplayView(currentWord: $currentWord, wordStore: wordStore)
 
+                // Number Wheel View
+                NumberWheelScrollView(
+                    wordLength: selectedNumbers.count,
+                    selectedNumbers: $selectedNumbers,
+                    wheelColors: calculateWheelColors()
+                )
+                .frame(height: 150) // Ensure fixed height for the wheel area
 
-                        
-                        // Feedback Section
-                        FeedbackView(feedback: feedback)
-                        
-                        Spacer().frame(height: isCheatSheetEnabled ? 60 : 10)
-                        
-                        // Cheat Sheet or Side Labels
-                        if isCheatSheetEnabled {
-                            CheatSheetAndLabelsView(points: points, fruitEmojis: fruitEmojis, geometry: geometry)
-                        } else {
-                            PointsAndFruitsView(points: points, fruitEmojis: fruitEmojis)
-                                .frame(width: geometry.size.width * 0.9, alignment: .leading)
-                                .padding(.leading, 20)
-                        }
-                    }
-                }
-                
-                // Dice Button
-                if isRandomizeDiceEnabled {
-                    VStack {
-                        Spacer()
-                        DiceButtonView {
+                // Check Button
+                CheckButtonView(
+                    buttonGradientIndex: $buttonGradientIndex,
+                    buttonColors: $buttonColors,
+                    feedback: $feedback,
+                    attempts: $attempts,
+                    points: $points,
+                    fruitEmojis: $fruitEmojis,
+                    selectedNumbers: $selectedNumbers,
+                    currentWord: $currentWord,
+                    wordStore: wordStore,
+                    loadNewWord: {
+                        withAnimation {
                             loadNewWord()
                         }
                     }
+                )
+
+                // Feedback Section
+                FeedbackView(feedback: feedback)
+
+                // Cheat Sheet or Side Labels
+                if isCheatSheetEnabled {
+                    CheatSheetAndLabelsView(points: points, fruitEmojis: fruitEmojis, geometry: geometry) // Provide the geometry object here
+                } else {
+                    PointsAndFruitsView(points: points, fruitEmojis: fruitEmojis)
+                }
+
+                // Dice Button
+                if isRandomizeDiceEnabled {
+                    DiceButtonView {
+                        loadNewWord()
+                    }
                 }
             }
-            .navigationBarTitleDisplayMode(.inline)
+            .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure the entire view is static
+            .background(Color(UIColor.systemBackground)) // Optional: Set a background color
             .onAppear {
                 DispatchQueue.main.async {
                     startSession()
