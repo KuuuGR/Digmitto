@@ -15,7 +15,7 @@ struct NumberWheel: View {
         Picker(selection: $selectedNumber, label: Text("")) {
             ForEach(0..<10) { number in
                 Text("\(number)")
-                    .font(.title2)
+                    .font(.system(size: 30, weight: .bold)) // Adjust font size and weight
                     .foregroundColor(.white)
             }
         }
@@ -26,4 +26,3 @@ struct NumberWheel: View {
         .clipped()
     }
 }
-
