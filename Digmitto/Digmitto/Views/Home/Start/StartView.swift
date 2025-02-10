@@ -1,8 +1,9 @@
 import SwiftUI
 
 struct StartView: View {
-    @EnvironmentObject var wordStore: WordStore
+    @StateObject var wordStore = WordStore()
     @State private var currentWord: String = ""
+    @State private var navTrigger = false
 
     var body: some View {
         VStack(spacing: 5) {
@@ -50,11 +51,16 @@ struct StartView: View {
             .padding(.bottom, 20)
 
             // Start Task Button
-            NavigationLink(destination: TaskView(currentWord: currentWord,
-                                                 isCheatSheetEnabled: wordStore.isCheatSheetEnabled,
-                                                 isRandomizeDiceEnabled: wordStore.isRandomizeDiceEnabled,
-                                                 wordStore: wordStore
-                                                )) {
+            NavigationLink(
+                destination: TaskView(
+                    currentWord: currentWord,
+                    isCheatSheetEnabled: wordStore.isCheatSheetEnabled,
+                    isRandomizeDiceEnabled: wordStore.isRandomizeDiceEnabled,
+                    wordStore: wordStore
+                )
+                .environmentObject(wordStore),
+                isActive: $navTrigger
+            ) {
                 PastelButton(
                     title: LocalizedStringKey("st_start_task"),
                     colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
@@ -66,6 +72,7 @@ struct StartView: View {
                     currentWord = wordStore.getRandomWord()
                 }
                 print("StartView: currentWord before Navigation = \(currentWord)")
+                navTrigger = true
             })
             
             // View Points Button
@@ -89,6 +96,12 @@ struct StartView: View {
             Spacer()
         }
         .padding()
+        .onAppear {
+            print("StartView appeared! Current word: \(currentWord)")
+        }
+        .onDisappear {
+            print("StartView disappeared unexpectedly! Current word: \(currentWord)")
+        }
     }
 }
 
