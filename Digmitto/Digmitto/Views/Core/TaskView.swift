@@ -80,6 +80,7 @@ struct TaskView: View {
             .onAppear {
                 DispatchQueue.main.async {
                     startSession()
+                    updateButtonColors() // Ensure initial colors are set
                 }
             }
         }

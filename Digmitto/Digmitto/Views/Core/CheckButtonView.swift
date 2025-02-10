@@ -17,7 +17,7 @@ struct CheckButtonView: View {
     @Binding var selectedNumbers: [Int]
     @Binding var currentWord: String
     let wordStore: WordStore
-    let loadNewWord: () -> Void // Pass the function to change the word
+    let loadNewWord: () -> Void
 
     var body: some View {
         Button(action: handleCheck) {
@@ -37,6 +37,9 @@ struct CheckButtonView: View {
                 .shadow(radius: 5)
         }
         .padding()
+        .onAppear {
+            animateGradient()
+        }
     }
 
     private func handleCheck() {
@@ -53,10 +56,10 @@ struct CheckButtonView: View {
 
             // Change button color and load a new word
             withAnimation {
-                buttonGradientIndex = (buttonGradientIndex + 1) % availableGradients.count
-                buttonColors = availableGradients[buttonGradientIndex]
+                buttonGradientIndex = (buttonGradientIndex + 1) % ColorManager.buttonGradients.count
+                buttonColors = ColorManager.buttonGradient(for: buttonGradientIndex)
             }
-            loadNewWord() // Call the word-changing function
+            loadNewWord()
         } else {
             feedback = String(
                 format: NSLocalizedString("tv_feedback_incorrect", comment: ""),
@@ -84,14 +87,10 @@ struct CheckButtonView: View {
         }
     }
 
-    private var availableGradients: [[Color]] {
-        [
-            [Color.red.opacity(0.6), Color.orange.opacity(0.6)],
-            [Color.orange.opacity(0.6), Color.yellow.opacity(0.6)],
-            [Color.yellow.opacity(0.6), Color.green.opacity(0.6)],
-            [Color.green.opacity(0.6), Color.blue.opacity(0.6)],
-            [Color.blue.opacity(0.6), Color.purple.opacity(0.6)],
-            [Color.purple.opacity(0.6), Color.red.opacity(0.6)]
-        ]
+    private func animateGradient() {
+        withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: true)) {
+            buttonGradientIndex = (buttonGradientIndex + 1) % ColorManager.buttonGradients.count
+            buttonColors = ColorManager.buttonGradient(for: buttonGradientIndex)
+        }
     }
 }

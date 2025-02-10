@@ -31,8 +31,27 @@ struct ColorManager {
     /// Returns a color for a specific index (solid color fallback)
     static func colorForIndex(index: Int) -> Color {
         let allColors: [Color] = [
-            .red, .orange, .yellow, .green, .blue, .purple, .pink
+            // Red tones
+            .red, .pink,
+            // Orange tones
+            .orange,
+            // Yellow tones
+            .yellow,
+            // Green tones
+            .green,
+            // Blue tones
+            .blue, .cyan, .teal,
+            // Purple tones
+            .purple, .indigo,
+            // Brown tones
+            .brown,
+            // Gray tones
+            .gray,
+            // Adaptive semantic colors
+            Color.primary, Color.secondary, Color.accentColor, Color(UIColor.systemBackground), Color(UIColor.label)
         ]
+
+
         return allColors[index % allColors.count]
     }
     
@@ -45,6 +64,21 @@ struct ColorManager {
         }
         return colors
     }
+
+    static let buttonGradients: [[Color]] = [
+        [Color.red.opacity(0.6), Color.orange.opacity(0.6)],
+        [Color.orange.opacity(0.6), Color.yellow.opacity(0.6)],
+        [Color.yellow.opacity(0.6), Color.green.opacity(0.6)],
+        [Color.green.opacity(0.6), Color.mint.opacity(0.6)],
+        [Color.mint.opacity(0.6), Color.cyan.opacity(0.6)],
+        [Color.cyan.opacity(0.6), Color.blue.opacity(0.6)],
+        [Color.blue.opacity(0.6), Color.indigo.opacity(0.6)],
+        [Color.indigo.opacity(0.6), Color.purple.opacity(0.6)],
+        [Color.purple.opacity(0.6), Color.pink.opacity(0.6)],
+        [Color.pink.opacity(0.6), Color.red.opacity(0.6)], // Loops back to red
+        [Color.brown.opacity(0.6), Color.indigo.opacity(0.6)], // Add earthy tones
+        [Color.teal.opacity(0.6), Color.mint.opacity(0.6)],   // Add fresh tones
+    ]
 }
 
 extension ColorManager {
@@ -56,12 +90,6 @@ extension ColorManager {
     static func buttonGradient(forIndex index: Int) -> LinearGradient {
         gradientForGroup(index: index)
     }
-    
-    static let buttonGradients: [[Color]] = [
-        [Color.red.opacity(0.6), Color.orange.opacity(0.6)],
-        [Color.green.opacity(0.6), Color.blue.opacity(0.6)],
-        [Color.purple.opacity(0.6), Color.pink.opacity(0.6)]
-    ]
     
     /// Returns a gradient for the button based on the given index.
     static func buttonGradient(for index: Int) -> [Color] {
