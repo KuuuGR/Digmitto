@@ -68,6 +68,7 @@ class WordStore: ObservableObject {
     }
     @Published var fruitsCollectedInSession: Set<String> = []
 
+    // ✅ Re-added missing letterToNumberMap
     private let letterToNumberMap: [Character: String] = [
         "s": "0", "z": "0", "S": "0", "Z": "0",
         "t": "1", "d": "1", "T": "1", "D": "1",
@@ -81,7 +82,18 @@ class WordStore: ObservableObject {
         "p": "9", "b": "9", "P": "9", "B": "9",
     ]
     
+    @Published var hasSeenManual: Bool {
+        didSet {
+            UserDefaults.standard.set(hasSeenManual, forKey: "hasSeenManual")
+        }
+    }
+
+    // MARK: - ✅ Fixed Constructor
     init() {
+        // Initialize simple values first
+        hasSeenManual = UserDefaults.standard.bool(forKey: "hasSeenManual")
+        
+        // Now safe to call functions that depend on `self`
         loadWords()
         loadSettings()
         totalPoints = UserDefaults.standard.integer(forKey: "totalPoints")
@@ -110,16 +122,11 @@ class WordStore: ObservableObject {
             print("WordStore: No words found for the selected language. Using default.")
             return "Placeholder"
         }
-        let word = languageWords.randomElement() ?? "Placeholder"
-        print("WordStore: Random word selected = \(word)")
-        return word
+        return languageWords.randomElement() ?? "Placeholder"
     }
     
     func numberForLetter(_ letter: String) -> String {
-        guard let number = letterToNumberMap[Character(letter)] else {
-            return "0"  // Default or error value
-        }
-        return number
+        return letterToNumberMap[Character(letter)] ?? "0"
     }
 
     // MARK: - Achievements Management
@@ -129,7 +136,6 @@ class WordStore: ObservableObject {
     
     private func loadAchievements() {
         if let savedAchievements = UserDefaults.standard.array(forKey: "achievements") as? [Bool] {
-            // Ensure the array has 8 elements
             achievements = Array(savedAchievements.prefix(8)) + Array(repeating: false, count: max(0, 8 - savedAchievements.count))
         }
     }
@@ -199,10 +205,8 @@ class WordStore: ObservableObject {
 
     // MARK: - Fruit Management
     func collectFruit(_ fruit: String) {
-        print("Collecting fruit: \(fruit)")
         fruitsCollectedInSession.insert(fruit)
         remainingFruits.remove(fruit)
-        print("Remaining fruits: \(remainingFruits)")
         checkAchievements()
     }
 
@@ -242,22 +246,15 @@ class WordStore: ObservableObject {
 extension UserDefaults {
     func setColor(_ color: Color, forKey key: String) {
         let uiColor = UIColor(color)
-        do {
-            let data = try NSKeyedArchiver.archivedData(withRootObject: uiColor, requiringSecureCoding: true)
+        if let data = try? NSKeyedArchiver.archivedData(withRootObject: uiColor, requiringSecureCoding: true) {
             set(data, forKey: key)
-        } catch {
-            print("Failed to save color to UserDefaults: \(error)")
         }
     }
 
     func color(forKey key: String) -> Color? {
         guard let data = data(forKey: key) else { return nil }
-        do {
-            if let uiColor = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: data) {
-                return Color(uiColor)
-            }
-        } catch {
-            print("Failed to load color from UserDefaults: \(error)")
+        if let uiColor = try? NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: data) {
+            return Color(uiColor)
         }
         return nil
     }

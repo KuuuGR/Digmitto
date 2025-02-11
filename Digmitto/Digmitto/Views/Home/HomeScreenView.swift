@@ -2,6 +2,7 @@ import SwiftUI
 
 struct HomeScreenView: View {
     @EnvironmentObject var wordStore: WordStore
+    @State private var navigateToDestination: Bool = false
 
     var body: some View {
         NavigationView {
@@ -13,41 +14,52 @@ struct HomeScreenView: View {
                     .padding(.top, 40)
                 
                 Spacer()
-                
-                // Navigation Buttons
-                VStack(spacing: 15) {
-                    NavigationLink(destination: StartView()) {
-                        HomeButton(
-                            title: LocalizedStringKey("hs_start_button"),
-                            gradient: LinearGradient(
-                                gradient: Gradient(colors: [.blue, .purple]),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
+
+                // Start Button
+                Button(action: {
+                    navigateToDestination = true
+                }) {
+                    HomeButton(
+                        title: LocalizedStringKey("hs_start_button"),
+                        gradient: LinearGradient(
+                            gradient: Gradient(colors: [.blue, .purple]),
+                            startPoint: .leading,
+                            endPoint: .trailing
                         )
+                    )
+                }
+                .background(
+                    NavigationLink(
+                        destination: wordStore.hasSeenManual ? AnyView(StartView()) : AnyView(FirstManualView()),
+                        isActive: $navigateToDestination
+                    ) {
+                        EmptyView()
                     }
-                    
-                    NavigationLink(destination: SettingsView()) {
-                        HomeButton(
-                            title: LocalizedStringKey("hs_settings_button"),
-                            gradient: LinearGradient(
-                                gradient: Gradient(colors: [.gray, .black.opacity(0.8)]),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
+                    .hidden()
+                )
+
+                // Settings Button
+                NavigationLink(destination: SettingsView()) {
+                    HomeButton(
+                        title: LocalizedStringKey("hs_settings_button"),
+                        gradient: LinearGradient(
+                            gradient: Gradient(colors: [.gray, .black.opacity(0.8)]),
+                            startPoint: .leading,
+                            endPoint: .trailing
                         )
-                    }
-                    
-                    NavigationLink(destination: AboutView()) {
-                        HomeButton(
-                            title: LocalizedStringKey("hs_about_button"),
-                            gradient: LinearGradient(
-                                gradient: Gradient(colors: [.gray.opacity(0.6), .gray]),
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
+                    )
+                }
+
+                // About Button
+                NavigationLink(destination: AboutView()) {
+                    HomeButton(
+                        title: LocalizedStringKey("hs_about_button"),
+                        gradient: LinearGradient(
+                            gradient: Gradient(colors: [.gray.opacity(0.6), .gray]),
+                            startPoint: .leading,
+                            endPoint: .trailing
                         )
-                    }
+                    )
                 }
                 
                 // Total Points Display
@@ -79,10 +91,3 @@ struct HomeButton: View {
             .shadow(radius: 5)
     }
 }
-
-//struct HomeScreenView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeScreenView()
-//            .environmentObject(WordStore())
-//    }
-//}

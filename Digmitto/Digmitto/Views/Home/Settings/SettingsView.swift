@@ -56,6 +56,12 @@ struct SettingsView: View {
                     Text(LocalizedStringKey("sv_enable_randomizing_dice"))
                 }
                 
+                Toggle(isOn: Binding(
+                    get: { !wordStore.hasSeenManual },
+                    set: { newValue in wordStore.hasSeenManual = !newValue }
+                )) {
+                    Text(LocalizedStringKey("sv_enable_tutorial_again"))
+                }
             } // <-- Properly closing Additional Settings Section
         }
         .navigationBarTitle(LocalizedStringKey("sv_settings_title"))
@@ -79,10 +85,3 @@ struct SettingsView: View {
         }
     }
 }
-
-//struct SettingsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        SettingsView()
-//            .environmentObject(WordStore())
-//    }
-//}

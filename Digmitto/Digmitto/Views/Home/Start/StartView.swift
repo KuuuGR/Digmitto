@@ -104,19 +104,3 @@ struct StartView: View {
         }
     }
 }
-
-struct PastelButton: View {
-    let title: LocalizedStringKey
-    let colors: [Color]
-    
-    var body: some View {
-        Text(title)
-            .font(.headline)
-            .foregroundColor(.white)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(LinearGradient(gradient: Gradient(colors: colors), startPoint: .leading, endPoint: .trailing))
-            .cornerRadius(10)
-            .shadow(radius: 5)
-    }
-}
