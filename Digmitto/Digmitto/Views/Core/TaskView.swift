@@ -4,6 +4,7 @@ struct TaskView: View {
     @State private var currentWord: String
     var isCheatSheetEnabled: Bool
     var isRandomizeDiceEnabled: Bool
+    var comebackAfterOneWord: Bool
     @State private var selectedNumbers: [Int]
     @State private var feedback = ""
     @State private var points = 0
@@ -11,11 +12,15 @@ struct TaskView: View {
     @State private var attempts = 0
     @State private var buttonGradientIndex: Int = 0
     @State private var buttonColors: [Color] = ColorManager.buttonGradient(for: 0)
+    @State private var firstPressDone: Bool = false
     @EnvironmentObject var wordStore: WordStore
+    @Environment(\.dismiss) private var dismiss  // For dismissing the view
 
-    init(currentWord: String, isCheatSheetEnabled: Bool, isRandomizeDiceEnabled: Bool, wordStore: WordStore) {
+    init(currentWord: String, isCheatSheetEnabled: Bool, isRandomizeDiceEnabled: Bool, wordStore: WordStore, comebackAfterOneWord: Bool = false) {
         self.isCheatSheetEnabled = isCheatSheetEnabled
         self.isRandomizeDiceEnabled = isRandomizeDiceEnabled
+        self.comebackAfterOneWord = comebackAfterOneWord
+
         if currentWord.isEmpty || currentWord == "No word" {
             self._currentWord = State(initialValue: wordStore.getRandomWord())
         } else {
@@ -52,10 +57,20 @@ struct TaskView: View {
                     wordStore: wordStore,
                     loadNewWord: {
                         withAnimation {
-                            loadNewWord()
+                            if comebackAfterOneWord {
+                                if firstPressDone {
+                                    dismiss() // ✅ Second press immediately dismisses the view
+                                } else {
+                                    firstPressDone = true // ✅ Mark first press
+                                    feedback = NSLocalizedString("tv_feedback_correct_special", comment: "")
+                                }
+                            } else {
+                                loadWord()
+                            }
                             updateButtonColors()
                         }
-                    }
+                    },
+                    specialTextOnSuccess: comebackAfterOneWord ? NSLocalizedString("tv_feedback_correct_special_button_text", comment: "") : nil // ✅ Show special text only if comebackAfterOneWord = true
                 )
 
                 // Feedback Section
@@ -71,7 +86,7 @@ struct TaskView: View {
                 // Dice Button
                 if isRandomizeDiceEnabled {
                     DiceButtonView {
-                        loadNewWord()
+                        loadWord()
                     }
                 }
             }
@@ -103,8 +118,10 @@ struct TaskView: View {
         buttonColors = ColorManager.buttonGradient(for: buttonGradientIndex)
     }
 
-    private func loadNewWord() {
-        currentWord = wordStore.getRandomWord()
+    private func loadWord(newOne: Bool = true) {
+        if newOne {
+            currentWord = wordStore.getRandomWord()
+        }
         let importantLettersCount = currentWord.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }.count
         selectedNumbers = Array(repeating: 0, count: importantLettersCount)
         attempts = 0

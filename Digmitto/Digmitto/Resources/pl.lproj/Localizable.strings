@@ -4,6 +4,8 @@
 "tv_feedback_incorrect" = "Spróbuj ponownie! ❌\n\nLitery: %@\nKoła: %@";
 "tv_points" = "Punkty: %d";
 "tv_fruits" = "Owoce: %@";
+"tv_feedback_correct_special" = "Tutorial Level Completed";
+"tv_feedback_correct_special_button_text" = "Great job!";
 
 //MARK: TaskScreenView
 "ts_screen_title" = "Ekran zadania";

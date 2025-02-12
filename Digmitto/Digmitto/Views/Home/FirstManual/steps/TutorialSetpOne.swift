@@ -7,50 +7,89 @@
 import SwiftUI
 
 struct TutorialSetpOne: View {
-    @EnvironmentObject var wordStore: WordStore
-    @State private var navigateToTask: Bool = false
-
+    @StateObject var wordStore = WordStore()
+    @State private var currentWord: String = ""
+    @State private var navTrigger = false
+    
     var body: some View {
-        VStack(spacing: 20) {
-            Text("Step 1: Learn how to use the app")
-                .font(.title)
-                .padding()
-
-            // Start Task Button - Now Visible!
-            Button(action: {
-                navigateToTask = true
-            }) {
-                Text("Go to Task")
+        VStack(spacing: 5) {
+            // General Action Text
+            Text(LocalizedStringKey("st_general"))
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .padding(.top, 1)
+                .foregroundColor(.purple.opacity(0.7))
+                .padding(.bottom, 20)
+            
+            // Instructions Section
+            VStack(alignment: .leading, spacing: 10) {
+                Text(LocalizedStringKey(""))
+                Text(LocalizedStringKey("st_how_to_start_title"))
                     .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: 200)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
+                    .foregroundColor(.blue)
+                
+                Text(LocalizedStringKey("st_instruction_step1"))
+                    .font(.body)
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(LocalizedStringKey("st_instruction_bullet1"))
+                    Text(LocalizedStringKey("st_instruction_bullet2"))
+                }
+                .font(.callout)
+                .foregroundColor(.gray)
+                
+                Text(LocalizedStringKey("st_instruction_step2"))
+                    .font(.body)
+                
+                VStack(alignment: .leading, spacing: 5) {
+                    Text(LocalizedStringKey("st_instruction_bullet3"))
+                    Text(LocalizedStringKey("st_instruction_bullet4"))
+                    Text(LocalizedStringKey("st_instruction_bullet5"))
+                    Text(LocalizedStringKey("st_instruction_bullet6"))
+                    Text(LocalizedStringKey(""))
+                }
+                .font(.callout)
+                .foregroundColor(.gray)
             }
-
-            // Hidden navigation to TaskView
+            .padding(.horizontal, 20)
+            .background(Color.gray.opacity(0.1))
+            .cornerRadius(10)
+            .padding(.bottom, 20)
+            
+            // Start Task Button
             NavigationLink(
                 destination: TaskView(
-                    currentWord: wordStore.getRandomWord(),
+                    currentWord: "Pies",
                     isCheatSheetEnabled: wordStore.isCheatSheetEnabled,
                     isRandomizeDiceEnabled: wordStore.isRandomizeDiceEnabled,
-                    wordStore: wordStore
+                    wordStore: wordStore, comebackAfterOneWord: true
                 )
-                .onAppear {
-                    print("TaskView appeared!")
-                }
-                .onDisappear {
-                    print("TaskView disappeared! Returning to FirstManualView")
-                }
-                .navigationBarBackButtonHidden(true),
-                isActive: $navigateToTask
+                .environmentObject(wordStore),
+                isActive: $navTrigger
             ) {
-                EmptyView()
+                PastelButton(
+                    title: LocalizedStringKey("st_start_task"),
+                    colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
+                )
             }
-            .hidden()
+            .padding(.horizontal, 40)
+            .simultaneousGesture(TapGesture().onEnded {
+                if currentWord.isEmpty || currentWord == "No word" {
+                    currentWord = wordStore.getRandomWord()
+                }
+                print("StartView: currentWord before Navigation = \(currentWord)")
+                navTrigger = true
+            })
+            
+    
+            Spacer()
         }
         .padding()
+        .onAppear {
+            print("StartView appeared! Current word: \(currentWord)")
+        }
+        .onDisappear {
+            print("StartView disappeared unexpectedly! Current word: \(currentWord)")
+        }
     }
 }

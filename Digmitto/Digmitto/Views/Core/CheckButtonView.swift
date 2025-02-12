@@ -18,10 +18,13 @@ struct CheckButtonView: View {
     @Binding var currentWord: String
     let wordStore: WordStore
     let loadNewWord: () -> Void
+    var specialTextOnSuccess: String? = nil // Optional custom success text for the button
+
+    @State private var buttonText: LocalizedStringKey = "tv_check_button" // Default button text
 
     var body: some View {
         Button(action: handleCheck) {
-            Text(LocalizedStringKey("tv_check_button"))
+            Text(buttonText) // Button label that can change dynamically
                 .fontWeight(.bold)
                 .padding()
                 .frame(maxWidth: 250, minHeight: 65)
@@ -47,20 +50,29 @@ struct CheckButtonView: View {
         let wheelString = readWheelsRightToLeft()
 
         if letterString == wheelString {
+            // Update feedback and points
             feedback = NSLocalizedString("tv_feedback_correct", comment: "")
             wordStore.totalPoints += 1
+
             if attempts == 0 {
                 points += 1
                 addRandomFruitEmoji()
             }
 
-            // Change button color and load a new word
+            // Animate button color change
             withAnimation {
                 buttonGradientIndex = (buttonGradientIndex + 1) % ColorManager.buttonGradients.count
                 buttonColors = ColorManager.buttonGradient(for: buttonGradientIndex)
             }
-            loadNewWord()
+
+            // Change button text if specialTextOnSuccess is provided
+            if let newText = specialTextOnSuccess {
+                buttonText = LocalizedStringKey(newText)
+            }
+
+            loadNewWord() // Load the next word
         } else {
+            // Update feedback for incorrect answer
             feedback = String(
                 format: NSLocalizedString("tv_feedback_incorrect", comment: ""),
                 letterString,

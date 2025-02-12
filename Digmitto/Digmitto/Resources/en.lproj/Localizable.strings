@@ -6,6 +6,8 @@
 "tv_feedback_incorrect" = "Try again! ❌\n\nLetters: %@\nWheels: %@";
 "tv_points" = "Points: %d";
 "tv_fruits" = "Fruits: %@";
+"tv_feedback_correct_special" = "Tutorial Level Completed";
+"tv_feedback_correct_special_button_text" = "Great job!";
 
 
 //MARK: StartView
