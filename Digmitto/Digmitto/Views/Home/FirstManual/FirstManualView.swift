@@ -38,7 +38,7 @@ struct FirstManualView: View {
                     defaultGradient: LinearGradient(gradient: Gradient(colors: [Color.gray.opacity(0.5), Color.gray.opacity(1.0)]), startPoint: .topLeading, endPoint: .bottomTrailing),
                     nextStepGradient: LinearGradient(gradient: Gradient(colors: [Color.gray.opacity(0.5), Color.gray.opacity(0.8)]), startPoint: .topLeading, endPoint: .bottomTrailing),
                     activeGradient: LinearGradient(gradient: Gradient(colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]), startPoint: .topLeading, endPoint: .bottomTrailing),
-                    destination: AnyView(FirstTutOneView().onDisappear { step1Completed = true }) // Unlocks Step 2
+                    destination: AnyView(TutorialSetpOne().onDisappear { step1Completed = true }) // Unlocks Step 2
                 )
                 StepButton(
                     number: "2",
@@ -48,7 +48,7 @@ struct FirstManualView: View {
                     defaultGradient: LinearGradient(gradient: Gradient(colors: [Color.gray.opacity(0.3), Color.gray.opacity(0.4)]), startPoint: .topLeading, endPoint: .bottomTrailing),
                     nextStepGradient: LinearGradient(gradient: Gradient(colors: [Color.gray.opacity(0.5), Color.gray.opacity(1.0)]), startPoint: .topLeading, endPoint: .bottomTrailing),
                     activeGradient: LinearGradient(gradient: Gradient(colors: [Color.orange.opacity(0.6), Color.yellow.opacity(0.6)]), startPoint: .topLeading, endPoint: .bottomTrailing),
-                    destination: AnyView(FirstTutTwoView().onDisappear { step2Completed = true }) // Unlocks Step 3
+                    destination: AnyView(TutorialStepTwo().onDisappear { step2Completed = true }) // Unlocks Step 3
                 )
                 StepButton(
                     number: "3",
@@ -58,7 +58,7 @@ struct FirstManualView: View {
                     defaultGradient: LinearGradient(gradient: Gradient(colors: [Color.gray.opacity(0.3), Color.gray.opacity(0.4)]), startPoint: .topLeading, endPoint: .bottomTrailing),
                     nextStepGradient: LinearGradient(gradient: Gradient(colors: [Color.gray.opacity(0.5), Color.gray.opacity(1.0)]), startPoint: .topLeading, endPoint: .bottomTrailing),
                     activeGradient: LinearGradient(gradient: Gradient(colors: [Color.red.opacity(0.6), Color.purple.opacity(0.6)]), startPoint: .topLeading, endPoint: .bottomTrailing),
-                    destination: AnyView(FirstTutThreeView().onDisappear { step3Completed = true }) // Final step
+                    destination: AnyView(TutorialStepThree().onDisappear { step3Completed = true }) // Final step
                 )
             }
 
@@ -114,73 +114,5 @@ struct StepButton: View {
                 .shadow(radius: 5)
         }
         .disabled(!isEnabled) // Prevent clicking out of order
-    }
-}
-
-// Simple Tutorial Views
-
-struct FirstTutOneView: View {
-    @EnvironmentObject var wordStore: WordStore
-    @State private var navigateToTask: Bool = false
-
-    var body: some View {
-        VStack(spacing: 20) {
-            Text("Step 1: Learn how to use the app")
-                .font(.title)
-                .padding()
-
-            // Start Task Button - Now Visible!
-            Button(action: {
-                navigateToTask = true
-            }) {
-                Text("Go to Task")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: 200)
-                    .background(Color.blue)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
-            }
-
-            // Hidden navigation to TaskView
-            NavigationLink(
-                destination: TaskView(
-                    currentWord: wordStore.getRandomWord(),
-                    isCheatSheetEnabled: wordStore.isCheatSheetEnabled,
-                    isRandomizeDiceEnabled: wordStore.isRandomizeDiceEnabled,
-                    wordStore: wordStore
-                )
-                .onAppear {
-                    print("TaskView appeared!")
-                }
-                .onDisappear {
-                    print("TaskView disappeared! Returning to FirstManualView")
-                }
-                .navigationBarBackButtonHidden(true),
-                isActive: $navigateToTask
-            ) {
-                EmptyView()
-            }
-            .hidden()
-        }
-        .padding()
-    }
-}
-
-
-struct FirstTutTwoView: View {
-    var body: some View {
-        Text("Step 2: Understanding key features")
-            .font(.title)
-            .padding()
-    }
-}
-
-struct FirstTutThreeView: View {
-    var body: some View {
-        Text("Step 3: Get ready for your first task!")
-            .font(.title)
-            .padding()
     }
 }
