@@ -1,10 +1,13 @@
 import SwiftUI
 
 struct TaskView: View {
+    // Local state variables
     @State private var currentWord: String
     var isCheatSheetEnabled: Bool
     var isRandomizeDiceEnabled: Bool
     var comebackAfterOneWord: Bool
+    /// New property to control back button visibility
+    let isBackButtonHidden: Bool
     @State private var selectedNumbers: [Int]
     @State private var feedback = ""
     @State private var points = 0
@@ -13,20 +16,32 @@ struct TaskView: View {
     @State private var buttonGradientIndex: Int = 0
     @State private var buttonColors: [Color] = ColorManager.buttonGradient(for: 0)
     @State private var firstPressDone: Bool = false
+
     @EnvironmentObject var wordStore: WordStore
     @Environment(\.dismiss) private var dismiss  // For dismissing the view
 
-    init(currentWord: String, isCheatSheetEnabled: Bool, isRandomizeDiceEnabled: Bool, wordStore: WordStore, comebackAfterOneWord: Bool = false) {
+    // Modified initializer now stores the back button visibility flag.
+    init(currentWord: String,
+         isCheatSheetEnabled: Bool,
+         isRandomizeDiceEnabled: Bool,
+         wordStore: WordStore,
+         comebackAfterOneWord: Bool = false,
+         isBackButtonHidden: Bool = false) {
+        
         self.isCheatSheetEnabled = isCheatSheetEnabled
         self.isRandomizeDiceEnabled = isRandomizeDiceEnabled
         self.comebackAfterOneWord = comebackAfterOneWord
-
+        // Assign the parameter to the property (note the corrected spelling)
+        self.isBackButtonHidden = isBackButtonHidden
+        
         if currentWord.isEmpty || currentWord == "No word" {
             self._currentWord = State(initialValue: wordStore.getRandomWord())
         } else {
             self._currentWord = State(initialValue: currentWord)
         }
-        let importantLettersCount = self._currentWord.wrappedValue.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }.count
+        let importantLettersCount = self._currentWord.wrappedValue.filter {
+            wordStore.majorSystemLetters.contains($0.lowercased())
+        }.count
         self._selectedNumbers = State(initialValue: Array(repeating: 0, count: importantLettersCount))
     }
 
@@ -40,9 +55,9 @@ struct TaskView: View {
                 NumberWheelScrollView(
                     wordLength: selectedNumbers.count,
                     selectedNumbers: $selectedNumbers,
-                    wheelColors: ColorManager.generateWheelColors(for: selectedNumbers.count) // Matches the updated initializer
+                    wheelColors: ColorManager.generateWheelColors(for: selectedNumbers.count)
                 )
-                .frame(height: 150) // Ensure fixed height for the wheel area
+                .frame(height: 150) // Fixed height for the wheel area
 
                 // Check Button
                 CheckButtonView(
@@ -59,9 +74,9 @@ struct TaskView: View {
                         withAnimation {
                             if comebackAfterOneWord {
                                 if firstPressDone {
-                                    dismiss() // ✅ Second press immediately dismisses the view
+                                    dismiss() // Second press immediately dismisses the view
                                 } else {
-                                    firstPressDone = true // ✅ Mark first press
+                                    firstPressDone = true // Mark first press
                                     feedback = NSLocalizedString("tv_feedback_correct_special", comment: "")
                                 }
                             } else {
@@ -70,7 +85,8 @@ struct TaskView: View {
                             updateButtonColors()
                         }
                     },
-                    specialTextOnSuccess: comebackAfterOneWord ? NSLocalizedString("tv_feedback_correct_special_button_text", comment: "") : nil // ✅ Show special text only if comebackAfterOneWord = true
+                    specialTextOnSuccess: comebackAfterOneWord ?
+                        NSLocalizedString("tv_feedback_correct_special_button_text", comment: "") : nil
                 )
 
                 // Feedback Section
@@ -90,8 +106,8 @@ struct TaskView: View {
                     }
                 }
             }
-            .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensure the entire view is static
-            .background(ColorManager.systemBackground) // Centralized background color
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(ColorManager.systemBackground)
             .onAppear {
                 DispatchQueue.main.async {
                     startSession()
@@ -99,9 +115,13 @@ struct TaskView: View {
                 }
             }
         }
+        // Hide or show the navigation bar's back button based on backButtonVisible.
+        .navigationBarBackButtonHidden(isBackButtonHidden)
     }
 
-    // Helper Functions
+    // MARK: - Helper Functions
+
+    /// Resets session-related variables and logs the session start time.
     private func startSession() {
         points = 0
         fruitEmojis = []
@@ -113,16 +133,20 @@ struct TaskView: View {
         print("Session started at \(wordStore.sessionStartTime!)")
     }
 
+    /// Cycles through the available button gradients.
     private func updateButtonColors() {
         buttonGradientIndex = (buttonGradientIndex + 1) % ColorManager.buttonGradients.count
         buttonColors = ColorManager.buttonGradient(for: buttonGradientIndex)
     }
 
+    /// Loads a new word from WordStore and resets the attempts counter.
     private func loadWord(newOne: Bool = true) {
         if newOne {
             currentWord = wordStore.getRandomWord()
         }
-        let importantLettersCount = currentWord.filter { wordStore.majorSystemLetters.contains($0.lowercased()) }.count
+        let importantLettersCount = currentWord.filter {
+            wordStore.majorSystemLetters.contains($0.lowercased())
+        }.count
         selectedNumbers = Array(repeating: 0, count: importantLettersCount)
         attempts = 0
     }

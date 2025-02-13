@@ -1,16 +1,15 @@
-//
-//  TutorialSetpOne.swift
-//  Digmitto
-//
-//  Created by Grzegorz Kulesza on 12/02/2025.
-//
 import SwiftUI
 
 struct TutorialSetpOne: View {
     @StateObject var wordStore = WordStore()
     @State private var currentWord: String = ""
     @State private var navTrigger = false
+    @State private var taskCompleted = false
+    @State private var didNavigate = false  // Tracks if we have navigated at least once
     
+    // Use dismiss to pop the view if needed.
+    @Environment(\.dismiss) private var dismiss
+
     var body: some View {
         VStack(spacing: 5) {
             // General Action Text
@@ -56,31 +55,49 @@ struct TutorialSetpOne: View {
             .cornerRadius(10)
             .padding(.bottom, 20)
             
-            // Start Task Button
-            NavigationLink(
-                destination: TaskView(
-                    currentWord: NSLocalizedString("tso_word_for_practice", comment: ""),
-                    isCheatSheetEnabled: true,
-                    isRandomizeDiceEnabled: false,
-                    wordStore: wordStore, comebackAfterOneWord: true
-                )
-                .environmentObject(wordStore),
-                isActive: $navTrigger
-            ) {
-                PastelButton(
-                    title: LocalizedStringKey("tso_start_task"),
-                    colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
-                )
-            }
-            .padding(.horizontal, 40)
-            .simultaneousGesture(TapGesture().onEnded {
-                if currentWord.isEmpty || currentWord == "No word" {
-                    currentWord = wordStore.getRandomWord()
+            // Conditionally render NavigationLink (for "Start Task") or a plain "Done" button.
+            if !taskCompleted {
+                NavigationLink(
+                    destination: TaskView(
+                        currentWord: NSLocalizedString("tso_word_for_practice", comment: ""),
+                        isCheatSheetEnabled: true,
+                        isRandomizeDiceEnabled: false,
+                        wordStore: wordStore,
+                        comebackAfterOneWord: true,
+                        isBackButtonHidden: true
+                    )
+                    .environmentObject(wordStore),
+                    isActive: $navTrigger
+                ) {
+                    PastelButton(
+                        title: LocalizedStringKey("tso_start_task"),
+                        colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
+                    )
                 }
-                print("TutorialSetpOne: currentWord before Navigation = \(currentWord)")
-                navTrigger = true
-            })
-    
+                .padding(.horizontal, 40)
+                .simultaneousGesture(
+                    TapGesture().onEnded {
+                        if currentWord.isEmpty || currentWord == "No word" {
+                            currentWord = wordStore.getRandomWord()
+                        }
+                        print("TutorialSetpOne: currentWord before Navigation = \(currentWord)")
+                        didNavigate = true
+                        navTrigger = true
+                    }
+                )
+            } else {
+                // Once task is completed, show a "Done" button with a new pastel color scheme.
+                Button(action: {
+                    dismiss()  // Acts like a back button.
+                }) {
+                    PastelButton(
+                        title: LocalizedStringKey("tso_done"),
+                        colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)]
+                    )
+                }
+                .padding(.horizontal, 40)
+            }
+            
             Spacer()
         }
         .padding()
@@ -90,5 +107,13 @@ struct TutorialSetpOne: View {
         .onDisappear {
             print("TutorialSetpOne disappeared unexpectedly! Current word: \(currentWord)")
         }
+        // When navTrigger goes from true to false and we have navigated, mark task as completed.
+        .onChange(of: navTrigger) { newValue in
+            if !newValue && didNavigate {
+                taskCompleted = true
+            }
+        }
+        // Hide the default navigation bar's back button when task is not complete.
+        .navigationBarBackButtonHidden(!taskCompleted)
     }
 }
