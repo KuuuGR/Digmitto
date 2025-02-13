@@ -15,7 +15,6 @@
 "st_start_task" = "Start Task";
 "st_view_points" = "View Points";
 "st_manuals" = "Manuals";
-// StartView Instructions
 "st_how_to_start_title" = "How to Start?";
 "st_instruction_step1" = "1. Memorize letters that correspond to digits.";
 "st_instruction_bullet1" = "• Digit 1 corresponds to 't' or 'd'.";
@@ -25,6 +24,32 @@
 "st_instruction_bullet4" = "• Read the resulting number.";
 "st_instruction_bullet5" = "• Check if the answer is correct.";
 "st_instruction_bullet6" = "• If not, correct it and check again.";
+
+//MARK: FirstManualView
+"fm_welcome" = "Welcome to the Tutorial!";
+"fm_tutorial_steps" = "Here we explain how to use the app.\n Follow along these three simple steps!";
+"fm_dont_show_next_time" = "Don't show tutorial next time";
+"fm_start" = "Let's Start";
+
+//MARK: TutorialSetpOne
+"tso_general" = "Choose Your Action";
+"tso_start_task" = "Start Task";
+"tso_word_for_practice" = "piesek";
+"tso_view_points" = "View Points";
+"tso_manuals" = "Manuals";
+"tso_how_to_start_title" = "How to Start?";
+"tso_instruction_step1" = "1. Memorize letters that correspond to digits.";
+"tso_instruction_bullet1" = "• Digit 1 corresponds to 't' or 'd'.";
+"tso_instruction_bullet2" = "• Digit 2 corresponds to 'n'... (see manual for more).";
+"tso_instruction_step2" = "2. Convert meaningful letters of the given word into a number.";
+"tso_instruction_bullet3" = "• Read the random word aloud.";
+"tso_instruction_bullet4" = "• Read the resulting number.";
+"tso_instruction_bullet5" = "• Check if the answer is correct.";
+"tso_instruction_bullet6" = "• If not, correct it and check again.";
+
+
+
+
 
 
 //MARK: ManualsView

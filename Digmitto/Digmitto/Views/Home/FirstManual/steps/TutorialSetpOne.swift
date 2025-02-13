@@ -14,7 +14,7 @@ struct TutorialSetpOne: View {
     var body: some View {
         VStack(spacing: 5) {
             // General Action Text
-            Text(LocalizedStringKey("st_general"))
+            Text(LocalizedStringKey("tso_general"))
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.top, 1)
@@ -24,28 +24,28 @@ struct TutorialSetpOne: View {
             // Instructions Section
             VStack(alignment: .leading, spacing: 10) {
                 Text(LocalizedStringKey(""))
-                Text(LocalizedStringKey("st_how_to_start_title"))
+                Text(LocalizedStringKey("tso_how_to_start_title"))
                     .font(.headline)
                     .foregroundColor(.blue)
                 
-                Text(LocalizedStringKey("st_instruction_step1"))
+                Text(LocalizedStringKey("tso_instruction_step1"))
                     .font(.body)
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(LocalizedStringKey("st_instruction_bullet1"))
-                    Text(LocalizedStringKey("st_instruction_bullet2"))
+                    Text(LocalizedStringKey("tso_instruction_bullet1"))
+                    Text(LocalizedStringKey("tso_instruction_bullet2"))
                 }
                 .font(.callout)
                 .foregroundColor(.gray)
                 
-                Text(LocalizedStringKey("st_instruction_step2"))
+                Text(LocalizedStringKey("tso_instruction_step2"))
                     .font(.body)
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(LocalizedStringKey("st_instruction_bullet3"))
-                    Text(LocalizedStringKey("st_instruction_bullet4"))
-                    Text(LocalizedStringKey("st_instruction_bullet5"))
-                    Text(LocalizedStringKey("st_instruction_bullet6"))
+                    Text(LocalizedStringKey("tso_instruction_bullet3"))
+                    Text(LocalizedStringKey("tso_instruction_bullet4"))
+                    Text(LocalizedStringKey("tso_instruction_bullet5"))
+                    Text(LocalizedStringKey("tso_instruction_bullet6"))
                     Text(LocalizedStringKey(""))
                 }
                 .font(.callout)
@@ -59,16 +59,16 @@ struct TutorialSetpOne: View {
             // Start Task Button
             NavigationLink(
                 destination: TaskView(
-                    currentWord: "Pies",
-                    isCheatSheetEnabled: wordStore.isCheatSheetEnabled,
-                    isRandomizeDiceEnabled: wordStore.isRandomizeDiceEnabled,
+                    currentWord: NSLocalizedString("tso_word_for_practice", comment: ""),
+                    isCheatSheetEnabled: true,
+                    isRandomizeDiceEnabled: false,
                     wordStore: wordStore, comebackAfterOneWord: true
                 )
                 .environmentObject(wordStore),
                 isActive: $navTrigger
             ) {
                 PastelButton(
-                    title: LocalizedStringKey("st_start_task"),
+                    title: LocalizedStringKey("tso_start_task"),
                     colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
                 )
             }
@@ -77,19 +77,18 @@ struct TutorialSetpOne: View {
                 if currentWord.isEmpty || currentWord == "No word" {
                     currentWord = wordStore.getRandomWord()
                 }
-                print("StartView: currentWord before Navigation = \(currentWord)")
+                print("TutorialSetpOne: currentWord before Navigation = \(currentWord)")
                 navTrigger = true
             })
-            
     
             Spacer()
         }
         .padding()
         .onAppear {
-            print("StartView appeared! Current word: \(currentWord)")
+            print("TutorialSetpOne appeared! Current word: \(currentWord)")
         }
         .onDisappear {
-            print("StartView disappeared unexpectedly! Current word: \(currentWord)")
+            print("TutorialSetpOne disappeared unexpectedly! Current word: \(currentWord)")
         }
     }
 }

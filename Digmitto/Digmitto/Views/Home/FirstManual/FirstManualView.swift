@@ -16,18 +16,15 @@ struct FirstManualView: View {
     var body: some View {
         VStack(spacing: 20) {
             // Tutorial Header
-            Text("Welcome to the Tutorial!")
+            Text(LocalizedStringKey("fm_welcome"))
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding()
 
             // Tutorial Content
-            Text("Here we explain how to use the app.\n Follow along this three simple steps!")
+            Text(LocalizedStringKey("fm_tutorial_steps"))
                 .padding()
 
-            Spacer()
-
-            
             // Step Buttons (Stacked Vertically)
             VStack(spacing: 15) {
                 StepButton(
@@ -61,11 +58,20 @@ struct FirstManualView: View {
                     destination: AnyView(TutorialStepThree().onDisappear { step3Completed = true }) // Final step
                 )
             }
-
-            Spacer()
             
+            // Start Button
+            NavigationLink(destination: StartView()) {
+                PastelButton(
+                    title: LocalizedStringKey("fm_start"),
+                    colors: [Color.lightGreen.opacity(0.6), Color.pastelGreen.opacity(0.6)]
+                )
+            }
+            .padding(.horizontal, 40)
+            .disabled(!step3Completed)
+            .opacity(step3Completed ? 0.8 : 0.1)
+
             // Toggle (User decides if tutorial should appear next time)
-            Toggle("Don't show tutorial next time", isOn: $disableTutorialNextTime)
+            Toggle(LocalizedStringKey("fm_dont_show_next_time"), isOn: $disableTutorialNextTime)
                 .padding()
         }
         .padding()
