@@ -82,14 +82,6 @@ struct TutorialStepTwo: View {
                 navTrigger = true
             })
             
-            // View Points Button
-            NavigationLink(destination: PointsView()) {
-                PastelButton(
-                    title: LocalizedStringKey("st_view_points"),
-                    colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)]
-                )
-            }
-            .padding(.horizontal, 40)
             
             // Manual Button
             NavigationLink(destination: ManualsView()) {

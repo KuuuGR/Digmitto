@@ -57,6 +57,7 @@ struct CheckButtonView: View {
             if attempts == 0 {
                 points += 1
                 addRandomFruitEmoji()
+//                addSequentialFruitEmoji() //This is for easier test fruits achievements
             }
 
             // Animate button color change
@@ -94,10 +95,25 @@ struct CheckButtonView: View {
 
     private func addRandomFruitEmoji() {
         let fruits = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]
+        
         if let randomFruit = fruits.randomElement() {
             fruitEmojis.append(randomFruit)
+            wordStore.collectFruit(randomFruit)
         }
     }
+    
+    
+//TODO: --- This is for easier test achievements ---
+//    @State private var currentFruitIndex: Int = 0
+//
+//    private func addSequentialFruitEmoji() {
+//        let fruits = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]
+//        let selectedFruit = fruits[currentFruitIndex]
+//        fruitEmojis.append(selectedFruit)
+//        wordStore.collectFruit(selectedFruit)
+//        // Advance the index, wrapping around to 0 after the last fruit.
+//        currentFruitIndex = (currentFruitIndex + 1) % fruits.count
+//    }
 
     private func animateGradient() {
         withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: true)) {

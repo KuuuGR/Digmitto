@@ -71,7 +71,8 @@ struct TutorialSetpOne: View {
                 ) {
                     PastelButton(
                         title: LocalizedStringKey("tso_start_task"),
-                        colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
+                        colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)]
+                        //colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
                     )
                 }
                 .padding(.horizontal, 40)
@@ -92,7 +93,9 @@ struct TutorialSetpOne: View {
                 }) {
                     PastelButton(
                         title: LocalizedStringKey("tso_done"),
-                        colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)]
+                        colors: [Color.green.opacity(0.6), Color.yellow.opacity(0.6)]
+                        //colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
+                        //colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)]
                     )
                 }
                 .padding(.horizontal, 40)
@@ -114,6 +117,7 @@ struct TutorialSetpOne: View {
             }
         }
         // Hide the default navigation bar's back button when task is not complete.
-        .navigationBarBackButtonHidden(!taskCompleted)
+        //.navigationBarBackButtonHidden(!taskCompleted)
+        .navigationBarBackButtonHidden(true)
     }
 }

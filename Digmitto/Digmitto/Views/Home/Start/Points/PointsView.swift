@@ -1,7 +1,9 @@
 import SwiftUI
 
 struct PointsView: View {
-    @EnvironmentObject var wordStore: WordStore
+    // Instead of reading directly from WordStore, we accept achievements as a constant.
+    let achievements: [Bool]
+    @EnvironmentObject var wordStore: WordStore  // For points and other data
     
     // Customization properties
     let frameWidth: CGFloat = 100
@@ -28,15 +30,16 @@ struct PointsView: View {
             // Achievements Section Title
             Text(LocalizedStringKey("pw_achievements"))
                 .font(.system(.title2, design: .monospaced)) // Monospace font for terminal effect
+                .font(.system(.title2, design: .monospaced))
                 .fontWeight(.semibold)
-                .foregroundColor(Color.green) // Set color to green
+                .foregroundColor(Color.green)
                 .padding(.bottom, 10)
                 .opacity(0.4)
             
             // Achievements Section
             ScrollView {
                 VStack(spacing: 20) {
-                    ForEach(0..<wordStore.achievements.count, id: \.self) { index in
+                    ForEach(0..<achievements.count, id: \.self) { index in
                         AchievementRow(index: index)
                     }
                 }
@@ -46,6 +49,7 @@ struct PointsView: View {
         }
         .padding()
         .navigationTitle(LocalizedStringKey("pw_title"))
+        // Do not refresh here—just display the passed-in achievements.
     }
     
     // MARK: - Achievement Row Component
@@ -67,15 +71,15 @@ struct PointsView: View {
     
     // MARK: - Achievement Image
     private func achievementImage(for index: Int) -> some View {
-        Image(wordStore.achievements[index] ? "ach_\(index)" : "ach_empty_\(index)")
+        Image(achievements[index] ? "ach_\(index)" : "ach_empty_\(index)")
             .resizable()
             .scaledToFit()
-            .opacity(0.5)
+            .opacity(0.7)
             .frame(width: frameWidth, height: frameHeight)
             .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
             .overlay(
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(Color.green, lineWidth: borderWidth) // Green border
+                    .stroke(Color.green, lineWidth: borderWidth)
                     .opacity(0.4)
             )
     }
@@ -95,10 +99,3 @@ struct PointsView: View {
         NSLocalizedString("ach_description_\(index)", comment: "")
     }
 }
-
-//struct PointsView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PointsView()
-//            .environmentObject(WordStore())
-//    }
-//}

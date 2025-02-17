@@ -2,13 +2,12 @@ import SwiftUI
 
 struct TaskView: View {
     // Local state variables
-    @State private var currentWord: String
+    @State private var currentWord: String = "" // Initially empty, will be set onAppear
     var isCheatSheetEnabled: Bool
     var isRandomizeDiceEnabled: Bool
     var comebackAfterOneWord: Bool
-    /// New property to control back button visibility
     let isBackButtonHidden: Bool
-    @State private var selectedNumbers: [Int]
+    @State private var selectedNumbers: [Int] = []
     @State private var feedback = ""
     @State private var points = 0
     @State private var fruitEmojis: [String] = []
@@ -20,25 +19,46 @@ struct TaskView: View {
     @EnvironmentObject var wordStore: WordStore
     @Environment(\.dismiss) private var dismiss  // For dismissing the view
 
-    // Modified initializer now stores the back button visibility flag.
-    init(currentWord: String,
+    /// Flag indicating if a non-empty word was provided during initialization.
+    private let wordWasProvided: Bool
+
+    /// New flag: if true, force a new random word every time the view appears.
+    private let forceRandomOnReappear: Bool
+
+    /// Modified initializer.
+    /// - Parameters:
+    ///   - currentWord: Optional word to use. If nil or empty (or equals "No word"), a random word is used.
+    ///   - isCheatSheetEnabled: Whether the cheat sheet is enabled.
+    ///   - isRandomizeDiceEnabled: Whether the dice button is enabled.
+    ///   - wordStore: The shared WordStore.
+    ///   - comebackAfterOneWord: Special behavior flag.
+    ///   - isBackButtonHidden: Controls the visibility of the navigation bar's back button.
+    ///   - forceRandomOnReappear: If true, always generate a new random word on each appearance.
+    init(currentWord: String? = nil,
          isCheatSheetEnabled: Bool,
          isRandomizeDiceEnabled: Bool,
          wordStore: WordStore,
          comebackAfterOneWord: Bool = false,
-         isBackButtonHidden: Bool = false) {
+         isBackButtonHidden: Bool = false,
+         forceRandomOnReappear: Bool = false) {
         
         self.isCheatSheetEnabled = isCheatSheetEnabled
         self.isRandomizeDiceEnabled = isRandomizeDiceEnabled
         self.comebackAfterOneWord = comebackAfterOneWord
-        // Assign the parameter to the property (note the corrected spelling)
         self.isBackButtonHidden = isBackButtonHidden
+        self.forceRandomOnReappear = forceRandomOnReappear
         
-        if currentWord.isEmpty || currentWord == "No word" {
-            self._currentWord = State(initialValue: wordStore.getRandomWord())
+        // Treat nil, empty, or "No word" as not provided.
+        if let providedWord = currentWord,
+           !providedWord.trimmingCharacters(in: .whitespaces).isEmpty,
+           providedWord != "No word" {
+            self._currentWord = State(initialValue: providedWord)
+            self.wordWasProvided = true
         } else {
-            self._currentWord = State(initialValue: currentWord)
+            self.wordWasProvided = false
+            // Leave currentWord as empty; it will be updated onAppear.
         }
+        
         let importantLettersCount = self._currentWord.wrappedValue.filter {
             wordStore.majorSystemLetters.contains($0.lowercased())
         }.count
@@ -47,7 +67,7 @@ struct TaskView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: 10) { // Main static container
+            VStack(spacing: 10) {
                 // Word Display
                 WordDisplayView(currentWord: $currentWord, wordStore: wordStore)
 
@@ -74,9 +94,9 @@ struct TaskView: View {
                         withAnimation {
                             if comebackAfterOneWord {
                                 if firstPressDone {
-                                    dismiss() // Second press immediately dismisses the view
+                                    dismiss()
                                 } else {
-                                    firstPressDone = true // Mark first press
+                                    firstPressDone = true
                                     feedback = NSLocalizedString("tv_feedback_correct_special", comment: "")
                                 }
                             } else {
@@ -111,17 +131,25 @@ struct TaskView: View {
             .onAppear {
                 DispatchQueue.main.async {
                     startSession()
-                    updateButtonColors() // Ensure initial colors are set
+                    updateButtonColors()
+                    
+                    // Generate a new random word if forceRandomOnReappear is true or no valid word was provided.
+                    if forceRandomOnReappear || !wordWasProvided {
+                        currentWord = wordStore.getRandomWord()
+                        print("✅ New random word on re-entry: \(currentWord)")
+                    } else {
+                        print("✅ Using provided word: \(currentWord)")
+                    }
+                    
+                    updateSelectedNumbers()
                 }
             }
         }
-        // Hide or show the navigation bar's back button based on backButtonVisible.
         .navigationBarBackButtonHidden(isBackButtonHidden)
     }
 
     // MARK: - Helper Functions
 
-    /// Resets session-related variables and logs the session start time.
     private func startSession() {
         points = 0
         fruitEmojis = []
@@ -133,21 +161,24 @@ struct TaskView: View {
         print("Session started at \(wordStore.sessionStartTime!)")
     }
 
-    /// Cycles through the available button gradients.
     private func updateButtonColors() {
         buttonGradientIndex = (buttonGradientIndex + 1) % ColorManager.buttonGradients.count
         buttonColors = ColorManager.buttonGradient(for: buttonGradientIndex)
     }
 
-    /// Loads a new word from WordStore and resets the attempts counter.
     private func loadWord(newOne: Bool = true) {
         if newOne {
             currentWord = wordStore.getRandomWord()
+            print("✅ Loaded new word: \(currentWord)")
         }
+        updateSelectedNumbers()
+        attempts = 0
+    }
+
+    private func updateSelectedNumbers() {
         let importantLettersCount = currentWord.filter {
             wordStore.majorSystemLetters.contains($0.lowercased())
         }.count
         selectedNumbers = Array(repeating: 0, count: importantLettersCount)
-        attempts = 0
     }
 }

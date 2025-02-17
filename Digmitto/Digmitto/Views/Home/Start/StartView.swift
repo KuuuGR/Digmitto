@@ -1,9 +1,14 @@
 import SwiftUI
+import Combine
 
 struct StartView: View {
     @StateObject var wordStore = WordStore()
     @State private var currentWord: String = ""
     @State private var navTrigger = false
+    @State private var localAchievements: [Bool] = Array(repeating: false, count: 9)
+    
+    // A subscription for updates from WordStore
+    @State private var achievementsCancellable: AnyCancellable?
 
     var body: some View {
         VStack(spacing: 5) {
@@ -67,16 +72,19 @@ struct StartView: View {
                 )
             }
             .padding(.horizontal, 40)
-            .simultaneousGesture(TapGesture().onEnded {
-                if currentWord.isEmpty || currentWord == "No word" {
-                    currentWord = wordStore.getRandomWord()
+            .simultaneousGesture(
+                TapGesture().onEnded {
+                    if currentWord.isEmpty || currentWord == "No word" {
+                        currentWord = wordStore.getRandomWord()
+                    }
+                    print("StartView: currentWord before Navigation = \(currentWord)")
+                    navTrigger = true
                 }
-                print("StartView: currentWord before Navigation = \(currentWord)")
-                navTrigger = true
-            })
+            )
             
-            // View Points Button
-            NavigationLink(destination: PointsView()) {
+            // View Points Button – pass localAchievements to PointsView
+            NavigationLink(destination: PointsView(achievements: localAchievements)
+                            .environmentObject(wordStore)) {
                 PastelButton(
                     title: LocalizedStringKey("st_view_points"),
                     colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)]
@@ -98,9 +106,20 @@ struct StartView: View {
         .padding()
         .onAppear {
             print("StartView appeared! Current word: \(currentWord)")
+            // Subscribe to changes in WordStore's achievements & runtimeAchievements and update localAchievements.
+            achievementsCancellable = Publishers.CombineLatest(wordStore.$achievements, wordStore.$runtimeAchievements)
+                .map { persistent, runtime in
+                    // Compute effective achievements as OR of persistent and runtime arrays.
+                    zip(persistent, runtime).map { $0 || $1 }
+                }
+                .sink { updated in
+                    localAchievements = updated
+                    print("StartView updated localAchievements: \(localAchievements)")
+                }
         }
         .onDisappear {
             print("StartView disappeared unexpectedly! Current word: \(currentWord)")
+            achievementsCancellable?.cancel()
         }
     }
 }
