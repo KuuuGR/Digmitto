@@ -222,7 +222,7 @@ class WordStore: ObservableObject {
         }
         
         // Speed Demon: 10 tasks in session under 60 seconds.
-        if let startTime = sessionStartTime, tasksCompletedInSession >= 3 {
+        if let startTime = sessionStartTime, tasksCompletedInSession >= 10 {
             let elapsedTime = Date().timeIntervalSince(startTime)
             let speedDemonCondition = elapsedTime <= 60
             newAchievements[3] = achievements[3] || speedDemonCondition
@@ -233,7 +233,7 @@ class WordStore: ObservableObject {
         }
         
         // Perfect Session: 10 tasks and zero mistakes.
-        let perfectSessionCondition = tasksCompletedInSession >= 3 && currentSessionMistakes == 0
+        let perfectSessionCondition = tasksCompletedInSession >= 10 && currentSessionMistakes == 0
         newAchievements[4] = achievements[4] || perfectSessionCondition
         if perfectSessionCondition && !achievements[4] {
             print("Perfect Session achievement unlocked!")
