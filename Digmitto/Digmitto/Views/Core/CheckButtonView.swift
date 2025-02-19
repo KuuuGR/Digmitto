@@ -57,9 +57,12 @@ struct CheckButtonView: View {
             if attempts == 0 {
                 points += 1
                 addRandomFruitEmoji()
-//                addSequentialFruitEmoji() //This is for easier test fruits achievements
             }
 
+            // Increment the task counter for a successful task.
+            wordStore.tasksCompletedInSession += 1
+            print("Task completed. tasksCompletedInSession: \(wordStore.tasksCompletedInSession)")
+            
             // Animate button color change
             withAnimation {
                 buttonGradientIndex = (buttonGradientIndex + 1) % ColorManager.buttonGradients.count
@@ -79,6 +82,9 @@ struct CheckButtonView: View {
                 letterString,
                 wheelString
             )
+            // Increment mistakes (if you want to track them)
+            // For example:
+            // wordStore.currentSessionMistakes += 1
             attempts += 1
         }
     }

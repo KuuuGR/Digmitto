@@ -159,6 +159,8 @@ struct TaskView: View {
         wordStore.sessionStartTime = Date()
         wordStore.fruitsCollectedInSession.removeAll()
         print("Session started at \(wordStore.sessionStartTime!)")
+        print("tasksCompletedInSession reset to \(wordStore.tasksCompletedInSession)")
+        print("currentSessionMistakes reset to \(wordStore.currentSessionMistakes)")
     }
 
     private func updateButtonColors() {

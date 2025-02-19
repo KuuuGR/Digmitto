@@ -30,9 +30,8 @@ struct PointsView: View {
             // Achievements Section Title
             Text(LocalizedStringKey("pw_achievements"))
                 .font(.system(.title2, design: .monospaced)) // Monospace font for terminal effect
-                .font(.system(.title2, design: .monospaced))
                 .fontWeight(.semibold)
-                .foregroundColor(Color.green)
+                .foregroundColor(Color.green) // Set color to green
                 .padding(.bottom, 10)
                 .opacity(0.4)
             
@@ -49,7 +48,9 @@ struct PointsView: View {
         }
         .padding()
         .navigationTitle(LocalizedStringKey("pw_title"))
-        // Do not refresh here—just display the passed-in achievements.
+        .onAppear {
+            print("Daily Usage Streak: \(wordStore.dailyUsageStreak)")
+        }
     }
     
     // MARK: - Achievement Row Component

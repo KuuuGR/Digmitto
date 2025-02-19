@@ -105,6 +105,8 @@ struct StartView: View {
         }
         .padding()
         .onAppear {
+            wordStore.incrementDailyUsage()
+            print("Daily Usage Streak: \(wordStore.dailyUsageStreak)")
             print("StartView appeared! Current word: \(currentWord)")
             // Subscribe to changes in WordStore's achievements & runtimeAchievements and update localAchievements.
             achievementsCancellable = Publishers.CombineLatest(wordStore.$achievements, wordStore.$runtimeAchievements)

@@ -210,6 +210,7 @@ class WordStore: ObservableObject {
         // Speed Demon: 10 tasks in session under 60 seconds
         if tasksCompletedInSession >= 10, let startTime = sessionStartTime {
             let elapsedTime = Date().timeIntervalSince(startTime)
+            print("Elapsed time for session: \(elapsedTime) seconds")
             if elapsedTime <= 60 {
                 newAchievements[3] = true
                 print("Speed Demon achievement unlocked!")
@@ -314,9 +315,14 @@ class WordStore: ObservableObject {
     // MARK: - Daily Usage
     func incrementDailyUsage() {
         let lastUsageDate = UserDefaults.standard.object(forKey: "lastUsageDate") as? Date ?? Date.distantPast
+        print("Last usage date: \(lastUsageDate)")
         if !Calendar.current.isDateInToday(lastUsageDate) {
             dailyUsageStreak += 1
-            UserDefaults.standard.set(Date(), forKey: "lastUsageDate")
+            let newDate = Date()
+            UserDefaults.standard.set(newDate, forKey: "lastUsageDate")
+            print("Incremented dailyUsageStreak to \(dailyUsageStreak), new lastUsageDate: \(newDate)")
+        } else {
+            print("Already used today, dailyUsageStreak remains \(dailyUsageStreak)")
         }
     }
 }
