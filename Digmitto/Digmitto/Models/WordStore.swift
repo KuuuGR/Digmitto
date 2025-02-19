@@ -42,24 +42,26 @@ class WordStore: ObservableObject {
             UserDefaults.standard.set(isRandomizeDiceEnabled, forKey: "isRandomizeDiceEnabled")
         }
     }
+    
     @Published var totalPoints: Int = 0 {
         didSet {
             checkAchievements() // Check achievements when points change
             UserDefaults.standard.set(totalPoints, forKey: "totalPoints")
         }
     }
+    
+    // Persistent achievements array.
     @Published var achievements: [Bool] = Array(repeating: false, count: 9) {
-        didSet {
-            saveAchievements()
-        }
+        didSet { saveAchievements() }
     }
     // This array is only for the current session.
     @Published var runtimeAchievements: [Bool] = Array(repeating: false, count: 9)
-
-    // Computed property returns true at an index if either persistent or runtime achievement is true.
+    
+    // Computed property: an achievement is unlocked if it's true in either array.
     var effectiveAchievements: [Bool] {
         zip(achievements, runtimeAchievements).map { $0 || $1 }
     }
+    
     @Published var dailyUsageStreak: Int = 0 {
         didSet {
             UserDefaults.standard.set(dailyUsageStreak, forKey: "dailyUsageStreak")
@@ -69,20 +71,17 @@ class WordStore: ObservableObject {
     @Published var currentSessionMistakes: Int = 0
     @Published var tasksCompletedInSession: Int = 0
     @Published var sessionStartTime: Date?
+    
     @Published var remainingFruits: Set<String> = Set(["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]) {
-        didSet {
-            saveRemainingFruits()
-        }
+        didSet { saveRemainingFruits() }
     }
     @Published var fruitsCollectedInSession: Set<String> = []  // Resets every session
-    @Published var allTimeCollectedFruits: Set<String> = [] {  // Persistent across sessions
-        didSet {
-            saveAllTimeCollectedFruits()
-        }
+    // Persistent across sessions.
+    @Published var allTimeCollectedFruits: Set<String> = [] {
+        didSet { saveAllTimeCollectedFruits() }
     }
-
-
-    // ✅ Re-added missing letterToNumberMap
+    
+    // MARK: - Letter-to-Number Map
     private let letterToNumberMap: [Character: String] = [
         "s": "0", "z": "0", "S": "0", "Z": "0",
         "t": "1", "d": "1", "T": "1", "D": "1",
@@ -103,7 +102,6 @@ class WordStore: ObservableObject {
     }
 
     // MARK: - Constructor
-
     init() {
         hasSeenManual = UserDefaults.standard.bool(forKey: "hasSeenManual")
         
@@ -114,12 +112,12 @@ class WordStore: ObservableObject {
         loadRemainingFruits()
         dailyUsageStreak = UserDefaults.standard.integer(forKey: "dailyUsageStreak")
         
-        // Load collected fruits across all sessions (persistent)
+        // Load persistent all-time fruits.
         if let savedFruits = UserDefaults.standard.array(forKey: "allTimeCollectedFruits") as? [String] {
             allTimeCollectedFruits = Set(savedFruits)
         }
         
-        // Call checkAchievements once after loading all persistent data
+        // Call checkAchievements() once after loading persistent data.
         checkAchievements()
     }
     
@@ -157,124 +155,142 @@ class WordStore: ObservableObject {
         UserDefaults.standard.set(achievements, forKey: "achievements")
     }
     
+    func unlockAchievement(at index: Int) {
+        guard index >= 0 && index < achievements.count else { return }
+        achievements[index] = true
+        // For session-based achievements, save separate keys.
+        if index == 3 {
+            UserDefaults.standard.set(true, forKey: "achievement_speed_demon")
+        } else if index == 4 {
+            UserDefaults.standard.set(true, forKey: "achievement_perfect_session")
+        }
+        saveAchievements()
+        print("Unlocked achievement at index \(index). Achievements now: \(achievements)")
+    }
+    
     private func loadAchievements() {
         if let savedAchievements = UserDefaults.standard.array(forKey: "achievements") as? [Bool] {
-            // Ensure the achievements array always has 9 elements:
-            achievements = Array(savedAchievements.prefix(9)) + Array(repeating: false, count: max(0, 9 - savedAchievements.count))
-            // Force coconut achievement if allTimeCollectedFruits contains the coconut
-            if allTimeCollectedFruits.contains("🥥") {
-                achievements[8] = true
-                print("Loaded achievements: Coconut Collector forced UNLOCKED because allTimeCollectedFruits contains 🥥")
-            }
-            print("Loaded achievements: \(achievements)")
+            achievements = Array(savedAchievements.prefix(9)) +
+                Array(repeating: false, count: max(0, 9 - savedAchievements.count))
         } else {
             print("No saved achievements found, initializing achievements to false.")
             achievements = Array(repeating: false, count: 9)
         }
+        
+        // Restore session-based achievements.
+        if UserDefaults.standard.bool(forKey: "achievement_speed_demon") {
+            achievements[3] = true
+        }
+        if UserDefaults.standard.bool(forKey: "achievement_perfect_session") {
+            achievements[4] = true
+        }
+        // Force coconut achievement if applicable.
+        if allTimeCollectedFruits.contains("🥥") {
+            achievements[8] = true
+            print("Loaded achievements: Coconut Collector forced UNLOCKED because allTimeCollectedFruits contains 🥥")
+        }
+        print("Loaded achievements: \(achievements)")
     }
     
-    func unlockAchievement(at index: Int) {
-        guard index >= 0 && index < achievements.count else { return }
-        achievements[index] = true
-        print("Unlocked achievement at index \(index). Achievements now: \(achievements)")
-    }
-
     func checkAchievements() {
         print("Checking achievements...")
-        
-        // Ensure there are at least 9 achievement slots.
         var newAchievements = achievements
         if newAchievements.count < 9 {
-            newAchievements = Array(newAchievements.prefix(9)) + Array(repeating: false, count: max(0, 9 - newAchievements.count))
+            newAchievements = Array(newAchievements.prefix(9)) +
+                Array(repeating: false, count: max(0, 9 - newAchievements.count))
         }
         
-        // Example achievement conditions:
-        // Champion: Reach 500 points
-        if totalPoints >= 500 {
-            newAchievements[0] = true
+        // Champion: Reach 500 points.
+        let championUnlocked = totalPoints >= 500
+        newAchievements[0] = achievements[0] || championUnlocked
+        if championUnlocked && !achievements[0] {
             print("Champion achievement unlocked!")
         }
-
-        // First Steps: Complete your first task
-        if totalPoints >= 1 {
-            newAchievements[1] = true
+        
+        // First Steps: Complete your first task.
+        let firstStepsUnlocked = totalPoints >= 1
+        newAchievements[1] = achievements[1] || firstStepsUnlocked
+        if firstStepsUnlocked && !achievements[1] {
             print("First Steps achievement unlocked!")
         }
-
-        // Memory Master: Reach 100 points
-        if totalPoints >= 100 {
-            newAchievements[2] = true
+        
+        // Memory Master: Reach 100 points.
+        let memoryMasterUnlocked = totalPoints >= 100
+        newAchievements[2] = achievements[2] || memoryMasterUnlocked
+        if memoryMasterUnlocked && !achievements[2] {
             print("Memory Master achievement unlocked!")
         }
         
-        // Speed Demon: 10 tasks in session under 60 seconds
-        if tasksCompletedInSession >= 10, let startTime = sessionStartTime {
+        // Speed Demon: 10 tasks in session under 60 seconds.
+        if let startTime = sessionStartTime, tasksCompletedInSession >= 3 {
             let elapsedTime = Date().timeIntervalSince(startTime)
-            print("Elapsed time for session: \(elapsedTime) seconds")
-            if elapsedTime <= 60 {
-                newAchievements[3] = true
-                print("Speed Demon achievement unlocked!")
+            let speedDemonCondition = elapsedTime <= 60
+            newAchievements[3] = achievements[3] || speedDemonCondition
+            if speedDemonCondition && !achievements[3] {
+                print("Speed Demon achievement unlocked! Elapsed time: \(elapsedTime) seconds")
+                unlockAchievement(at: 3)
             }
         }
         
-        // Perfect Session: 10 tasks and zero mistakes
-        if tasksCompletedInSession >= 10, currentSessionMistakes == 0 {
-            newAchievements[4] = true
+        // Perfect Session: 10 tasks and zero mistakes.
+        let perfectSessionCondition = tasksCompletedInSession >= 3 && currentSessionMistakes == 0
+        newAchievements[4] = achievements[4] || perfectSessionCondition
+        if perfectSessionCondition && !achievements[4] {
             print("Perfect Session achievement unlocked!")
+            unlockAchievement(at: 4)
         }
         
-        // Consistent Learner: Use the app daily for a week
-        if dailyUsageStreak >= 7 {
-            newAchievements[5] = true
+        // Consistent Learner: Use the app daily for a week.
+        let consistentLearnerUnlocked = dailyUsageStreak >= 7
+        newAchievements[5] = achievements[5] || consistentLearnerUnlocked
+        if consistentLearnerUnlocked && !achievements[5] {
             print("Consistent Learner achievement unlocked!")
         }
-
-        // Fruit Collector: All fruits collected across sessions
-        if remainingFruits.isEmpty {
-            newAchievements[6] = true
+        
+        // Fruit Collector: All fruits collected across sessions.
+        let fruitCollectorUnlocked = remainingFruits.isEmpty
+        newAchievements[6] = achievements[6] || fruitCollectorUnlocked
+        if fruitCollectorUnlocked && !achievements[6] {
             print("Fruit Collector achievement unlocked!")
         } else {
             print("Remaining fruits for Fruit Collector: \(remainingFruits)")
         }
-
-        // Grocery Seller: All fruits collected in a single session
+        
+        // Grocery Seller: All fruits collected in a single session.
         let allFruits: Set<String> = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]
-        if fruitsCollectedInSession == allFruits {
-            newAchievements[7] = true
+        let grocerySellerUnlocked = fruitsCollectedInSession == allFruits
+        newAchievements[7] = achievements[7] || grocerySellerUnlocked
+        if grocerySellerUnlocked && !achievements[7] {
             print("Grocery Seller achievement unlocked!")
         } else {
             print("Fruits collected in session: \(fruitsCollectedInSession)")
         }
         
-        // Coconut Collector: Obtain a coconut fruit at least once
-        if allTimeCollectedFruits.contains("🥥") {
-            newAchievements[8] = true
+        // Coconut Collector: Obtain a coconut fruit at least once.
+        let coconutCollectorUnlocked = allTimeCollectedFruits.contains("🥥")
+        newAchievements[8] = achievements[8] || coconutCollectorUnlocked
+        if coconutCollectorUnlocked && !achievements[8] {
             print("Coconut Collector achievement unlocked!")
         }
         
-        // Update the published arrays if there is any change.
+        // Update persistent achievements if changed.
         if newAchievements != achievements {
-            // Force SwiftUI to send an update.
             objectWillChange.send()
             achievements = newAchievements
         }
         
-        // Also update our runtime achievements.
-        runtimeAchievements = newAchievements
-        
-        // Save persistent achievements.
         saveAchievements()
     }
 
     // MARK: - Fruit Management
     func collectFruit(_ fruit: String) {
         print("Collecting fruit: \(fruit)")
-        fruitsCollectedInSession.insert(fruit)  // Track for single session
-        allTimeCollectedFruits.insert(fruit)  // Track for all-time collection
+        fruitsCollectedInSession.insert(fruit)
+        allTimeCollectedFruits.insert(fruit)
         remainingFruits.remove(fruit)
         print("All-time collected fruits: \(allTimeCollectedFruits)")
-        saveAllTimeCollectedFruits()  // Save collected fruits permanently
-        checkAchievements()           // Re-check achievements
+        saveAllTimeCollectedFruits()
+        checkAchievements()
     }
 
     private func saveAllTimeCollectedFruits() {
@@ -296,10 +312,7 @@ class WordStore: ObservableObject {
             allTimeCollectedFruits = Set(savedFruits)
         }
     }
-
     
-    
-
     // MARK: - Settings Management
     private func loadSettings() {
         selectedLanguage = UserDefaults.standard.string(forKey: "selectedLanguage") ?? "English"

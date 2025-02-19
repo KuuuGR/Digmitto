@@ -1,10 +1,3 @@
-//
-//  CheckButtonView.swift
-//  Digmitto
-//
-//  Created by Grzegorz Kulesza on 26/01/2025.
-//
-
 import SwiftUI
 
 struct CheckButtonView: View {
@@ -50,40 +43,46 @@ struct CheckButtonView: View {
         let wheelString = readWheelsRightToLeft()
 
         if letterString == wheelString {
-            // Update feedback and points
+            // Correct answer: update feedback.
             feedback = NSLocalizedString("tv_feedback_correct", comment: "")
+            
+            // Increment the session task counter first.
+            wordStore.tasksCompletedInSession += 1
+            print("Task completed. tasksCompletedInSession: \(wordStore.tasksCompletedInSession)")
+            
+            // Now increment the overall points.
             wordStore.totalPoints += 1
-
+            
+            // If this is the first attempt, update local points and award a fruit.
             if attempts == 0 {
                 points += 1
                 addRandomFruitEmoji()
             }
-
-            // Increment the task counter for a successful task.
-            wordStore.tasksCompletedInSession += 1
-            print("Task completed. tasksCompletedInSession: \(wordStore.tasksCompletedInSession)")
             
-            // Animate button color change
+            // Immediately check achievements.
+            wordStore.checkAchievements()
+            
+            // Animate button color change.
             withAnimation {
                 buttonGradientIndex = (buttonGradientIndex + 1) % ColorManager.buttonGradients.count
                 buttonColors = ColorManager.buttonGradient(for: buttonGradientIndex)
             }
-
-            // Change button text if specialTextOnSuccess is provided
+            
+            // Change button text if specialTextOnSuccess is provided.
             if let newText = specialTextOnSuccess {
                 buttonText = LocalizedStringKey(newText)
             }
-
-            loadNewWord() // Load the next word
+            
+            // Load the next word.
+            loadNewWord()
         } else {
-            // Update feedback for incorrect answer
+            // Incorrect answer: update feedback and increment attempts.
             feedback = String(
                 format: NSLocalizedString("tv_feedback_incorrect", comment: ""),
                 letterString,
                 wheelString
             )
-            // Increment mistakes (if you want to track them)
-            // For example:
+            // Optionally, increment mistake counter if desired:
             // wordStore.currentSessionMistakes += 1
             attempts += 1
         }
@@ -101,26 +100,12 @@ struct CheckButtonView: View {
 
     private func addRandomFruitEmoji() {
         let fruits = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]
-        
         if let randomFruit = fruits.randomElement() {
             fruitEmojis.append(randomFruit)
             wordStore.collectFruit(randomFruit)
         }
     }
     
-    
-//TODO: --- This is for easier test achievements ---
-//    @State private var currentFruitIndex: Int = 0
-//
-//    private func addSequentialFruitEmoji() {
-//        let fruits = ["🍎", "🍏", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🫐", "🍒", "🍑", "🥭", "🍍", "🥥", "🥝", "🍈", "🍅"]
-//        let selectedFruit = fruits[currentFruitIndex]
-//        fruitEmojis.append(selectedFruit)
-//        wordStore.collectFruit(selectedFruit)
-//        // Advance the index, wrapping around to 0 after the last fruit.
-//        currentFruitIndex = (currentFruitIndex + 1) % fruits.count
-//    }
-
     private func animateGradient() {
         withAnimation(Animation.linear(duration: 5).repeatForever(autoreverses: true)) {
             buttonGradientIndex = (buttonGradientIndex + 1) % ColorManager.buttonGradients.count
