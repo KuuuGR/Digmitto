@@ -60,7 +60,7 @@ struct TutorialSetpOne: View {
                 NavigationLink(
                     destination: TaskView(
                         currentWord: NSLocalizedString("tso_word_for_practice", comment: ""),
-                        isCheatSheetEnabled: true,
+                        isCheatSheetEnabled: false,
                         isRandomizeDiceEnabled: false,
                         wordStore: wordStore,
                         comebackAfterOneWord: true,

@@ -1,21 +1,19 @@
-//
-//  TutorialStepTwo.swift
-//  Digmitto
-//
-//  Created by Grzegorz Kulesza on 12/02/2025.
-//
-
 import SwiftUI
 
 struct TutorialStepTwo: View {
     @StateObject var wordStore = WordStore()
     @State private var currentWord: String = ""
     @State private var navTrigger = false
+    @State private var taskCompleted = false
+    @State private var didNavigate = false  // Tracks if we have navigated at least once
+    
+    // Use dismiss to pop the view if needed.
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack(spacing: 5) {
             // General Action Text
-            Text(LocalizedStringKey("st_general"))
+            Text(LocalizedStringKey("tstw_general"))
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.top, 1)
@@ -25,28 +23,28 @@ struct TutorialStepTwo: View {
             // Instructions Section
             VStack(alignment: .leading, spacing: 10) {
                 Text(LocalizedStringKey(""))
-                Text(LocalizedStringKey("st_how_to_start_title"))
+                Text(LocalizedStringKey("tstw_how_to_start_title"))
                     .font(.headline)
                     .foregroundColor(.blue)
-
-                Text(LocalizedStringKey("st_instruction_step1"))
+                
+                Text(LocalizedStringKey("tstw_instruction_step1"))
                     .font(.body)
                 
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(LocalizedStringKey("st_instruction_bullet1"))
-                    Text(LocalizedStringKey("st_instruction_bullet2"))
+                    Text(LocalizedStringKey("tstw_instruction_bullet1"))
+                    Text(LocalizedStringKey("tstw_instruction_bullet2"))
                 }
                 .font(.callout)
                 .foregroundColor(.gray)
-
-                Text(LocalizedStringKey("st_instruction_step2"))
+                
+                Text(LocalizedStringKey("tstw_instruction_step2"))
                     .font(.body)
-
+                
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(LocalizedStringKey("st_instruction_bullet3"))
-                    Text(LocalizedStringKey("st_instruction_bullet4"))
-                    Text(LocalizedStringKey("st_instruction_bullet5"))
-                    Text(LocalizedStringKey("st_instruction_bullet6"))
+                    Text(LocalizedStringKey("tstw_instruction_bullet3"))
+                    Text(LocalizedStringKey("tstw_instruction_bullet4"))
+                    Text(LocalizedStringKey("tstw_instruction_bullet5"))
+                    Text(LocalizedStringKey("tstw_instruction_bullet6"))
                     Text(LocalizedStringKey(""))
                 }
                 .font(.callout)
@@ -56,50 +54,70 @@ struct TutorialStepTwo: View {
             .background(Color.gray.opacity(0.1))
             .cornerRadius(10)
             .padding(.bottom, 20)
-
-            // Start Task Button
-            NavigationLink(
-                destination: TaskView(
-                    currentWord: currentWord,
-                    isCheatSheetEnabled: wordStore.isCheatSheetEnabled,
-                    isRandomizeDiceEnabled: wordStore.isRandomizeDiceEnabled,
-                    wordStore: wordStore
-                )
-                .environmentObject(wordStore),
-                isActive: $navTrigger
-            ) {
-                PastelButton(
-                    title: LocalizedStringKey("st_start_task"),
-                    colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
-                )
-            }
-            .padding(.horizontal, 40)
-            .simultaneousGesture(TapGesture().onEnded {
-                if currentWord.isEmpty || currentWord == "No word" {
-                    currentWord = wordStore.getRandomWord()
+            
+            // Conditionally render NavigationLink (for "Start Task") or a plain "Done" button.
+            if !taskCompleted {
+                NavigationLink(
+                    destination: TaskView(
+                        currentWord: NSLocalizedString("tstw_word_for_practice", comment: ""),
+                        isCheatSheetEnabled: true,
+                        isRandomizeDiceEnabled: false,
+                        wordStore: wordStore,
+                        comebackAfterOneWord: true,
+                        isBackButtonHidden: true
+                    )
+                    .environmentObject(wordStore),
+                    isActive: $navTrigger
+                ) {
+                    PastelButton(
+                        title: LocalizedStringKey("tstw_start_task"),
+                        colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)]
+                        //colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
+                    )
                 }
-                print("StartView: currentWord before Navigation = \(currentWord)")
-                navTrigger = true
-            })
-            
-            
-            // Manual Button
-            NavigationLink(destination: ManualsView()) {
-                PastelButton(
-                    title: LocalizedStringKey("st_manuals"),
-                    colors: [Color.yellow.opacity(0.6), Color.cyan.opacity(0.6)]
+                .padding(.horizontal, 40)
+                .simultaneousGesture(
+                    TapGesture().onEnded {
+                        if currentWord.isEmpty || currentWord == "No word" {
+                            currentWord = wordStore.getRandomWord()
+                        }
+                        print("TutorialSetpOne: currentWord before Navigation = \(currentWord)")
+                        didNavigate = true
+                        navTrigger = true
+                    }
                 )
+            } else {
+                // Once task is completed, show a "Done" button with a new pastel color scheme.
+                Button(action: {
+                    dismiss()  // Acts like a back button.
+                }) {
+                    PastelButton(
+                        title: LocalizedStringKey("tstw_done"),
+                        colors: [Color.green.opacity(0.6), Color.yellow.opacity(0.6)]
+                        //colors: [Color.green.opacity(0.6), Color.blue.opacity(0.6)]
+                        //colors: [Color.pink.opacity(0.6), Color.orange.opacity(0.6)]
+                    )
+                }
+                .padding(.horizontal, 40)
             }
-            .padding(.horizontal, 40)
             
             Spacer()
         }
         .padding()
         .onAppear {
-            print("StartView appeared! Current word: \(currentWord)")
+            print("TutorialSetpOne appeared! Current word: \(currentWord)")
         }
         .onDisappear {
-            print("StartView disappeared unexpectedly! Current word: \(currentWord)")
+            print("TutorialSetpOne disappeared unexpectedly! Current word: \(currentWord)")
         }
+        // When navTrigger goes from true to false and we have navigated, mark task as completed.
+        .onChange(of: navTrigger) { newValue in
+            if !newValue && didNavigate {
+                taskCompleted = true
+            }
+        }
+        // Hide the default navigation bar's back button when task is not complete.
+        //.navigationBarBackButtonHidden(!taskCompleted)
+        .navigationBarBackButtonHidden(true)
     }
 }

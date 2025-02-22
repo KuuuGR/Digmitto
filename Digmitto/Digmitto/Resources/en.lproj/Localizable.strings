@@ -9,7 +9,6 @@
 "tv_feedback_correct_special" = "Tutorial Level Completed";
 "tv_feedback_correct_special_button_text" = "Great job!";
 
-
 //MARK: StartView
 "st_general" = "Choose Your Action";
 "st_start_task" = "Start Task";
@@ -27,30 +26,66 @@
 
 //MARK: FirstManualView
 "fm_welcome" = "Welcome to the Tutorial!";
-"fm_tutorial_steps" = "Here we explain how to use the app.\n Follow along these three simple steps!";
-"fm_dont_show_next_time" = "Don't show tutorial next time";
-"fm_start" = "Let's Start";
+"fm_tutorial_steps" = "Learn how to use the app in just three simple steps!";
+"fm_dont_show_next_time" = "Don't show this tutorial next time";
+"fm_start" = "Get ready for practice!";
 
-//MARK: TutorialSetpOne
-"tso_general" = "Choose Your Action";
-"tso_start_task" = "Start Task";
-"tso_word_for_practice" = "piesek";
-"tso_view_points" = "View Points";
-"tso_manuals" = "Manuals";
-"tso_how_to_start_title" = "How to Start?";
-"tso_instruction_step1" = "1. Memorize letters that correspond to digits.";
-"tso_instruction_bullet1" = "• Digit 1 corresponds to 't' or 'd'.";
-"tso_instruction_bullet2" = "• Digit 2 corresponds to 'n'... (see manual for more).";
-"tso_instruction_step2" = "2. Convert meaningful letters of the given word into a number.";
-"tso_instruction_bullet3" = "• Read the random word aloud.";
-"tso_instruction_bullet4" = "• Read the resulting number.";
-"tso_instruction_bullet5" = "• Check if the answer is correct.";
-"tso_instruction_bullet6" = "• If not, correct it and check again.";
+//MARK: TutorialStepOne
+"tso_general" = "📖 STEP ONE";
+"tso_how_to_start_title" = "🔹 The Major System – What is it and why use it?\n";
 
+"tso_word_for_practice" = "Dog";
 
+"tso_instruction_step1" = "1️⃣ Memorize long numbers easily and effectively";
+"tso_instruction_bullet1" = "• Learn the letter-to-digit mapping";
+"tso_instruction_bullet2" = "• Practice by converting words into numbers";
 
+"tso_instruction_step2" = "2️⃣ Exercise 1";
+"tso_instruction_bullet3" = "• Let's start with the example word 'dog'";
+"tso_instruction_bullet4" = "• In the Major System, the important letters are consonants: 'd' and 'g'";
+"tso_instruction_bullet5" = "• 'D' corresponds to 1, and 'G' corresponds to 7";
+"tso_instruction_bullet6" = "• So, the number is 17\n Try it by yourself!";
 
+"tso_start_task" = "Start Exercise";
+"tso_done" = "Go to step two";
 
+//MARK: TutorialStepTwo
+"tstw_general" = "📖 STEP TWO";
+"tstw_how_to_start_title" = "🔹 Rome Wasn't Built in a Day\n";
+
+"tstw_word_for_practice" = "Dolphin";
+
+"tstw_instruction_step1" = "3️⃣ Cheat Sheet";
+"tstw_instruction_bullet1" = "• You can enable the cheat sheet in the settings";
+"tstw_instruction_bullet2" = "• After completing the tutorial, check the manuals. They include mnemonic techniques to help you remember the letter-to-digit mapping";
+
+"tstw_instruction_step2" = "4️⃣ Exercise 2";
+"tstw_instruction_bullet3" = "• Now, let's try the word 'dolphin'";
+"tstw_instruction_bullet4" = "• The important consonants are: 'd', 'l', 'p', 'n'";
+"tstw_instruction_bullet5" = "• 'D' = 1, 'L' = 5, 'P' = 9, 'N' = 2 so we have 1 5 9 2";
+"tstw_instruction_bullet6" = "• Try it yourself! \n You can use the cheat sheet";
+
+"tstw_start_task" = "Start Exercise";
+"tstw_done" = "Go to step three";
+
+//MARK: TutorialStepThree
+"tsth_general" = "📖 STEP THREE";
+"tsth_how_to_start_title" = "🔹 The Climb of Word Creation\n";
+
+"tsth_word_for_practice" = "Argentinosaurus";
+
+"tsth_instruction_step1" = "5️⃣ Words can be really long";
+"tsth_instruction_bullet1" = "• Words are randomly taken from a dictionary, which can be selected in the settings";
+"tsth_instruction_bullet2" = "• Long words are easier to enter when holding the iPhone horizontally";
+
+"tsth_instruction_step2" = "6️⃣ Exercise 3";
+"tsth_instruction_bullet3" = "• Now we have the word 'Argentinosaurus' 🦕";
+"tsth_instruction_bullet4" = "• Try doing it yourself using the cheat sheet";
+"tsth_instruction_bullet5" = "• Number wheels are grouped in triplets, making it easier to read numbers in tens, thousands, and millions";
+"tsth_instruction_bullet6" = "• This is the final challenge!";
+
+"tsth_start_task" = "Start Exercise";
+"tsth_done" = "Finish the Tutorial";
 
 //MARK: ManualsView
 "mn_general" = "How can I help you?";
@@ -83,7 +118,6 @@
 "sv_additional_settings" = "Additional Settings";
 "sv_enable_randomizing_dice" = "Enable manual word randomization";
 
-
 //MARK: PointsView
 "pw_title" = "Points";
 "pw_total" = "Total Points";
@@ -98,7 +132,6 @@
 "ach_description_7" = "Grocery Seller: Collect all fruits in a single session.";
 "ach_description_8" = "Coconut Collector: Obtain a coconut as one of your collected fruits.";
 
-
 //MARK: HomeScreenView
 "hs_welcome" = "Welcome to Major Memory System";
 "hs_start_button" = "Start";
@@ -106,10 +139,8 @@
 "hs_about_button" = "About";
 "hs_total_points_format" = "Total Points: %d";
 
-
 //MARK: CheeatSheetView
 "cs_title" = "📜 Major System Cheat Sheet 📜";
-
 
 //MARK: AboutView
 "ab_title" = "About Major System";
@@ -140,7 +171,6 @@
 "ab_support_developer" = "Support the Developer 🫶";
 "ab_navigation_title" = "About the App";
 
-
 //MARK: MajorAsociationView
 "ma_title" = "Digits-to-letters association";
 "ma_step_0" = "O - S,Z";
@@ -153,7 +183,6 @@
 "ma_step_7" = "7 - K,G";
 "ma_step_8" = "8 - W,F";
 "ma_step_9" = "9 - P,B";
-
 
 //MARK: GuideWalkthroughView
 "guide_title" = "Guide Walkthrough";
