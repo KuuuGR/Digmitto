@@ -95,14 +95,14 @@
 
 //MARK: SettingsView
 "sv_general_settings" = "General Settings";
-"sv_enable_cheat_sheet" = "Enable Cheat Sheet";
-"sv_language" = "Language";
+"sv_enable_cheat_sheet" = "Cheat Sheet";
+"sv_language" = "Dictionary";
 "sv_language_english" = "English";
 "sv_language_polish" = "Polish";
 "sv_language_spanish" = "Spanish";
 
 "sv_colorization_settings" = "Colorization Settings";
-"sv_enable_colorization" = "Enable Colorization";
+"sv_enable_colorization" = "Colorization";
 "sv_primary_color" = "Primary Color";
 "sv_secondary_color" = "Secondary Color";
 
@@ -116,7 +116,8 @@
 "sv_settings_title" = "Settings";
 
 "sv_additional_settings" = "Additional Settings";
-"sv_enable_randomizing_dice" = "Enable manual word randomization";
+"sv_enable_randomizing_dice" = "Word dice";
+"sv_enable_tutorial_again" = "Tutorial at start";
 
 //MARK: PointsView
 "pw_title" = "Points";
