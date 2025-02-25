@@ -1,6 +1,4 @@
-//Localizable
-
-//MARK: TaskView
+/* MARK: TaskView */
 "tv_check_button" = "Check it";
 "tv_feedback_correct" = "Correct! 🌟";
 "tv_feedback_incorrect" = "Try again! ❌\n\nLetters: %@\nWheels: %@";
@@ -9,7 +7,7 @@
 "tv_feedback_correct_special" = "Tutorial Level Completed";
 "tv_feedback_correct_special_button_text" = "Great job!";
 
-//MARK: StartView
+/* MARK: StartView */
 "st_general" = "Choose Your Action";
 "st_start_task" = "Start Task";
 "st_view_points" = "View Points";
@@ -24,102 +22,85 @@
 "st_instruction_bullet5" = "• Check if the answer is correct.";
 "st_instruction_bullet6" = "• If not, correct it and check again.";
 
-//MARK: FirstManualView
+/* MARK: FirstManualView */
 "fm_welcome" = "Welcome to the Tutorial!";
 "fm_tutorial_steps" = "Learn how to use the app in just three simple steps!";
 "fm_dont_show_next_time" = "Don't show this tutorial next time";
 "fm_start" = "Get ready for practice!";
 
-//MARK: TutorialStepOne
+/* MARK: TutorialStepOne */
 "tso_general" = "📖 STEP ONE";
 "tso_how_to_start_title" = "🔹 The Major System – What is it and why use it?\n";
-
 "tso_word_for_practice" = "Dog";
-
 "tso_instruction_step1" = "1️⃣ Memorize long numbers easily and effectively";
 "tso_instruction_bullet1" = "• Learn the letter-to-digit mapping";
 "tso_instruction_bullet2" = "• Practice by converting words into numbers";
-
 "tso_instruction_step2" = "2️⃣ Exercise 1";
 "tso_instruction_bullet3" = "• Let's start with the example word 'dog'";
 "tso_instruction_bullet4" = "• In the Major System, the important letters are consonants: 'd' and 'g'";
 "tso_instruction_bullet5" = "• 'D' corresponds to 1, and 'G' corresponds to 7";
-"tso_instruction_bullet6" = "• So, the number is 17\n Try it by yourself!";
-
+"tso_instruction_bullet6" = "• So, the number is 17\nTry it by yourself!";
 "tso_start_task" = "Start Exercise";
 "tso_done" = "Go to step two";
 
-//MARK: TutorialStepTwo
+/* MARK: TutorialStepTwo */
 "tstw_general" = "📖 STEP TWO";
 "tstw_how_to_start_title" = "🔹 Rome Wasn't Built in a Day\n";
-
 "tstw_word_for_practice" = "Dolphin";
-
 "tstw_instruction_step1" = "3️⃣ Cheat Sheet";
 "tstw_instruction_bullet1" = "• You can enable the cheat sheet in the settings";
 "tstw_instruction_bullet2" = "• After completing the tutorial, check the manuals. They include mnemonic techniques to help you remember the letter-to-digit mapping";
-
 "tstw_instruction_step2" = "4️⃣ Exercise 2";
 "tstw_instruction_bullet3" = "• Now, let's try the word 'dolphin'";
 "tstw_instruction_bullet4" = "• The important consonants are: 'd', 'l', 'p', 'n'";
 "tstw_instruction_bullet5" = "• 'D' = 1, 'L' = 5, 'P' = 9, 'N' = 2 so we have 1 5 9 2";
 "tstw_instruction_bullet6" = "• Try it yourself! \n You can use the cheat sheet";
-
 "tstw_start_task" = "Start Exercise";
 "tstw_done" = "Go to step three";
 
-//MARK: TutorialStepThree
+/* MARK: TutorialStepThree */
 "tsth_general" = "📖 STEP THREE";
 "tsth_how_to_start_title" = "🔹 The Climb of Word Creation\n";
-
 "tsth_word_for_practice" = "Argentinosaurus";
-
 "tsth_instruction_step1" = "5️⃣ Words can be really long";
 "tsth_instruction_bullet1" = "• Words are randomly taken from a dictionary, which can be selected in the settings";
 "tsth_instruction_bullet2" = "• Long words are easier to enter when holding the iPhone horizontally";
-
 "tsth_instruction_step2" = "6️⃣ Exercise 3";
 "tsth_instruction_bullet3" = "• Now we have the word 'Argentinosaurus' 🦕";
 "tsth_instruction_bullet4" = "• Try doing it yourself using the cheat sheet";
 "tsth_instruction_bullet5" = "• Number wheels are grouped in triplets, making it easier to read numbers in tens, thousands, and millions";
 "tsth_instruction_bullet6" = "• This is the final challenge!";
-
 "tsth_start_task" = "Start Exercise";
 "tsth_done" = "Finish the Tutorial";
 
-//MARK: ManualsView
+/* MARK: ManualsView */
 "mn_general" = "How can I help you?";
-"mn_major_numbers" = "Major numbers asociation";
-"mn_app_manual" = "Overall APP Manual";
-"mn_numbers_mnemotechnics" = "easier association remember";
+"mn_major_numbers" = "Major System Associations";
+"mn_app_manual" = "Complete App Manual";
+"mn_numbers_mnemotechnics" = "Mnemonic techniques for easier associations";
 
-//MARK: SettingsView
+/* MARK: SettingsView */
 "sv_general_settings" = "General Settings";
 "sv_enable_cheat_sheet" = "Cheat Sheet";
 "sv_language" = "Dictionary";
 "sv_language_english" = "English";
 "sv_language_polish" = "Polish";
 "sv_language_spanish" = "Spanish";
-
 "sv_colorization_settings" = "Colorization Settings";
 "sv_enable_colorization" = "Colorization";
 "sv_primary_color" = "Primary Color";
 "sv_secondary_color" = "Secondary Color";
-
 "sv_default_color_settings" = "Default Color Setting";
 "sv_default_color" = "Default Color";
-
 "sv_major_system_letters" = "Major System Letters";
-"sv_major_letters" = "Major Letters";
+"sv_major_letters" = "Significant Letters";
 "sv_enter_letters" = "Enter letters";
-
 "sv_settings_title" = "Settings";
-
 "sv_additional_settings" = "Additional Settings";
 "sv_enable_randomizing_dice" = "Word dice";
 "sv_enable_tutorial_again" = "Tutorial at start";
 
-//MARK: PointsView
+/* MARK: PointsView */
 "pw_title" = "Points";
 "pw_total" = "Total Points";
 "pw_achievements" = "Achievements";
@@ -131,97 +112,94 @@
 "ach_description_5" = "Consistent Learner: Use the app daily for a week.";
 "ach_description_6" = "Fruit Collector: Collect all fruit icons.";
 "ach_description_7" = "Grocery Seller: Collect all fruits in a single session.";
-"ach_description_8" = "Coconut Collector: Obtain a coconut as one of your collected fruits.";
+"ach_description_8" = "Coconut Collector: Obtain a coconut among your collected fruits.";
 
-//MARK: HomeScreenView
+/* MARK: HomeScreenView */
 "hs_welcome" = "Welcome to Major Memory System";
 "hs_start_button" = "Start";
 "hs_settings_button" = "Settings";
 "hs_about_button" = "About";
 "hs_total_points_format" = "Total Points: %d";
 
-//MARK: CheeatSheetView
+/* MARK: CheatSheetView */
 "cs_title" = "📜 Major System Cheat Sheet 📜";
 
-//MARK: AboutView
-"ab_title" = "About Major System";
+/* MARK: AboutView */
+"ab_title" = "About the Major System";
 "ab_what_is" = "What is the Major System?";
-"ab_what_is_description" = "The Major System is a mnemonic technique that helps you remember numbers by converting them into consonant sounds, which can then be made into words.";
+"ab_what_is_description" = "The Major System is a mnemonic technique that helps you remember numbers by converting them into consonant sounds, which can then be formed into words.";
 "ab_how_it_works" = "How it works:";
-"ab_how_it_works_bullet1" = "• Each digit is assigned to specific consonant sounds";
-"ab_how_it_works_bullet2" = "• Vowels and unused consonants can be added freely";
-"ab_how_it_works_bullet3" = "• Create words using these sounds to remember numbers";
+"ab_how_it_works_bullet1" = "• Each digit is assigned specific consonant sounds.";
+"ab_how_it_works_bullet2" = "• Vowels and unassigned letters can be added freely.";
+"ab_how_it_works_bullet3" = "• Create words using these sounds to help you remember numbers.";
 "ab_examples" = "Examples:";
 "ab_example1" = "123 → \"TuNeMo\"";
 "ab_example2" = "507 → \"LaSeKa\"";
 "ab_example3" = "999 → \"PaPaPa\"";
 "ab_developer_info" = "Developer Info";
-// AboutView new
 "ab_section_about_app" = "About the App";
 "ab_app_name" = "App: Digmitto";
 "ab_version" = "Version: 1.0.0";
 "ab_developer" = "Developer: Grzegorz Kulesza";
-
 "ab_section_purpose" = "What is the app for?";
-"ab_purpose_major_system" = "• Learn coding in the Major System.";
-"ab_purpose_large_numbers" = "• Learn reading large numbers.";
-"ab_purpose_dates" = "• Learn memorizing historical dates.";
-"ab_purpose_words" = "• Learn quick reading of words.";
-
+"ab_purpose_major_system" = "• Learn the Major System.";
+"ab_purpose_large_numbers" = "• Learn to read large numbers.";
+"ab_purpose_dates" = "• Memorize historical dates.";
+"ab_purpose_words" = "• Practice quick word recognition.";
 "ab_section_support" = "Support";
 "ab_support_developer" = "Support the Developer 🫶";
 "ab_navigation_title" = "About the App";
 
-//MARK: MajorAsociationView
-"ma_title" = "Digits-to-letters association";
-"ma_step_0" = "O - S,Z";
-"ma_step_1" = "1 - T,D";
-"ma_step_2" = "2 - N";
-"ma_step_3" = "3 - M";
-"ma_step_4" = "4 - R";
-"ma_step_5" = "5 - L";
-"ma_step_6" = "6 - J";
-"ma_step_7" = "7 - K,G";
-"ma_step_8" = "8 - W,F";
-"ma_step_9" = "9 - P,B";
+/* MARK: MajorAssociationView */
+"ma_title" = "Digits-to-Letters Association";
+"ma_step_0" = "0 – S, Z";
+"ma_step_1" = "1 – T, D";
+"ma_step_2" = "2 – N";
+"ma_step_3" = "3 – M";
+"ma_step_4" = "4 – R";
+"ma_step_5" = "5 – L";
+"ma_step_6" = "6 – J";
+"ma_step_7" = "7 – K, G";
+"ma_step_8" = "8 – W, F";
+"ma_step_9" = "9 – P, B";
 
-//MARK: GuideWalkthroughView
+/* MARK: GuideWalkthroughView */
 "guide_title" = "Guide Walkthrough";
 "tut_step_0" = "Welcome to the Digmitto app! Here's how to get started.";
-"tut_step_1" = "Step 1: Use the 'Start Task' button to access the main application view.";
-"tut_step_2" = "Step 2: In this view, you will find three key elements: \n• a random word, \n• number wheels to set a value, and \n• a 'Check' button to compare the word with the selected number.";
-"tut_step_3" = "Step 3: If the answer is correct, you will see the message 'Correct! 🌟'.";
-"tut_step_4" = "Step 4: For each first-attempt correct answer, you will earn +1 point and a fruit icon.";
-"tut_step_5" = "Step 5: If you press 'Check' but the answer is incorrect, the message 'Try again! ❌' will appear. In this case, correct your answer to proceed to the next word.";
-"tut_step_6" = "Step 6: To clarify mistakes, the app shows the expected code for the word and the code you entered on the wheels. Unfortunately, the score won't increase for corrected answers.";
-"tut_step_7" = "Step 7: There are two helper tools to make the learning process easier.";
-"tut_step_8" = "Step 8: Both helper tools can be enabled in the application settings.";
-"tut_step_9" = "Step 9: The first helper highlights letters that correspond to numbers. The colors for these letters and the letters to be ignored can be customized in the settings.";
-"tut_step_10" = "Step 10: The second helper is a cheat sheet showing letters and their corresponding numbers. You can refer to this sheet if you forget any values.";
-"tut_step_11" = "Step 11: Random words can be very long, sometimes exceeding the number of visible wheels on the screen.";
-"tut_step_12" = "Step 12: To resolve this, switch the screen orientation to horizontal.";
-"tut_step_13" = "Step 13: This horizontal position prevents the wheels from shrinking and ensures the entire coded number is visible.";
-"tut_step_14" = "Step 14: The wheels are grouped into sets of three, counted from the last number.";
-"tut_step_15" = "Step 15: This grouping helps you learn to read numbers in units, tens, thousands, millions, etc.";
-"tut_step_16" = "Step 16: The application tracks points for each session and maintains a total cumulative score across all sessions.";
+"tut_step_1" = "Step 1: Use the 'Start Task' button to access the main view.";
+"tut_step_2" = "Step 2: In this view, you will find three key elements:\n• A random word,\n• Number wheels to set a value, and\n• A 'Check' button to compare the word with the selected number.";
+"tut_step_3" = "Step 3: If the answer is correct, you will see 'Correct! 🌟'.";
+"tut_step_4" = "Step 4: For each first-attempt correct answer, you earn +1 point and a fruit icon.";
+"tut_step_5" = "Step 5: If 'Check' is pressed and the answer is incorrect, 'Try again! ❌' will appear. Correct your answer to proceed.";
+"tut_step_6" = "Step 6: To clarify mistakes, the app shows the expected code and your input on the wheels. No points are awarded for incorrected attempts.";
+"tut_step_7" = "Step 7: The app provides two helper tools for learning.";
+"tut_step_8" = "Step 8: Both helpers can be enabled in the application settings.";
+"tut_step_9" = "Step 9: The first helper highlights letters corresponding to digits. Its colors and the list of ignored letters can be customized in the settings.";
+"tut_step_10" = "Step 10: The second helper is a cheat sheet displaying the letter-digit associations. Use it if you forget any values.";
+"tut_step_11" = "Step 11: Random words can be very long, sometimes longer than the visible wheels.";
+"tut_step_12" = "Step 12: To fix this, switch the screen to landscape orientation.";
+"tut_step_13" = "Step 13: Landscape mode prevents the wheels from shrinking and ensures the full number is visible.";
+"tut_step_14" = "Step 14: The wheels are grouped in triplets, starting from the last digit.";
+"tut_step_15" = "Step 15: This grouping helps you read numbers in units, tens, thousands, millions, etc.";
+"tut_step_16" = "Step 16: The app tracks points for each session as well as a cumulative total.";
 "tut_step_17" = "Step 17: You can view your points on the main screen or in the 'View Points' section.";
 
-// MARK: MajorMemoView
-"mnm_title" = "Easier memorization";
-"mnm_step_0" = "Easier memorization is possible with the help of mnemonic techniques. The best mnemonics are the ones you create yourself, but here are some suggestions in case you find it hard to come up with your own.";
-"mnm_step_1" = "0 - S, Z: Imagine two snakes – one shaped like the letter S, the other like the letter Z – fighting over a donut that looks like the number 0.";
-"mnm_step_2" = "1 - T, D: Picture a door in the shape of the letter D that leads to room number 1. The door handle looks like the letter T – a mysterious door indeed.";
-"mnm_step_3" = "2 - N: The letter N touches the line it’s written on in two places, as if it has two little legs.";
-"mnm_step_4" = "3 - M: The letter M touches the line in three places, which sets it apart from the previous letters.";
-"mnm_step_5" = "4 - R: The letter R can be heard clearly in the word 'four'. You can also imagine a four-leaf clover with an R in the center.";
-"mnm_step_6" = "5 - L: In Roman numerals, the letter L represents 50, but we associate it with 5, which is easier to remember.";
-"mnm_step_7" = "6 - J: To connect the number 6 with the letter J, picture a snail that looks like the number 6, with the letter J serving as the handle of an umbrella.";
-"mnm_step_8" = "7 - K, G: Seven is a big number, and it’s easy to associate it with a 7-kilogram weight. The abbreviation 'kg' contains the letters K and G.";
-"mnm_step_9" = "8 - W, F: Imagine a snowman shaped like the number 8, who has access to Wi-Fi. The letters W and F are the ones we care about.";
-"mnm_step_10" = "9 - P, B: Picture lead – the chemical element with the symbol Pb. Lead is very heavy, which makes it easy to associate with the largest single-digit number, 9.";
+/* MARK: MajorMemoView */
+"mnm_title" = "Easier Memorization";
+"mnm_step_0" = "Easier memorization is possible with mnemonic techniques. The best mnemonics are those you create yourself, but here are some suggestions if you have trouble coming up with your own.";
+"mnm_step_1" = "0 – S, Z: Imagine two snakes – one shaped like the letter S, the other like the letter Z – fighting over a donut that resembles the number 0.";
+"mnm_step_2" = "1 – T, D: Picture a door in the shape of the letter D leading to room number 1. The door handle looks like the letter T.";
+"mnm_step_3" = "2 – N: The letter N touches the writing line in two places, as if it has two little legs.";
+"mnm_step_4" = "3 – M: The letter M touches the line in three places, setting it apart.";
+"mnm_step_5" = "4 – R: The letter R is pronounced clearly in 'four'. Imagine a four-leaf clover with an R in the center.";
+"mnm_step_6" = "5 – L: In Roman numerals, L represents 50, but here it is associated with 5 for simplicity.";
+"mnm_step_7" = "6 – J: To associate 6 with J, picture a snail resembling the number 6, with J as the umbrella handle.";
+"mnm_step_8" = "7 – K, G: Seven is a big number. Think of a 7‑kilogram weight; 'kg' contains K and G.";
+"mnm_step_9" = "8 – W, F: Imagine a snowman shaped like the number 8 that has Wi‑Fi.";
+"mnm_step_10" = "9 – P, B: Picture lead (Pb); lead is heavy, linking it to the digit 9.";
 
-// MARK: SupportDeveloperView
+/* MARK: SupportDeveloperView */
 "sd_support_title" = "Support the Developer";
-"sd_support_message" = "If you like my app and want to support me, I would greatly appreciate it! Even the smallest donation means a lot to me.";
-"sd_support_voluntary" = "Support is completely voluntary. Please only donate if you can afford to. Thank you for any help!";
+"sd_support_message" = "If you like my app and want to support me, I would greatly appreciate it! Even the smallest donation means a lot.";
+"sd_support_voluntary" = "Support is completely voluntary. Please donate only if you can afford it. Thank you for any help!";
 "sd_support_button" = "Support Me";
