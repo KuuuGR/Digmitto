@@ -1,121 +1,205 @@
-"tut_step_0" = "¡Bienvenido a la aplicación Digmitto! Aquí tienes cómo empezar.";
-"tut_step_1" = "Paso 1: Usa el botón 'Iniciar tarea' para acceder a la vista principal de la aplicación.";
-"tut_step_2" = "Paso 2: En esta vista, encontrarás tres elementos clave: una palabra aleatoria, ruedas para establecer valores numéricos y un botón 'Comprobar' para comparar la palabra con el número seleccionado.";
-"tut_step_3" = "Paso 3: Si la respuesta es correcta, verás el mensaje '¡Correcto! 🌟'.";
-"tut_step_4" = "Paso 4: Por cada respuesta correcta en el primer intento, ganarás +1 punto y un ícono de fruta.";
-"tut_step_5" = "Paso 5: Si presionas 'Comprobar' pero la respuesta es incorrecta, aparecerá el mensaje '¡Inténtalo de nuevo! ❌'. En este caso, corrige tu respuesta para continuar con la siguiente palabra.";
-"tut_step_6" = "Paso 6: Para aclarar los errores, la aplicación muestra el código esperado para la palabra y el código que ingresaste en las ruedas.";
-"tut_step_7" = "Paso 7: Hay dos herramientas auxiliares para facilitar el proceso de aprendizaje.";
-"tut_step_8" = "Paso 8: Ambas herramientas auxiliares se pueden habilitar en la configuración de la aplicación.";
-"tut_step_9" = "Paso 9: La primera herramienta resalta las letras que corresponden a números. Los colores de estas letras y de las letras que deben ignorarse se pueden personalizar en la configuración.";
-"tut_step_10" = "Paso 10: La segunda herramienta es una hoja de trucos que muestra letras y sus números correspondientes. Puedes consultarla si olvidas algún valor.";
-"tut_step_11" = "Paso 11: Las palabras aleatorias pueden ser muy largas, a veces superando el número de ruedas visibles en la pantalla.";
-"tut_step_12" = "Paso 12: Para resolver este problema, cambia la orientación de la pantalla a horizontal.";
-"tut_step_13" = "Paso 13: Esta orientación horizontal evita que las ruedas se encojan y garantiza que el número completo codificado sea visible.";
-"tut_step_14" = "Paso 14: Las ruedas están agrupadas en conjuntos de tres, contados desde el último número.";
-"tut_step_15" = "Paso 15: Este agrupamiento te ayuda a aprender a leer números en unidades, decenas, miles, millones, etc.";
-"tut_step_16" = "Paso 16: La aplicación rastrea los puntos para cada sesión y mantiene un puntaje total acumulativo de todas las sesiones.";
-"tut_step_17" = "Paso 17: Puedes ver tus puntos en la pantalla principal o en la sección 'Ver puntos'.";
-//MARK: TaskView
-"tv_check_button" = "Verificar";
+/* MARK: TaskView */
+"tv_check_button" = "Verifícalo";
 "tv_feedback_correct" = "¡Correcto! 🌟";
 "tv_feedback_incorrect" = "¡Inténtalo de nuevo! ❌\n\nLetras: %@\nRuedas: %@";
 "tv_points" = "Puntos: %d";
 "tv_fruits" = "Frutas: %@";
+"tv_feedback_correct_special" = "Nivel del tutorial completado";
+"tv_feedback_correct_special_button_text" = "¡Buen trabajo!";
 
-//MARK: TaskScreenView
-"ts_screen_title" = "Pantalla de Tareas";
-"ts_back_button" = "Atrás";
-"ts_user_input_placeholder" = "Introduce tu respuesta aquí";
-"ts_code_button" = "Código";
-
-//MARK: StartView
+/* MARK: StartView */
 "st_general" = "Elige tu acción";
 "st_start_task" = "Iniciar tarea";
 "st_view_points" = "Ver puntos";
 "st_manuals" = "Manuales";
-
-// Instrucciones StartView
 "st_how_to_start_title" = "¿Cómo empezar?";
 "st_instruction_step1" = "1. Memoriza las letras que corresponden a los dígitos.";
 "st_instruction_bullet1" = "• El dígito 1 corresponde a 't' o 'd'.";
-"st_instruction_bullet2" = "• El dígito 2 corresponde a 'n'... (ver manual para más detalles).";
-"st_instruction_step2" = "2. Convierte las letras significativas de la palabra dada en un número.";
+"st_instruction_bullet2" = "• El dígito 2 corresponde a 'n'... (consulta el manual para más detalles).";
+"st_instruction_step2" = "2. Convierte las letras significativas de la palabra en un número.";
 "st_instruction_bullet3" = "• Lee la palabra aleatoria en voz alta.";
 "st_instruction_bullet4" = "• Lee el número resultante.";
-"st_instruction_bullet5" = "• Verifica si la respuesta es correcta.";
-"st_instruction_bullet6" = "• Si no es correcta, corrígela y verifica de nuevo.";
+"st_instruction_bullet5" = "• Comprueba si la respuesta es correcta.";
+"st_instruction_bullet6" = "• Si no, corrígela y vuelve a intentarlo.";
 
-//MARK: ManualsView
+/* MARK: FirstManualView */
+"fm_welcome" = "¡Bienvenido al tutorial!";
+"fm_tutorial_steps" = "¡Aprende a usar la aplicación en solo tres pasos sencillos!";
+"fm_dont_show_next_time" = "No mostrar este tutorial la próxima vez";
+"fm_start" = "¡Vamos a practicar!";
+
+/* MARK: TutorialStepOne */
+"tso_general" = "📖 PASO UNO";
+"tso_how_to_start_title" = "🔹 El Sistema Mayor – ¿Qué es y por qué usarlo?\n";
+"tso_word_for_practice" = "Perro";
+"tso_instruction_step1" = "1️⃣ Memoriza números largos de forma fácil y efectiva";
+"tso_instruction_bullet1" = "• Aprende la correspondencia entre letras y dígitos";
+"tso_instruction_bullet2" = "• Practica convirtiendo palabras en números";
+"tso_instruction_step2" = "2️⃣ Ejercicio 1";
+"tso_instruction_bullet3" = "• Comienza con el ejemplo 'Perro'";
+"tso_instruction_bullet4" = "• En el Sistema Mayor, las letras importantes son las consonantes: 'p' y 'r'";
+"tso_instruction_bullet5" = "• 'P' corresponde a 9 y 'R' a 4";
+"tso_instruction_bullet6" = "• Así, el número es 944\n¡Pruébalo tú mismo!";
+"tso_start_task" = "Iniciar ejercicio";
+"tso_done" = "Ir al paso dos";
+
+/* MARK: TutorialStepTwo */
+"tstw_general" = "📖 PASO DOS";
+"tstw_how_to_start_title" = "🔹 Roma no se construyó en un día\n";
+"tstw_word_for_practice" = "Delfín";
+"tstw_instruction_step1" = "3️⃣ Hoja de trucos";
+"tstw_instruction_bullet1" = "• Puedes activar la hoja de trucos en los ajustes";
+"tstw_instruction_bullet2" = "• Tras completar el tutorial, consulta los manuales. Incluyen técnicas mnemotécnicas para ayudarte a recordar la correspondencia letra-dígito";
+"tstw_instruction_step2" = "4️⃣ Ejercicio 2";
+"tstw_instruction_bullet3" = "• Ahora, probemos con la palabra 'Delfín'";
+"tstw_instruction_bullet4" = "• Las consonantes importantes son: 'd', 'l', 'f', 'n'";
+"tstw_instruction_bullet5" = "• 'D' = 1, 'L' = 5, 'F' = 8, 'N' = 2, lo que da 1 5 8 2";
+"tstw_instruction_bullet6" = "• ¡Pruébalo tú mismo! \nPuedes usar la hoja de trucos";
+"tstw_start_task" = "Iniciar ejercicio";
+"tstw_done" = "Ir al paso tres";
+
+/* MARK: TutorialStepThree */
+"tsth_general" = "📖 PASO TRES";
+"tsth_how_to_start_title" = "🔹 La escalada de la creación de palabras\n";
+"tsth_word_for_practice" = "Argentinosaurio";
+"tsth_instruction_step1" = "5️⃣ Las palabras pueden ser muy largas";
+"tsth_instruction_bullet1" = "• Las palabras se eligen al azar de un diccionario, que puedes seleccionar en los ajustes";
+"tsth_instruction_bullet2" = "• Las palabras largas se ingresan más fácilmente en posición horizontal";
+"tsth_instruction_step2" = "6️⃣ Ejercicio 3";
+"tsth_instruction_bullet3" = "• Ahora tenemos la palabra 'Argentinosaurio' 🦕";
+"tsth_instruction_bullet4" = "• Inténtalo tú mismo usando la hoja de trucos";
+"tsth_instruction_bullet5" = "• Los engranajes de números se agrupan en tríos, facilitando la lectura de números en decenas, miles y millones";
+"tsth_instruction_bullet6" = "• ¡Este es el desafío final!";
+"tsth_start_task" = "Iniciar ejercicio";
+"tsth_done" = "Finalizar el tutorial";
+
+/* MARK: ManualsView */
 "mn_general" = "¿En qué puedo ayudarte?";
-"mn_major_numbers" = "Sistema Mayor — Asociación de números";
-"mn_app_manual" = "Manual general de la app";
-"mn_numbers_mnemotechnics" = "Técnicas de memoria para números";
+"mn_major_numbers" = "Asociaciones del Sistema Mayor";
+"mn_app_manual" = "Manual completo de la aplicación";
+"mn_numbers_mnemotechnics" = "Técnicas mnemotécnicas para facilitar las asociaciones";
 
-//MARK: SettingsView
-"sv_general_settings" = "Configuración General";
-"sv_enable_cheat_sheet" = "Activar guía rápida";
-"sv_language" = "Idioma";
+/* MARK: SettingsView */
+"sv_general_settings" = "Ajustes generales";
+"sv_enable_cheat_sheet" = "Hoja de trucos";
+"sv_language" = "Diccionario";
 "sv_language_english" = "Inglés";
 "sv_language_polish" = "Polaco";
 "sv_language_spanish" = "Español";
-
-"sv_colorization_settings" = "Configuración de colores";
-"sv_enable_colorization" = "Activar colores";
-"sv_primary_color" = "Color principal";
+"sv_colorization_settings" = "Ajustes de coloración";
+"sv_enable_colorization" = "Coloración";
+"sv_primary_color" = "Color primario";
 "sv_secondary_color" = "Color secundario";
-
-"sv_default_color_settings" = "Configuración de color predeterminada";
-"sv_default_color" = "Color predeterminado";
-
+"sv_default_color_settings" = "Ajustes del color por defecto";
+"sv_default_color" = "Color por defecto";
 "sv_major_system_letters" = "Letras del Sistema Mayor";
-"sv_major_letters" = "Letras Mayor";
-"sv_enter_letters" = "Introduce letras";
+"sv_major_letters" = "Letras significativas";
+"sv_enter_letters" = "Introduce las letras";
+"sv_settings_title" = "Ajustes";
+"sv_additional_settings" = "Ajustes adicionales";
+"sv_enable_randomizing_dice" = "Dados de palabras";
+"sv_enable_tutorial_again" = "Reiniciar el tutorial";
 
-"sv_settings_title" = "Configuraciones";
-
-"sv_additional_settings" = "Configuraciones adicionales";
-"sv_enable_randomizing_dice" = "Habilitar generación manual de palabras";
-
-//MARK: PointsView
+/* MARK: PointsView */
 "pw_title" = "Puntos";
-"pw_total" = "Puntos Totales";
+"pw_total" = "Puntos totales";
 "pw_achievements" = "Logros";
+"ach_description_0" = "Champion: Alcanza 500 puntos.";
+"ach_description_1" = "First Steps: Completa tu primera tarea.";
+"ach_description_2" = "Memory Master: Alcanza 100 puntos.";
+"ach_description_3" = "Speed Demon: Resuelve 10 tareas en menos de un minuto.";
+"ach_description_4" = "Perfect Session: Completa una sesión sin errores.";
+"ach_description_5" = "Consistent Learner: Usa la aplicación diariamente durante una semana.";
+"ach_description_6" = "Fruit Collector: Recoge todos los íconos de fruta.";
+"ach_description_7" = "Grocery Seller: Recoge todas las frutas en una sola sesión.";
+"ach_description_8" = "Coconut Collector: Obtén un coco entre tus frutas recolectadas.";
 
-// Descripciones de logros
-"ach_description_0" = "Campeón: Alcanza 500 puntos.";
-"ach_description_1" = "Primeros pasos: Completa tu primera tarea.";
-"ach_description_2" = "Maestro de Memoria: Alcanza 100 puntos.";
-"ach_description_3" = "Demonio de la velocidad: Resuelve 10 tareas en menos de un minuto.";
-"ach_description_4" = "Sesión perfecta: Completa una sesión sin errores.";
-"ach_description_5" = "Estudiante constante: Usa la app diariamente durante una semana.";
-"ach_description_6" = "Recolector de frutas: Recoge todos los iconos de frutas.";
-"ach_description_7" = "Vendedor de frutas: Recoge todas las frutas en una sola sesión.";
-
-//MARK: HomeScreenView
-"hs_welcome" = "Bienvenido al Sistema de Memoria Mayor";
-"hs_start_button" = "Inicio";
-"hs_settings_button" = "Configuraciones";
+/* MARK: HomeScreenView */
+"hs_welcome" = "Bienvenido a Major Memory System";
+"hs_start_button" = "Iniciar";
+"hs_settings_button" = "Ajustes";
 "hs_about_button" = "Acerca de";
 "hs_total_points_format" = "Puntos totales: %d";
 
-//MARK: DeveloperView
-"dv_developer_info" = "Información del desarrollador";
-"dv_navigation_title" = "Desarrollador";
-"dv_about_developer" = "Sobre el desarrollador";
-"dv_created_by" = "Creado por Grzegorz Kulesza";
-"dv_contact_info" = "Contacto: your_email@example.com";
+/* MARK: CheatSheetView */
+"cs_title" = "📜 Hoja de trucos del Sistema Mayor 📜";
 
-"dv_future_updates" = "Próximas actualizaciones";
-"dv_planned_features" = "Características planificadas:";
-"dv_feature_multilanguage" = "• Soporte para varios idiomas";
-"dv_feature_wordlists" = "• Listas de palabras personalizadas";
-"dv_feature_progress_tracking" = "• Seguimiento de progreso";
-"dv_feature_practice_modes" = "• Modos avanzados de práctica";
-"dv_feature_cloud_sync" = "• Sincronización en la nube";
+/* MARK: AboutView */
+"ab_title" = "Acerca del Sistema Mayor";
+"ab_what_is" = "¿Qué es el Sistema Mayor?";
+"ab_what_is_description" = "El Sistema Mayor es una técnica mnemotécnica que te ayuda a recordar números convirtiéndolos en sonidos consonánticos, que luego se pueden formar en palabras.";
+"ab_how_it_works" = "Cómo funciona:";
+"ab_how_it_works_bullet1" = "• A cada dígito se le asignan sonidos consonánticos específicos.";
+"ab_how_it_works_bullet2" = "• Se pueden agregar libremente vocales y letras no asignadas.";
+"ab_how_it_works_bullet3" = "• Forma palabras usando estos sonidos para ayudarte a recordar los números.";
+"ab_examples" = "Ejemplos:";
+"ab_example1" = "123 → \"TuNeMo\"";
+"ab_example2" = "507 → \"LaSeKa\"";
+"ab_example3" = "999 → \"PaPaPa\"";
+"ab_developer_info" = "Información del desarrollador";
+"ab_section_about_app" = "Acerca de la aplicación";
+"ab_app_name" = "Aplicación: Digmitto";
+"ab_version" = "Versión: 1.0.0";
+"ab_developer" = "Desarrollador: Gřegoř Kuleša";
+"ab_section_purpose" = "¿Para qué sirve la aplicación?";
+"ab_purpose_major_system" = "• Aprende a usar el Sistema Mayor.";
+"ab_purpose_large_numbers" = "• Aprende a leer números grandes.";
+"ab_purpose_dates" = "• Memoriza fechas históricas.";
+"ab_purpose_words" = "• Practica el reconocimiento rápido de palabras.";
+"ab_section_support" = "Soporte";
+"ab_support_developer" = "Apoya al desarrollador 🫶";
+"ab_navigation_title" = "Acerca de la aplicación";
 
-//MARK: SupportDeveloperView
-"sd_support_title" = "Apoya al desarrollador";
-"sd_support_message" = "Si te gusta mi aplicación y deseas apoyarme, ¡te lo agradeceré mucho! Incluso la donación más pequeña significa mucho para mí.";
-"sd_support_voluntary" = "El apoyo es completamente voluntario. Por favor, dona solo si puedes permitírtelo. ¡Gracias por cualquier ayuda!";
+/* MARK: MajorAssociationView */
+"ma_title" = "Asociación de dígitos a letras";
+"ma_step_0" = "0 – S, Z";
+"ma_step_1" = "1 – T, D";
+"ma_step_2" = "2 – N";
+"ma_step_3" = "3 – M";
+"ma_step_4" = "4 – R";
+"ma_step_5" = "5 – L";
+"ma_step_6" = "6 – J";
+"ma_step_7" = "7 – K, G";
+"ma_step_8" = "8 – W, F";
+"ma_step_9" = "9 – P, B";
+
+/* MARK: GuideWalkthroughView */
+"guide_title" = "Guía de uso";
+"tut_step_0" = "¡Bienvenido a la aplicación Digmitto! Así es como comienzas.";
+"tut_step_1" = "Paso 1: Usa el botón 'Start Task' para acceder a la vista principal de la aplicación.";
+"tut_step_2" = "Paso 2: En esta vista encontrarás tres elementos clave:\n• Una palabra aleatoria,\n• Ruedas con dígitos para configurar un valor, y\n• Un botón 'Check' que compara la palabra con el número configurado.";
+"tut_step_3" = "Paso 3: Si la respuesta es correcta, verás '¡Correcto! 🌟'.";
+"tut_step_4" = "Paso 4: Por cada respuesta correcta en el primer intento, ganas +1 punto y un ícono de fruta.";
+"tut_step_5" = "Paso 5: Si presionas 'Check' y la respuesta es incorrecta, aparecerá '¡Inténtalo de nuevo! ❌'. Corrige tu respuesta para continuar.";
+"tut_step_6" = "Paso 6: Para aclarar errores, la aplicación muestra el código esperado y tu entrada en las ruedas. No se otorgan puntos por intentos corregidos.";
+"tut_step_7" = "Paso 7: La aplicación ofrece dos herramientas de ayuda para facilitar el aprendizaje.";
+"tut_step_8" = "Paso 8: Ambas herramientas se pueden activar en los ajustes de la aplicación.";
+"tut_step_9" = "Paso 9: La primera herramienta resalta las letras que corresponden a los dígitos. Puedes personalizar sus colores y la lista de letras a ignorar en los ajustes.";
+"tut_step_10" = "Paso 10: La segunda herramienta es una hoja de trucos que muestra la asociación entre letras y dígitos. Úsala si olvidas algún valor.";
+"tut_step_11" = "Paso 11: Las palabras aleatorias pueden ser muy largas, a veces más de lo que muestran las ruedas.";
+"tut_step_12" = "Paso 12: Para solucionarlo, cambia la orientación de la pantalla a horizontal.";
+"tut_step_13" = "Paso 13: La orientación horizontal evita que las ruedas se reduzcan y asegura que se vea el número completo.";
+"tut_step_14" = "Paso 14: Las ruedas se agrupan en tríos, empezando por el último dígito.";
+"tut_step_15" = "Paso 15: Este agrupamiento te ayuda a leer los números en unidades, decenas, miles, millones, etc.";
+"tut_step_16" = "Paso 16: La aplicación registra los puntos de cada sesión, además de un total acumulado.";
+"tut_step_17" = "Paso 17: Puedes ver tus puntos en la vista principal o en la sección 'View Points'.";
+
+/* MARK: MajorMemoView */
+"mnm_title" = "Memorización más fácil";
+"mnm_step_0" = "La memorización más fácil es posible gracias a técnicas mnemotécnicas. Las mejores mnemotecnias son las que tú mismo creas, pero aquí tienes algunas sugerencias si te cuesta idear las tuyas.";
+"mnm_step_1" = "0 – S, Z: Imagina dos serpientes, una con forma de S y otra con forma de Z, luchando por un donut que se asemeja al número 0.";
+"mnm_step_2" = "1 – T, D: Imagina una puerta con forma de D que conduce a la habitación número 1. La manija se parece a la letra T.";
+"mnm_step_3" = "2 – N: La letra N toca la línea en dos puntos, como si tuviera dos pequeñas piernas.";
+"mnm_step_4" = "3 – M: La letra M toca la línea en tres puntos, destacándose entre las demás.";
+"mnm_step_5" = "4 – R: La letra R se pronuncia claramente en 'cuatro'. Imagina un trébol de cuatro hojas con una R en el centro.";
+"mnm_step_6" = "5 – L: En los números romanos, L representa 50, pero aquí se asocia con el 5 para simplificar.";
+"mnm_step_7" = "6 – J: Para asociar el 6 con la J, imagina un caracol que se asemeja al número 6, con la J como el mango de un paraguas.";
+"mnm_step_8" = "7 – K, G: El siete es un número grande. Piensa en un peso de 7 kg; 'kg' contiene las letras K y G.";
+"mnm_step_9" = "8 – W, F: Imagina un muñeco de nieve con forma de 8 que tenga acceso a Wi‑Fi.";
+"mnm_step_10" = "9 – P, B: Imagina plomo (Pb); el plomo es pesado, lo que lo asocia con el dígito 9.";
+
+/* MARK: SupportDeveloperView */
+"sd_support_title" = "Apoya al Desarrollador";
+"sd_support_message" = "Si te gusta mi aplicación y deseas apoyarme, ¡te lo agradeceré enormemente! Incluso la donación más pequeña significa mucho.";
+"sd_support_voluntary" = "El apoyo es completamente voluntario. Por favor, dona solo si puedes permitirlo. ¡Gracias por cualquier ayuda!";
 "sd_support_button" = "Apóyame";
