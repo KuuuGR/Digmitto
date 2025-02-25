@@ -1,181 +1,205 @@
-//MARK: TaskView
+/* MARK: TaskView */
 "tv_check_button" = "Sprawdź";
-"tv_feedback_correct" = "Poprawne! 🌟";
+"tv_feedback_correct" = "Poprawnie! 🌟";
 "tv_feedback_incorrect" = "Spróbuj ponownie! ❌\n\nLitery: %@\nKoła: %@";
 "tv_points" = "Punkty: %d";
 "tv_fruits" = "Owoce: %@";
-"tv_feedback_correct_special" = "Tutorial Level Completed";
-"tv_feedback_correct_special_button_text" = "Great job!";
+"tv_feedback_correct_special" = "Tutorial ukończony";
+"tv_feedback_correct_special_button_text" = "Świetna robota!";
 
-//MARK: TaskScreenView
-"ts_screen_title" = "Ekran zadania";
-"ts_back_button" = "Wróć";
-"ts_user_input_placeholder" = "Wpisz odpowiedź tutaj";
-"ts_code_button" = "Kod";
-
-//MARK: StartView
-"st_general" = "Wybierz swoją akcję";
+/* MARK: StartView */
+"st_general" = "Wybierz działanie";
 "st_start_task" = "Rozpocznij zadanie";
-"st_view_points" = "Zobacz punkty";
+"st_view_points" = "Pokaż punkty";
 "st_manuals" = "Instrukcje";
-
-// Instrukcje StartView
 "st_how_to_start_title" = "Jak zacząć?";
 "st_instruction_step1" = "1. Zapamiętaj litery odpowiadające cyfrom.";
-"st_instruction_bullet1" = "• Cyfra 1 odpowiada 't' lub 'd'.";
-"st_instruction_bullet2" = "• Cyfra 2 odpowiada 'n'... (więcej w instrukcji)";
-"st_instruction_step2" = "2. Zamień znaczące litery z podanego wyrazu na liczbę.";
-"st_instruction_bullet3" = "• Przeczytaj wylosowany wyraz na głos.";
-"st_instruction_bullet4" = "• Przeczytaj otrzymaną liczbę.";
-"st_instruction_bullet5" = "• Sprawdź, czy odpowiedź jest poprawna.";
-"st_instruction_bullet6" = "• Jeśli nie, popraw ją i sprawdź ponownie.";
+"st_instruction_bullet1" = "• Cyfra 1 odpowiada literom 't' lub 'd'.";
+"st_instruction_bullet2" = "• Cyfra 2 odpowiada literze 'n'… (więcej w instrukcjach).";
+"st_instruction_step2" = "2. Przekształć znaczące litery wybranego wyrazu w liczbę.";
+"st_instruction_bullet3" = "• Przeczytaj losowy wyraz na głos.";
+"st_instruction_bullet4" = "• Odczytaj uzyskaną liczbę.";
+"st_instruction_bullet5" = "• Sprawdź poprawność odpowiedzi.";
+"st_instruction_bullet6" = "• Jeśli nie, popraw ją i spróbuj ponownie.";
 
-//MARK: ManualsView
-"mn_general" = "Jak mogę Ci pomóc?";
-"mn_major_numbers" = "System Major — przypisanie cyfr";
-"mn_app_manual" = "Podręcznik aplikacji";
-"mn_numbers_mnemotechnics" = "Łatwe zapamiętywanie liczb";
+/* MARK: FirstManualView */
+"fm_welcome" = "Witamy w tutorialu!";
+"fm_tutorial_steps" = "Poznaj działanie aplikacji w zaledwie trzech prostych krokach!";
+"fm_dont_show_next_time" = "Nie pokazuj tego tutoriala przy następnym uruchomieniu";
+"fm_start" = "Przejdźmy do ćwiczeń!";
 
-//MARK: SettingsView
+/* MARK: TutorialStepOne */
+"tso_general" = "📖 KROK PIERWSZY";
+"tso_how_to_start_title" = "🔹 System Majora – czym jest i dlaczego warto go stosować\n";
+"tso_word_for_practice" = "pies";
+"tso_instruction_step1" = "1️⃣ Łatwo i skutecznie zapamiętuj długie liczby";
+"tso_instruction_bullet1" = "• Poznaj przyporządkowanie liter do cyfr";
+"tso_instruction_bullet2" = "• Ćwicz, zamieniając wyrazy na liczby";
+"tso_instruction_step2" = "2️⃣ Ćwiczenie 1";
+"tso_instruction_bullet3" = "• Zacznij od przykładowego wyrazu 'pies'";
+"tso_instruction_bullet4" = "• W systemie Majora istotne są spółgłoski: 'p' i 's'";
+"tso_instruction_bullet5" = "• 'P' odpowiada cyfrze 9, a 'S' – cyfrze 0";
+"tso_instruction_bullet6" = "• Wynik: 90\nSpróbuj samodzielnie!";
+"tso_start_task" = "Rozpocznij ćwiczenie";
+"tso_done" = "Przejdź do kroku drugiego";
+
+/* MARK: TutorialStepTwo */
+"tstw_general" = "📖 KROK DRUGI";
+"tstw_how_to_start_title" = "🔹 Nie od razu Rzym zbudowano\n";
+"tstw_word_for_practice" = "delfin";
+"tstw_instruction_step1" = "3️⃣ Ściągawka i mnemotechniki";
+"tstw_instruction_bullet1" = "• Ściągawkę z przyporządkowań można włączyć w ustawieniach";
+"tstw_instruction_bullet2" = "• Po ukończeniu tutoriala sprawdź instrukcje – zawierają przygotowane mnemotechniki, które ułatwią Ci zapamiętanie przyporządkowań";
+"tstw_instruction_step2" = "4️⃣ Ćwiczenie 2";
+"tstw_instruction_bullet3" = "• Wypróbuj słowo 'delfin'";
+"tstw_instruction_bullet4" = "• Istotne spółgłoski to: 'd', 'l', 'f', 'n'";
+"tstw_instruction_bullet5" = "• 'D' = 1, 'L' = 5, 'F' = 8, 'N' = 2, czyli: 1 5 8 2";
+"tstw_instruction_bullet6" = "• Spróbuj samodzielnie! Możesz korzystać ze ściągawki";
+"tstw_start_task" = "Rozpocznij ćwiczenie";
+"tstw_done" = "Przejdź do kroku trzeciego";
+
+/* MARK: TutorialStepThree */
+"tsth_general" = "📖 KROK TRZECI";
+"tsth_how_to_start_title" = "🔹 Droga do tworzenia wyrazów\n";
+"tsth_word_for_practice" = "argentinozaur";
+"tsth_instruction_step1" = "5️⃣ Wyrazy mogą być bardzo długie";
+"tsth_instruction_bullet1" = "• Wyrazy są losowo wybierane z wybranego słownika";
+"tsth_instruction_bullet2" = "• Długie wyrazy łatwiej wpisywać, gdy trzymasz iPhone'a poziomo";
+"tsth_instruction_step2" = "6️⃣ Ćwiczenie 3";
+"tsth_instruction_bullet3" = "• Spróbuj teraz z wyrazem 'argentinozaur' 🦕";
+"tsth_instruction_bullet4" = "• Jeśli potrzebujesz, skorzystaj ze ściągawki";
+"tsth_instruction_bullet5" = "• Koła z cyframi są grupowane w trójki, co ułatwia odczyt liczb (dziesiątki, tysiące, miliony)";
+"tsth_instruction_bullet6" = "• To ostatnie wyzwanie!";
+"tsth_start_task" = "Rozpocznij ćwiczenie";
+"tsth_done" = "Zakończ tutorial";
+
+/* MARK: ManualsView */
+"mn_general" = "W czym mogę Ci pomóc?";
+"mn_major_numbers" = "Przyporządkowania Systemu Majora";
+"mn_app_manual" = "Kompletny podręcznik aplikacji";
+"mn_numbers_mnemotechnics" = "Mnemotechniki ułatwiające przyporządkowanie";
+
+/* MARK: SettingsView */
 "sv_general_settings" = "Ustawienia ogólne";
 "sv_enable_cheat_sheet" = "Włącz ściągawkę";
-"sv_language" = "Język";
+"sv_language" = "Słownik";
 "sv_language_english" = "Angielski";
 "sv_language_polish" = "Polski";
 "sv_language_spanish" = "Hiszpański";
-
-"sv_colorization_settings" = "Ustawienia kolorów";
+"sv_colorization_settings" = "Ustawienia kolorowania";
 "sv_enable_colorization" = "Włącz kolorowanie";
 "sv_primary_color" = "Kolor podstawowy";
-"sv_secondary_color" = "Kolor pomocniczy";
-
-"sv_default_color_settings" = "Domyślne ustawienia kolorów";
+"sv_secondary_color" = "Kolor dodatkowy";
+"sv_default_color_settings" = "Ustawienia koloru domyślnego";
 "sv_default_color" = "Kolor domyślny";
-
-"sv_major_system_letters" = "Litery systemu Major";
-"sv_major_letters" = "Litery Major";
+"sv_major_system_letters" = "Litery Systemu Majora";
+"sv_major_letters" = "Litery znaczące";
 "sv_enter_letters" = "Wprowadź litery";
-
 "sv_settings_title" = "Ustawienia";
-
 "sv_additional_settings" = "Dodatkowe ustawienia";
-"sv_enable_randomizing_dice" = "Włącz ręczne losowanie słowa";
+"sv_enable_randomizing_dice" = "Kostka losowych słów";
+"sv_enable_tutorial_again" = "Zacznij od tutorialu";
 
-//MARK: PointsView
+/* MARK: PointsView */
 "pw_title" = "Punkty";
-"pw_total" = "Łączna liczba punktów";
+"pw_total" = "Łącznie punktów";
 "pw_achievements" = "Osiągnięcia";
+"ach_description_0" = "Mistrz: Osiągnij 500 punktów.";
+"ach_description_1" = "Pierwszy krok: Ukończ swoje pierwsze zadanie.";
+"ach_description_2" = "Pamięciak: Osiągnij 100 punktów.";
+"ach_description_3" = "Szybciok: Rozwiąż 10 zadań w mniej niż minutę.";
+"ach_description_4" = "Idealista: Ukończ sesję bez błędów.";
+"ach_description_5" = "Wytrwałość: Korzystaj z aplikacji codziennie przez tydzień.";
+"ach_description_6" = "Owocozbieracz: Zbierz wszystkie ikony owoców.";
+"ach_description_7" = "Pani z Warzywniaka: Zbierz wszystkie owoce w jednej sesji.";
+"ach_description_8" = "Kokosowoc: Otrzymaj kokos wśród zebranych owoców.";
 
-// Opisy Osiągnięć
-"ach_description_0" = "Mistrz: Zdobądź 500 punktów.";
-"ach_description_1" = "Pierwsze kroki: Ukończ pierwsze zadanie.";
-"ach_description_2" = "Mistrz pamięci: Zdobądź 100 punktów.";
-"ach_description_3" = "Demon prędkości: Rozwiąż 10 zadań w mniej niż minutę.";
-"ach_description_4" = "Perfekcyjna sesja: Ukończ sesję bez błędów.";
-"ach_description_5" = "Systematyczny uczeń: Używaj aplikacji codziennie przez tydzień.";
-"ach_description_6" = "Kolekcjoner owoców: Zbierz wszystkie ikony owoców.";
-"ach_description_7" = "Sprzedawca owoców: Zbierz wszystkie owoce w jednej sesji.";
-
-//MARK: HomeScreenView
-"hs_welcome" = "Witamy w systemie pamięci Major";
+/* MARK: HomeScreenView */
+"hs_welcome" = "Witamy w Major Memory System";
 "hs_start_button" = "Start";
 "hs_settings_button" = "Ustawienia";
 "hs_about_button" = "O aplikacji";
-"hs_total_points_format" = "Łączna liczba punktów: %d";
+"hs_total_points_format" = "Łącznie punktów: %d";
 
-//MARK: DeveloperView
-"dv_developer_info" = "Informacje o twórcy";
-"dv_navigation_title" = "Twórca";
-"dv_about_developer" = "O twórcy";
-"dv_created_by" = "Stworzone przez Grzegorza Kuleszę";
-"dv_contact_info" = "Kontakt: your_email@example.com";
+/* MARK: CheatSheetView */
+"cs_title" = "📜 Ściągawka Systemu Majora 📜";
 
-"dv_future_updates" = "Przyszłe aktualizacje";
-"dv_planned_features" = "Planowane funkcje:";
-"dv_feature_multilanguage" = "• Obsługa wielu języków";
-"dv_feature_wordlists" = "• Własne listy słów";
-"dv_feature_progress_tracking" = "• Śledzenie postępów";
-"dv_feature_practice_modes" = "• Zaawansowane tryby ćwiczeń";
-"dv_feature_cloud_sync" = "• Synchronizacja w chmurze";
-
-//MARK: ContentView
-"cv_welcome_message" = "Witamy w Digmitto";
-"cv_start_button" = "START";
-"cv_show_cheat_sheet" = "Pokaż ściągawkę";
-
-//MARK: CheeatSheetView
-"cs_title" = "📜 Ściągawka systemu Major 📜";
-
-//MARK: AboutView
-"ab_title" = "O systemie Major";
-"ab_what_is" = "Czym jest system Major?";
-"ab_what_is_description" = "System Major to technika mnemotechniczna, która pomaga zapamiętać liczby, konwertując je na dźwięki spółgłoskowe, które można następnie zamienić na słowa.";
+/* MARK: AboutView */
+"ab_title" = "O Systemie Majora";
+"ab_what_is" = "Czym jest System Majora?";
+"ab_what_is_description" = "System Majora to technika mnemotechniczna, która pomaga zapamiętywać liczby poprzez przekształcanie ich w dźwięki spółgłoskowe, z których można tworzyć wyrazy.";
 "ab_how_it_works" = "Jak to działa:";
-"ab_how_it_works_bullet1" = "• Każda cyfra jest przypisana do określonych dźwięków spółgłoskowych";
-"ab_how_it_works_bullet2" = "• Samogłoski i nieużywane spółgłoski można dodawać dowolnie";
-"ab_how_it_works_bullet3" = "• Twórz słowa używając tych dźwięków, aby zapamiętać liczby";
+"ab_how_it_works_bullet1" = "• Każdej cyfrze przypisane są określone dźwięki spółgłoskowe.";
+"ab_how_it_works_bullet2" = "• Do samogłosek i liter bez przyporządkowania można dodawać dowolne znaki.";
+"ab_how_it_works_bullet3" = "• Twórz wyrazy z tych dźwięków, aby łatwiej zapamiętać liczby.";
 "ab_examples" = "Przykłady:";
 "ab_example1" = "123 → \"TuNeMo\"";
 "ab_example2" = "507 → \"LaSeKa\"";
 "ab_example3" = "999 → \"PaPaPa\"";
-"ab_developer_info" = "Informacje o twórcy";
+"ab_developer_info" = "Informacje o deweloperze";
+"ab_section_about_app" = "O aplikacji";
+"ab_app_name" = "Aplikacja: Digmitto";
+"ab_version" = "Wersja: 1.0.0";
+"ab_developer" = "Deweloper: Grzegorz Kulesza";
+"ab_section_purpose" = "Do czego służy aplikacja?";
+"ab_purpose_major_system" = "• Naucz się korzystać z Systemu Majora.";
+"ab_purpose_large_numbers" = "• Naucz się odczytywać duże liczby.";
+"ab_purpose_dates" = "• Zapamiętuj historyczne daty.";
+"ab_purpose_words" = "• Ćwicz szybkie rozpoznawanie wyrazów.";
+"ab_section_support" = "Wsparcie";
+"ab_support_developer" = "Wesprzyj dewelopera 🫶";
+"ab_navigation_title" = "O aplikacji";
 
-//MARK: WelcomeScreen -> TODO: remove if not needed
-"ws_welcome" = "Witamy w systemie pamięci Major!";
-"ws_description" = "Popraw swoje umiejętności pamięciowe dzięki naszym interaktywnym i angażującym ćwiczeniom.";
-"ws_start" = "Rozpocznij";
+/* MARK: MajorAssociationView */
+"ma_title" = "Przyporządkowanie cyfr do liter";
+"ma_step_0" = "0 – S, Z";
+"ma_step_1" = "1 – T, D";
+"ma_step_2" = "2 – N";
+"ma_step_3" = "3 – M";
+"ma_step_4" = "4 – R";
+"ma_step_5" = "5 – L";
+"ma_step_6" = "6 – J";
+"ma_step_7" = "7 – K, G";
+"ma_step_8" = "8 – W, F";
+"ma_step_9" = "9 – P, B";
 
-//MARK: MajorAsociationView
-"ma_title" = "Przypisanie cyfr do liter";
-"ma_step_0" = "O - S,Z";
-"ma_step_1" = "1 - T,D";
-"ma_step_2" = "2 - N";
-"ma_step_3" = "3 - M";
-"ma_step_4" = "4 - R";
-"ma_step_5" = "5 - L";
-"ma_step_6" = "6 - J";
-"ma_step_7" = "7 - K,G";
-"ma_step_8" = "8 - W,F";
-"ma_step_9" = "9 - P,B";
-
-
-//MARK: GuideWalkthroughView
+/* MARK: GuideWalkthroughView */
 "guide_title" = "Przewodnik";
 "tut_step_0" = "Witamy w aplikacji Digmitto! Oto jak zacząć.";
-"tut_step_1" = "Krok 1: Użyj przycisku 'Rozpocznij zadanie', aby uzyskać dostęp do głównego widoku aplikacji.";
-"tut_step_2" = "Krok 2: W tym widoku znajdziesz trzy kluczowe elementy: losowe słowo, koła do ustawiania wartości liczbowych i przycisk 'Sprawdź', aby porównać słowo z wybraną liczbą.";
-"tut_step_3" = "Krok 3: Jeśli odpowiedź jest poprawna, zobaczysz komunikat 'Poprawne! 🌟'.";
-"tut_step_4" = "Krok 4: Za każdą poprawną odpowiedź przy pierwszej próbie otrzymasz +1 punkt i ikonę owocu.";
-"tut_step_5" = "Krok 5: Jeśli naciśniesz 'Sprawdź', ale odpowiedź jest błędna, pojawi się komunikat 'Spróbuj ponownie! ❌'. W takim przypadku popraw swoją odpowiedź, aby przejść do następnego słowa.";
-"tut_step_6" = "Krok 6: Aby wyjaśnić błędy, aplikacja pokazuje oczekiwany kod dla słowa oraz kod, który wprowadziłeś na kołach.";
-"tut_step_7" = "Krok 7: W aplikacji znajdują się dwa narzędzia pomocnicze, które ułatwiają proces nauki.";
+"tut_step_1" = "Krok 1: Użyj przycisku 'Start Task', aby przejść do głównego widoku aplikacji.";
+"tut_step_2" = "Krok 2: W tym widoku znajdziesz trzy kluczowe elementy:\n• Losowy wyraz,\n• Koła z cyframi do ustawienia wartości,\n• Przyciski 'Check', które porównują wyraz z ustawioną liczbą.";
+"tut_step_3" = "Krok 3: Jeśli odpowiedź będzie poprawna, zobaczysz 'Poprawnie! 🌟'.";
+"tut_step_4" = "Krok 4: Za każdą poprawną odpowiedź podaną za pierwszym razem otrzymasz +1 punkt oraz ikonę owocu.";
+"tut_step_5" = "Krok 5: Jeśli naciśniesz 'Check', a odpowiedź będzie błędna, pojawi się komunikat 'Spróbuj ponownie! ❌'. Popraw swoją odpowiedź, aby przejść dalej.";
+"tut_step_6" = "Krok 6: Aby wyjaśnić błędy, aplikacja pokazuje oczekiwany kod oraz Twój wpis na kołach. Za poprawione próby punkty nie są przyznawane.";
+"tut_step_7" = "Krok 7: Aplikacja oferuje dwa narzędzia pomocnicze, które ułatwiają naukę.";
 "tut_step_8" = "Krok 8: Oba narzędzia pomocnicze można włączyć w ustawieniach aplikacji.";
-"tut_step_9" = "Krok 9: Pierwsze narzędzie pomocnicze podświetla litery odpowiadające liczbom. Kolory tych liter i liter, które należy pominąć, można dostosować w ustawieniach.";
-"tut_step_10" = "Krok 10: Drugie narzędzie to ściągawka pokazująca litery i odpowiadające im liczby. Możesz z niej skorzystać, jeśli zapomnisz wartości.";
-"tut_step_11" = "Krok 11: Losowe słowa mogą być bardzo długie, czasami przekraczając liczbę widocznych kół na ekranie.";
-"tut_step_12" = "Krok 12: Aby rozwiązać ten problem, zmień orientację ekranu na poziomą.";
-"tut_step_13" = "Krok 13: Pozioma orientacja zapobiega kurczeniu się kół i zapewnia widoczność całego zakodowanego numeru.";
-"tut_step_14" = "Krok 14: Koła są pogrupowane w zestawy po trzy, licząc od ostatniej liczby.";
-"tut_step_15" = "Krok 15: To grupowanie pomaga nauczyć się odczytywać liczby w jednostkach, dziesiątkach, tysiącach, milionach itd.";
-"tut_step_16" = "Krok 16: Aplikacja śledzi punkty dla każdej sesji i utrzymuje całkowitą sumę punktów we wszystkich sesjach.";
-"tut_step_17" = "Krok 17: Możesz zobaczyć swoje punkty na głównym ekranie lub w sekcji 'Wyświetl punkty'.";
+"tut_step_9" = "Krok 9: Pierwsze narzędzie podświetla litery odpowiadające cyfrom. Możesz dostosować kolory tych liter oraz listę ignorowanych liter w ustawieniach.";
+"tut_step_10" = "Krok 10: Drugie narzędzie to ściągawka wyświetlająca przyporządkowanie liter do cyfr. Użyj jej, jeśli zapomnisz jakiejś wartości.";
+"tut_step_11" = "Krok 11: Losowe wyrazy mogą być bardzo długie, czasem dłuższe niż widoczne koła.";
+"tut_step_12" = "Krok 12: Aby to rozwiązać, przełącz orientację ekranu na poziomą.";
+"tut_step_13" = "Krok 13: Orientacja pozioma zapobiega zmniejszaniu się kół i zapewnia pełną widoczność liczby.";
+"tut_step_14" = "Krok 14: Koła są grupowane w zestawy po trzy, licząc od ostatniej cyfry.";
+"tut_step_15" = "Krok 15: Takie grupowanie pomaga w odczytywaniu liczb – jednostek, dziesiątek, tysięcy, milionów itd.";
+"tut_step_16" = "Krok 16: Aplikacja śledzi punkty za każdą sesję oraz sumaryczny wynik we wszystkich sesjach.";
+"tut_step_17" = "Krok 17: Punkty możesz sprawdzić na głównym ekranie lub w sekcji 'View Points'.";
 
-// MARK: MajorMemoView
+/* MARK: MajorMemoView */
 "mnm_title" = "Łatwiejsze zapamiętywanie";
-"mnm_step_0" = "Łatwiejsze zapamiętywanie jest możliwe dzięki mnemotechnikom. Najlepsze mnemotechniki to te wymyślone samodzielnie, jednak tutaj służę podpowiedziami, gdyby nie przychodziły Ci one zbyt łatwo do głowy.";
-"mnm_step_1" = "0 - S, Z: Można wyobrazić sobie dwa węże – jeden przypominający literę S, drugi literę Z – które walczą o pączka wyglądającego jak cyfra 0.";
-"mnm_step_2" = "1 - T, D: Wyobraź sobie drzwi w kształcie litery D, które prowadzą do pokoju nr 1. Klamka tych drzwi przypomina literę T – takie tajemnicze drzwi.";
-"mnm_step_3" = "2 - N: Litera N dotyka w dwóch miejscach linii, na której jest napisana, jakby miała dwie nóżki.";
-"mnm_step_4" = "3 - M: Litera M dotyka w trzech miejscach linii, co odróżnia ją od wcześniejszych liter.";
-"mnm_step_5" = "4 - R: Litera R wyraźnie słychać w słowie 'cztery'. Można też wyobrazić sobie czterolistną koniczynę z literą R na środku.";
-"mnm_step_6" = "5 - L: Litera L w systemie rzymskim oznacza liczbę 50, ale my skupiamy się na cyfrze 5, która łatwo kojarzy się z literą L.";
-"mnm_step_7" = "6 - J: Aby skojarzyć cyfrę 6 z literą J, wyobraź sobie ślimaka, który wygląda jak cyfra 6, z literą J przypominającą rączkę od parasolki.";
-"mnm_step_8" = "7 - K, G: Siedem to duża cyfra, którą można łatwo skojarzyć z 7-kilogramowym ciężarkiem. Skrót 'kg' zawiera litery K i G.";
-"mnm_step_9" = "8 - W, F: Wyobraź sobie bałwana przypominającego cyfrę 8, który korzysta z Wi-Fi – a więc interesują nas litery W i F.";
-"mnm_step_10" = "9 - P, B: Wyobraź sobie ołów – chemiczny pierwiastek o symbolu Pb. Ołów jest bardzo ciężki, dlatego kojarzymy go z największą cyfrą, czyli 9.";
+"mnm_step_0" = "Zapamiętywanie jest łatwiejsze dzięki mnemotechnikom. Najlepsze jednak to te, które stworzysz sam. Jeśli masz trudności z wymyśleniem własnych użyj poniższych.";
+"mnm_step_1" = "0 – S, Z: Wyobraź sobie dwa węże – jeden w kształcie litery S, drugi jak litera Z – walczące o pączka przypominającego cyfrę 0.";
+"mnm_step_2" = "1 – T, D: Wyobraź sobie drzwi w kształcie litery D prowadzące do pokoju numer 1. Klamka przypomina literę T.";
+"mnm_step_3" = "2 – N: Litera N dotyka linii pisma w dwóch miejscach, jakby miała dwie małe nogi.";
+"mnm_step_4" = "3 – M: Litera M dotyka linii w trzech miejscach, wyróżniając się spośród innych liter.";
+"mnm_step_5" = "4 – R: Litera R wymawiana jest wyraźnie w słowie 'cztery'. Wyobraź sobie czterolistną koniczynę z literą R w centrum.";
+"mnm_step_6" = "5 – L: W rzymskich liczbach litera L oznacza 50, ale kojarzymy ją z cyfrą 5.";
+"mnm_step_7" = "6 – J: Aby skojarzyć cyfrę 6 z literą J, wyobraź sobie ślimaka przypominającego cyfrę 6, z literą J jako rączką parasola.";
+"mnm_step_8" = "7 – K, G: Siedem to duża liczba. Pomyśl o ciężarze 7 kg; skrót 'kg' zawiera litery K i G.";
+"mnm_step_9" = "8 – W, F: Wyobraź sobie bałwana w kształcie cyfry 8, który ma dostęp do Wi‑Fi.";
+"mnm_step_10" = "9 – P, B: Wyobraź sobie ołów (Pb); ołów jest ciężki, co kojarzy się z dużą cyfrą 9.";
 
-//MARK: SupportDeveloperView
-"sd_support_title" = "Wesprzyj twórcę";
-"sd_support_message" = "Jeśli podoba Ci się moja aplikacja i chcesz mnie wesprzeć, będę bardzo wdzięczny! Nawet najmniejsza wpłata wiele dla mnie znaczy.";
-"sd_support_voluntary" = "Wsparcie jest całkowicie dobrowolne. Proszę, wpłacaj tylko wtedy, gdy możesz sobie na to pozwolić. Dziękuję za każdą pomoc!";
+/* MARK: SupportDeveloperView */
+"sd_support_title" = "Wesprzyj dewelopera";
+"sd_support_message" = "Jeśli podoba Ci się moja aplikacja i chcesz mnie wesprzeć, będę bardzo wdzięczny! Nawet najmniejsza darowizna wiele znaczy.";
+"sd_support_voluntary" = "Wsparcie jest całkowicie dobrowolne. Proszę wpłacaj tylko, jeśli Cię stać. Dziękuję za każdą pomoc!";
 "sd_support_button" = "Wesprzyj mnie";
