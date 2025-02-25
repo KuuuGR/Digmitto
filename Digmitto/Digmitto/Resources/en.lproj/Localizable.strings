@@ -81,7 +81,7 @@
 
 /* MARK: SettingsView */
 "sv_general_settings" = "General Settings";
-"sv_enable_cheat_sheet" = "Cheat Sheet";
+"sv_enable_cheat_sheet" = "Cheat sheet";
 "sv_language" = "Dictionary";
 "sv_language_english" = "English";
 "sv_language_polish" = "Polish";
@@ -91,14 +91,14 @@
 "sv_primary_color" = "Primary Color";
 "sv_secondary_color" = "Secondary Color";
 "sv_default_color_settings" = "Default Color Setting";
-"sv_default_color" = "Default Color";
+"sv_default_color" = "Default color";
 "sv_major_system_letters" = "Major System Letters";
-"sv_major_letters" = "Significant Letters";
+"sv_major_letters" = "Meaningful letters";
 "sv_enter_letters" = "Enter letters";
 "sv_settings_title" = "Settings";
 "sv_additional_settings" = "Additional Settings";
 "sv_enable_randomizing_dice" = "Word dice";
-"sv_enable_tutorial_again" = "Tutorial at start";
+"sv_enable_tutorial_again" = "Begining with tutorial";
 
 /* MARK: PointsView */
 "pw_title" = "Points";
