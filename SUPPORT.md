@@ -9,7 +9,7 @@ Before contacting us, please check our [FAQ](./FAQ.md) for answers to common que
 
 ### Contact Us
 - **Email Support:** If you need further assistance, please email us at [etaosin@gmail.com](mailto:etaosin@gmail.com). We strive to respond within 24–48 hours.
-- **GitHub Issues:** For technical problems or bug reports, please open an issue on our GitHub repository at [https://github.com/YourRepo/Digmitto/issues](https://github.com/YourRepo/Digmitto/issues).
+- **GitHub Issues:** For technical problems or bug reports, please open an issue on our GitHub repository at [Digmitto/issues](https://github.com/KuuuGR/Digmitto/issues).
 
 ## Feedback
 
@@ -17,6 +17,6 @@ Your feedback is important to us. Please share any suggestions or comments to he
 
 ## Stay Connected
 
-For the latest updates and news about Digmitto, please follow our GitHub repository and check our [Release Notes](link-to-release-notes).
+For the latest updates and news about Digmitto, please follow our GitHub repository and check our [Release Notes](https://github.com/KuuuGR/Digmitto/blob/main/ReleaseNotes).
 
 Thank you for using Digmitto!
