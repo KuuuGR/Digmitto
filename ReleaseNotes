@@ -1,0 +1,87 @@
+# Release Notes – Digmitto Version 1.0
+
+**Release Date:** February 2025
+
+---
+
+## Overview
+
+Digmitto is the inaugural release of our open-source educational app designed to teach the Major System—a mnemonic technique that transforms numbers into words. This version is tailored for children and beginners, offering interactive exercises that make learning numbers both fun and effective.
+
+---
+
+## New Features
+
+### Interactive Tutorial
+- **Three-Step Tutorial:**  
+  - **Step One:** Introduction to the Major System and an initial exercise where users convert a simple word (e.g., "Dog") into a number.
+  - **Step Two:** An in-depth look at the cheat sheet feature, along with feedback for incorrect attempts.
+  - **Step Three:** Challenges with longer words and grouped number wheels to help read large numbers in units, tens, thousands, and millions.
+
+### Achievements System
+- **Earn Points and Unlock Achievements:**  
+  - Unlock achievements such as First Steps, Memory Master, Speed Demon, Perfect Session, and Coconut Collector.
+  - Achievements are persistently saved so that progress is maintained between sessions.
+
+### User Interface Enhancements
+- **Dynamic and Colorful UI:**  
+  - Smooth gradient transitions on buttons and number wheels.
+  - Intuitive design elements for an engaging user experience.
+
+### Localization
+- **Multilingual Support:**  
+  - The app is fully localized and supports English, Polish, Spanish, and Russian. All instructional texts, labels, and messages are available in these languages.
+
+### Settings and Customization
+- **Comprehensive Settings:**  
+  - Customize options such as enabling/disabling the cheat sheet, selecting language, and choosing color themes.
+  
+### Offline Functionality
+- **Privacy and Performance:**  
+  - Digmitto operates entirely offline with no personal data collected, ensuring a fast and private user experience.
+
+---
+
+## Improvements
+
+- **Navigation & State Management:**  
+  - Enhanced navigation between views to prevent unwanted resets.
+  - Improved handling of random word selection in TaskView.
+  
+- **Color Management:**  
+  - Refined gradient generation via a dedicated `ColorManager` to ensure smooth and visually appealing animations.
+
+- **User Feedback:**  
+  - Enhanced feedback messages for both correct and incorrect responses, making the learning process clearer.
+
+---
+
+## Known Issues
+
+- **Session-Based Achievements:**  
+  - Some session-based achievements (Speed Demon and Perfect Session) may need further fine-tuning for persistent unlocking.
+- **Data Persistence:**  
+  - While achievements are saved using UserDefaults, future releases may benefit from a more robust data storage solution (such as CoreData or SwiftData).
+
+---
+
+## Future Plans
+
+- **Enhanced Data Storage:**  
+  - Evaluate migrating to CoreData/SwiftData for improved reliability in data persistence.
+- **Expanded Exercise Library:**  
+  - Introduce additional exercises and advanced mnemonic techniques.
+- **UI & Animation Enhancements:**  
+  - Further polish the user interface and add more dynamic animations.
+- **Increased Test Coverage:**  
+  - Develop comprehensive unit and UI tests to ensure the app's stability and reliability.
+
+---
+
+## Acknowledgments
+
+Thank you to everyone who contributed ideas, feedback, and support during the development of Digmitto. Your input is invaluable, and we look forward to continuing to improve the app in future releases.
+
+---
+
+Enjoy using Digmitto, and happy learning with the Major System!
